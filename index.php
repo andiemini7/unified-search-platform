@@ -1,29 +1,66 @@
-<?php
-get_header(); 
-?>
+<?php get_header(); ?>
 
-<div class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold text-center mb-8">Unified Search Results</h1>
+<div class="container mx-auto p-4">
+
+    <nav class="bg-gray-800 p-4 mb-4">
+        <?php
+        wp_nav_menu(array(
+            'theme_location' => 'home-menu',
+            'container' => false,
+            'menu_class' => 'flex justify-center space-x-4',
+            'link_before' => '<span class="text-white">',
+            'link_after' => '</span>',
+        ));
+        ?>
+    </nav>
+
+
+    <nav class="bg-gray-800 p-4 mb-4">
+        <?php
+        wp_nav_menu(array(
+            'theme_location' => 'unified-search-menu',
+            'container' => false,
+            'menu_class' => 'flex justify-center space-x-4',
+            'link_before' => '<span class="text-white">',
+            'link_after' => '</span>',
+        ));
+        ?>
+    </nav>
+
+
+    <nav class="bg-gray-800 p-4 mb-4">
+        <?php
+        wp_nav_menu(array(
+            'theme_location' => 'contact-us-menu',
+            'container' => false,
+            'menu_class' => 'flex justify-center space-x-4',
+            'link_before' => '<span class="text-white">',
+            'link_after' => '</span>',
+        ));
+        ?>
+    </nav>
+
+    <h1 class="text-4xl font-bold text-center my-4">Unified Search Results</h1>
     
-    <!-- Search Form -->
-    <form action="/" method="get" class="flex justify-center mb-8">
-        <input type="text" name="s" class="border border-gray-300 p-2 rounded-l-lg w-full max-w-md" placeholder="Search...">
-        <button type="submit" class="bg-blue-500 text-white p-2 rounded-r-lg">Search</button>
+
+    <form action="/" method="get" class="flex justify-center my-4">
+        <input type="text" name="s" class="border border-gray-300 p-2 rounded-l w-full max-w-md" placeholder="Search...">
+        <button type="submit" class="bg-blue-500 text-white p-2 rounded-r">Search</button>
     </form>
     
-    <!-- Search Results -->
+   
     <?php if (have_posts()) : ?>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <?php while (have_posts()) : the_post(); ?>
-                <div class="border border-gray-200 p-4 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-semibold mb-2"><a href="<?php the_permalink(); ?>" class="text-blue-500 hover:underline"><?php the_title(); ?></a></h2>
-                    <p class="text-gray-700"><?php the_excerpt(); ?></p>
+                <div class="border border-gray-200 p-4 rounded shadow">
+                    <h2 class="text-2xl font-bold mb-2"><a href="<?php the_permalink(); ?>" class="text-blue-500"><?php the_title(); ?></a></h2>
+                    <p><?php the_excerpt(); ?></p>
                 </div>
             <?php endwhile; ?>
         </div>
         
-        <!-- Pagination -->
-        <div class="mt-8">
+    
+        <div class="my-4">
             <?php 
             the_posts_pagination([
                 'mid_size'  => 2,
