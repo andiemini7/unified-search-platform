@@ -1,0 +1,20 @@
+{
+    "name": "hp/unified-search-platform",
+    "description": "A search platform",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "eerzagashiii",
+            "email": "ereza.gashi02@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Hp\\UnifiedSearchPlatform\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.1"
+    }
+}
