@@ -1,5 +1,7 @@
 <?php
+// functions.php
 
+<<<<<<< Updated upstream
 function unified_search_platform_setup() {
     add_theme_support('title-tag');
 }
@@ -30,3 +32,6 @@ add_action('init', 'register_my_menus');
 require get_template_directory() . '/enqueues.php';
 require get_template_directory() . '/init.php';
 
+=======
+require get_template_directory() . '/includes/init.php';
+>>>>>>> Stashed changes
