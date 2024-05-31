@@ -6,10 +6,9 @@ class MyThemeInit {
     }
 
     public function theme_setup() {
-        // var_dump('HERE');
-      
+
     }
 }
 
-new MyThemeInit();
+new MyThemeInit(); 
 ?>

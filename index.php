@@ -84,7 +84,7 @@
     else :
         echo '<p>No posts found.</p>';
     endif;
-    ?>
+    ?> 
 </div>
 
 

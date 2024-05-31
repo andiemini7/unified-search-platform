@@ -46,7 +46,7 @@ function display_clients() {
                     <?php endif; ?>
                     <h1><?php echo esc_html($client_name); ?></h1>
                     <span style="display:inline-block; width:500px;"><?php echo esc_html($client_description); ?></span>
-                </div>
+                </div> 
             <?php endwhile; ?>
         </div>
     <?php endif;
