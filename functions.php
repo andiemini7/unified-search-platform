@@ -1,6 +1,3 @@
 <?php
-// Include setup.php
-require_once get_template_directory() . '/setup.php';
 
-
-?>
+require get_template_directory() . '/includes/init.php';
