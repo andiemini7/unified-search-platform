@@ -6,7 +6,7 @@ class MyThemeInit {
     }
 
     public function theme_setup() {
-        var_dump('HERE');
+        // var_dump('HERE');
       
     }
 }

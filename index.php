@@ -74,4 +74,18 @@
     <?php endif; ?>
 </div>
 
+<div class="client-wrapper">
+    <?php
+
+    if ( have_posts() ) :
+        while ( have_posts() ) : the_post();
+            display_clients();
+        endwhile;
+    else :
+        echo '<p>No posts found.</p>';
+    endif;
+    ?>
+</div>
+
+
 <?php get_footer(); ?>
