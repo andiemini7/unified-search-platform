@@ -4,10 +4,12 @@ require_once('setup.php');
 
 class Init {
     public function __construct() {
-        add_action('after_setup_theme', [$this, 'unifiedsearch_setup']);
         add_action('init', [$this, 'register_documentations']);
         add_action('init', [$this, 'documentation_taxonomies']);
         add_action('wp_enqueue_scripts', 'enqueueStyles'); 
+        add_action('after_setup_theme', 'unifiedsearch_setup');
+
+
     }
 
     public function register_documentations() {
