@@ -1,6 +1,6 @@
 <?php
 // Theme setup
-function my_theme_setup() {
+function unifiedsearch_setup() {
     // Add theme support
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -12,5 +12,3 @@ function my_theme_setup() {
         'unified-search-menu' => __('Unified Search Menu')
     ]);
 }
-
-?>

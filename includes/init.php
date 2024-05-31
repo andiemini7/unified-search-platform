@@ -1,19 +1,13 @@
 <?php
-
 require_once('enqueue.php');
 require_once('setup.php'); 
 
-class MyThemeInit {
+class Init {
     public function __construct() {
-        add_action('after_setup_theme', [$this, 'theme_setup']);
+        add_action('after_setup_theme', [$this, 'unifiedsearch_setup']);
         add_action('init', [$this, 'register_documentations']);
         add_action('init', [$this, 'documentation_taxonomies']);
-        add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles'); 
-        add_action('after_setup_theme', 'my_theme_setup'); 
-    }
-
-    public function theme_setup() {
-        var_dump('HERE');
+        add_action('wp_enqueue_scripts', 'enqueueStyles'); 
     }
 
     public function register_documentations() {
@@ -27,6 +21,5 @@ class MyThemeInit {
     }
 }
 
-new MyThemeInit();
-
+new Init();
 ?>
