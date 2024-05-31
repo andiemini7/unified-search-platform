@@ -1,7 +1,6 @@
 <?php get_header(); ?>
 
 <div class="container mx-auto p-4">
-
     <nav class="bg-gray-800 p-4 mb-4">
         <?php
         wp_nav_menu(array(
@@ -14,7 +13,6 @@
         ?>
     </nav>
 
-
     <nav class="bg-gray-800 p-4 mb-4">
         <?php
         wp_nav_menu(array(
@@ -26,7 +24,6 @@
         ));
         ?>
     </nav>
-
 
     <nav class="bg-gray-800 p-4 mb-4">
         <?php
@@ -41,14 +38,12 @@
     </nav>
 
     <h1 class="text-4xl font-bold text-center my-4">Unified Search Results</h1>
-    
 
     <form action="/" method="get" class="flex justify-center my-4">
         <input type="text" name="s" class="border border-gray-300 p-2 rounded-l w-full max-w-md" placeholder="Search...">
         <button type="submit" class="bg-blue-500 text-white p-2 rounded-r">Search</button>
     </form>
-    
-   
+
     <?php if (have_posts()) : ?>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <?php while (have_posts()) : the_post(); ?>
@@ -58,8 +53,7 @@
                 </div>
             <?php endwhile; ?>
         </div>
-        
-    
+
         <div class="my-4">
             <?php 
             the_posts_pagination([
