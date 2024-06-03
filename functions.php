@@ -29,7 +29,7 @@ function register_my_menus() {
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
 add_action('init', 'register_my_menus');
 
-require get_template_directory() . '/enqueues.php';
-require get_template_directory() . '/init.php';
+// require get_template_directory() . '/enqueues.php';
+// require get_template_directory() . '/init.php';
 
 require get_template_directory() . '/includes/init.php';
