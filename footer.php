@@ -67,6 +67,9 @@
                           array("Terms", "#"),
                           array("Refunds", "#")
                       );
+
+                      
+
                       // Loop për të shfaqur lidhjet
                       foreach ($legal_links as $link) {
                           echo "<li class='mb-2'><a href='" . $link[1] . "' class='hover:underline'>" . $link[0] . "</a></li>";
