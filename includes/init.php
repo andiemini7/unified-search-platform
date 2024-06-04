@@ -8,12 +8,10 @@ use Hp\UnifiedSearchPlatform\App\postTypes\PostTypes;
 
 class Init {
     public function __construct() {
-        $setup = new Setup();
-        add_action('after_setup_theme', [$setup, 'unifiedsearch_setup']);
+        add_action('after_setup_theme', [new Setup(), 'unifiedsearch_setup']);
         add_action('init', [$this, 'register_documentations']);
-        add_action('init', [$this, 'documentation_taxonomies']);
-        $enqueue = new Enqueue();
-        add_action('wp_enqueue_scripts', [$enqueue, 'enqueueStyles']);
+        add_action('init', [$this, 'documentation_taxonomies']); 
+        add_action('wp_enqueue_scripts', [new Enqueue(), 'enqueueStyles']);
     }
 
     public function register_documentations() {
