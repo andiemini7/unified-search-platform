@@ -92,7 +92,7 @@ add_action( 'acf/include_fields', function() {
 			),
 			'min' => '',
 			'max' => '',
-			'button_label' => 'Add Row',
+			'button_label' => 'Add Module',
 		),
 	),
 	'location' => array(
@@ -100,7 +100,13 @@ add_action( 'acf/include_fields', function() {
 			array(
 				'param' => 'post_type',
 				'operator' => '==',
-				'value' => 'modul',
+				'value' => 'documentation',
+			),
+
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'post',
 			),
 		),
 	),
@@ -116,50 +122,4 @@ add_action( 'acf/include_fields', function() {
 ) );
 } );
 
-add_action( 'init', function() {
-	register_post_type( 'modul', array(
-	'labels' => array(
-		'name' => 'Modules',
-		'singular_name' => 'Modul',
-		'menu_name' => 'Module',
-		'all_items' => 'All Module',
-		'edit_item' => 'Edit Module',
-		'view_item' => 'View Module',
-		'view_items' => 'View Module',
-		'add_new_item' => 'Add New Module',
-		'add_new' => 'Add New Module',
-		'new_item' => 'New Module',
-		'parent_item_colon' => 'Parent Module:',
-		'search_items' => 'Search Module',
-		'not_found' => 'No module found',
-		'not_found_in_trash' => 'No module found in Trash',
-		'archives' => 'Module Archives',
-		'attributes' => 'Module Attributes',
-		'insert_into_item' => 'Insert into module',
-		'uploaded_to_this_item' => 'Uploaded to this module',
-		'filter_items_list' => 'Filter module list',
-		'filter_by_date' => 'Filter module by date',
-		'items_list_navigation' => 'Module list navigation',
-		'items_list' => 'Module list',
-		'item_published' => 'Module published.',
-		'item_published_privately' => 'Module published privately.',
-		'item_reverted_to_draft' => 'Module reverted to draft.',
-		'item_scheduled' => 'Module scheduled.',
-		'item_updated' => 'Module updated.',
-		'item_link' => 'Module Link',
-		'item_link_description' => 'A link to a module.',
-	),
-	'public' => true,
-	'show_in_rest' => true,
-	'menu_icon' => 'dashicons-admin-post',
-	'supports' => array(
-		0 => 'title',
-		1 => 'editor',
-		2 => 'thumbnail',
-		3 => 'custom-fields',
-	),
-	'can_export' => false,
-	'delete_with_user' => false,
-) );
-} );
 
