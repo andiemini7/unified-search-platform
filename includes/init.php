@@ -12,6 +12,7 @@ class Init {
         add_action('init', [$this, 'register_documentations']);
         add_action('init', [$this, 'documentation_taxonomies']); 
         add_action('wp_enqueue_scripts', [new Enqueue(), 'enqueueStyles']);
+
     }
 
     public function register_documentations() {
