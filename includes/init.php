@@ -8,7 +8,7 @@ class Init {
         add_action('init', [$this, 'documentation_taxonomies']);
         add_action('wp_enqueue_scripts', 'enqueueStyles'); 
         add_action('after_setup_theme', 'unifiedsearch_setup');
-
+        
 
     }
 
