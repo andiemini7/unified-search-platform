@@ -1,6 +1,9 @@
 <?php
 // Theme setup
-function unifiedsearch_setup() {
+namespace Hp\UnifiedSearchPlatform;
+
+class Setup {
+public function unifiedsearch_setup() {
     // Add theme support
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -11,4 +14,5 @@ function unifiedsearch_setup() {
         'contact-us-menu' => __('Contact Us Menu'),
         'unified-search-menu' => __('Unified Search Menu')
     ]);
+}
 }
