@@ -9,5 +9,14 @@
 </head>
 <body <?php body_class('flex flex-col min-h-screen'); ?>>
 
+
+<header class="bg-gray-900 text-white py-4">
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold"><?php bloginfo('name'); ?></h1>
+        <p class="text-sm"><?php bloginfo('description'); ?></p>
+        <?php include_once 'views/searchBar.php'; ?>
+    </div>
+</header>
+
 <main class="flex-grow">
     
