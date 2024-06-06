@@ -14,5 +14,5 @@ public function unifiedsearch_setup() {
         'contact-us-menu' => __('Contact Us Menu'),
         'unified-search-menu' => __('Unified Search Menu')
     ]);
-}
+    
 }
