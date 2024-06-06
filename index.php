@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <div class="container mx-auto p-4">
+
     <nav class="bg-gray-800 p-4 mb-4">
         <?php
         wp_nav_menu(array(
@@ -37,6 +38,7 @@
         ?>
     </nav>
 
+
     <h1 class="text-4xl font-bold text-center my-4">Unified Search Results</h1>
 
     <form action="/" method="get" class="flex justify-center my-4">
@@ -67,5 +69,6 @@
         <p class="text-center text-gray-500">No results found. Please try a different search.</p>
     <?php endif; ?>
 </div>
+
 
 <?php get_footer(); ?>

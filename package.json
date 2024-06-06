@@ -6,7 +6,6 @@
   },
   "scripts": {
     "build": "tailwindcss -i ./assets/sass/style.scss -o ./assets/css/style.css --minify postcss assets/css/*.css --use autoprefixer cssnano -d assets/css/"
-    
   },
   "dependencies": {
     "autoprefixer": "^10.4.19",
