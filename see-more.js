@@ -1,29 +1,73 @@
-jQuery(function ($) {
-  var initialPostCount = 8; // Number of initially loaded posts
-  var maxPostCount = initialPostCount; // Maximum number of posts to display initially
-  var totalPostCount = custom_js_params.found_posts; // Total number of posts in the query
+(function($) {
+  var loadMoreButton = $('#see-more');
+  var loadMoreContainer = $('#posts-container');
+  var loadedPostIds = new Set(); 
 
-  // Hide posts beyond the initial count
-  $(".post-item").slice(initialPostCount).hide();
+  if (loadMoreButton.length) {
+      var endpoint = loadMoreButton.data('endpoint');
+      // var ppp = loadMoreButton.data('ppp');
+      var page = 1; 
 
-  $("#see-more").click(function () {
-    var button = $(this);
+      var loadPosts = function(page) {
+          $.ajax({
+              url: endpoint,
+              dataType: 'json',
+              data: {
+                  // per_page: ppp,
+                  page: page,
+                  type: 'post',
+              },
+              beforeSend: function() {
+                  loadMoreButton.attr('disabled', true).text('Loading...');
+              },
+              success: function(data) {
+                  if (data.length) {
+                      var newPosts = data.filter(post => !loadedPostIds.has(post.id));
 
-    // Check if there are more posts to show
-    if (maxPostCount < totalPostCount) {
-      $(".post-item:hidden").slice(0, initialPostCount).show(); // Show additional posts
-      maxPostCount += initialPostCount;
+                      if (newPosts.length) {
+                          newPosts.forEach(post => {
+                              loadedPostIds.add(post.id); 
 
-      if (maxPostCount >= totalPostCount) {
-        button.text("See Less");
-      }
-    } else {
-      $(".post-item").slice(initialPostCount).hide(); // Hide additional posts
-      maxPostCount = initialPostCount;
-      button.text("See More");
+                              var html = '<a href="' + post.link + '" class="post-item h-[388px] w-[330px] bg-[#F7F9FF] shadow-md hover:shadow-[#51606F]/30 p-4 rounded-2xl transition ease-in-out delay-10 hover:scale-105">';
+                              html += '<div id="post '+ post.id +'" class="post-search">';
+                              if (post.thumbnail) {
+                                  html += '<img class="w-full h-[180px] rounded-lg object-cover" src="' + post.thumbnail + '" alt="' + post.title + '">';
+                              }
+                              html += '<div class="mt-4">';
+                              if (post.category) {
+                                  html += '<p class="text-[#2F628C] font-medium">' + post.category + '</p>';
+                              }
+                              html += '<h4 class="text-[#001D33] text-lg font-medium mt-2">' + post.title + '</h4>';
+                              if (post.excerpt) {
+                                  html += '<p class="text-[#51606F] text-sm mt-2">' + post.excerpt + '</p>';
+                              }
+                              if (post.author) {
+                                  html += '<p class="text-[#51606F] text-sm font-medium mt-3">' + post.author + '</p>';
+                              }
+                              html += '</div></div></a>';
+                              loadMoreContainer.append(html);
+                          });
 
-      // Scroll to the top of the page
-      $("html, body").animate({ scrollTop: 0 }, "slow");
-    }
-  });
-});
+                          loadMoreButton.prop('disabled', false).text('Show More');
+                      } else {
+                          loadMoreButton.prop('disabled', true).text('No more posts');
+                      }
+                  } else {
+                      loadMoreButton.prop('disabled', true).text('No post found!');
+                  }
+              },
+              error: function(jqXHR) {
+                  console.log('Error:', jqXHR.status + ' ' + jqXHR.statusText);
+              }
+          });
+      };
+
+      loadMoreButton.on('click', function() {
+          loadPosts(page);
+          page++;
+      });
+
+      // Trigger click event on the button the first time
+      loadMoreButton.trigger('click');
+  }
+})(jQuery);
