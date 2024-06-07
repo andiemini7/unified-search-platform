@@ -1,4 +1,7 @@
 <?php
+
+namespace Hp\UnifiedSearchPlatform\App\PostTypes;
+class PostTypes {
 function register_documentations() {
     register_post_type('documentation', [
         'labels' => [
@@ -20,6 +23,5 @@ function documentation_taxonomies() {
         'hierarchical' => true,
     ]);
 }
-
-
+}
 ?>

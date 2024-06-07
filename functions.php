@@ -1,5 +1,6 @@
 <?php
 
+require get_template_directory() . '/vendor/autoload.php';
 require get_template_directory() . '/includes/init.php';
 
 
@@ -65,4 +66,5 @@ function custom_search_callback($data) {
     wp_reset_postdata();
     return new WP_REST_Response($posts, 200);
 }
+require get_template_directory() .'/app/acf/acf.php';
 
