@@ -1,6 +1,10 @@
 {
+  "scripts": {
+    "build": "npx tailwindcss-cli build assets/scss/front.scss -o style.css"
+  },
   "devDependencies": {
-    "tailwindcss": "^3.4.3"
+    "tailwindcss": "^3.4.4",
+    "autoprefixer": "^10.4.19",
+    "composer": "^4.1.0"
   }
 }
-
