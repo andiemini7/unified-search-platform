@@ -68,13 +68,13 @@ function employee_registration_form() {
     ?>
     
     <form method="POST" class="flex flex-col items-center justify-center text-center justify-items-center">
-        <label for="username" class="signup">Register</label>
+        <label for="username" class="text-xl text-white">Register</label>
 
         <input type="text" placeholder="Username" name="username" class="text-center m-1 rounded" required>
         <input type="email" placeholder="Email" name="email" class="text-center m-1 rounded" required>
         <input type="password" placeholder="Password" name="password" class="text-center m-1 rounded" required>
 
-        <button type="submit" name="employee_register" class="regbtn rounded ">Sign Up</button>
+        <button type="submit" name="employee_register" class="rounded mt-1.5 mx-0 mb-7 bg-[#1f2937] text-white transition ease-out duration-300 p-1 hover:bg-[#00a2ff]">Sign Up</button>
     </form>
 
     <?php
