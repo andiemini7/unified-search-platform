@@ -13,7 +13,6 @@
 
     <div class="flex justify-center mb-5">
         <button id="see-more" data-endpoint="<?php echo get_rest_url(null, '/wp/v1/search?s='.strval($search_value)); ?>"
-          data-ppp="<?php // echo get_option('posts_per_page'); ?>"
          class="text-[#2F628C] border border-solid border-[#2F628C] rounded-full py-2 px-4"
          >Show More</button>
     </div>

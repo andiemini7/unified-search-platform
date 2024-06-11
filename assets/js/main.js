@@ -1,2 +1,5 @@
-import './parts/search';
-import './parts/see-more';
+import seeMore from './parts/see-more';
+// import search from './parts/search';
+
+seeMore();
+// search();
