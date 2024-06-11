@@ -1,7 +1,5 @@
 module.exports = {
-  mode: 'jit',
-  purge: ['./**/*.php'],
-  darkMode: false,
+  ontent: ["./**/*.{html,js,php}","./assets/**/*.scss","./assets/**/*.js"],
   theme: {
     extend: {},
   },
@@ -9,11 +7,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-  separator: '_',
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
-
-  syntax: 'postcss-scss'
 }
