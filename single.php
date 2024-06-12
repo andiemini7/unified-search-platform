@@ -14,10 +14,10 @@ if (have_rows('modules')) :
             $date = get_sub_field('date');
             $description = get_sub_field('description');
             ?>
-            <div class="relative bg-white rounded-lg shadow-md overflow-hidden mx-4 my-4" style="width: 330px; height: 400px; margin:16px;"> 
-                <div class="absolute inset-0 m-0 h-full w-full overflow-hidden bg-transparent bg-cover bg-center text-gray-700">
-                    <img src="http://unified-search-platform.test/wp-content/uploads/2024/06/malet.avif">
-                    <div class="absolute inset-0 w-full h-full bg-gradient-to-t from-black/80 via-black/50"></div>
+            <div class="relative bg-gray-100 rounded-lg shadow-md overflow-hidden mx-4 my-4" style="width: 330px; height: 400px; margin:16px;"> <!-- Changed bg-white to bg-gray-100 -->
+                <div class="absolute inset-0 m-0 h-2/3 w-full overflow-hidden bg-transparent bg-cover bg-center text-gray-700"> <!-- Adjusted height for image section -->
+                    <img src="http://unified-search-platform.test/wp-content/uploads/2024/06/image1.png" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 w-full h-full" style="background: linear-gradient(to top, rgba(0, 0, 255, 0.3), rgba(0, 0, 255, 0));"></div> <!-- Added gradient overlay -->
                 </div>
                 <div class="absolute inset-0 flex flex-col justify-end p-6">
                     <div class="flex items-baseline justify-between" style="padding-left: 16px; padding-right: 16px;">
@@ -28,11 +28,11 @@ if (have_rows('modules')) :
                             <?php echo esc_html($date); ?>
                          </p>
                     </div>
-                    <div class="h-1/3 bg-gray-100 p-4"> 
-                    <p class="text-gray-700"> 
-                        <?php echo esc_html($description); ?>
-                    </p>
-                </div>
+                    <div class="h-1/3 bg-gray-100 font-medium leading-[1.5] p-4 flex justify-center items-center"> 
+                        <p class="text-white text-center"> 
+                            <?php echo esc_html($description); ?>
+                        </p>
+                    </div>
                 </div>
             </div>
             <?php
