@@ -119,7 +119,16 @@ add_action( 'acf/include_fields', function() {
 							'instructions' => 'Enter the description for the card',
 							'required' => 1,
 						),
+						array(
+							'key' => 'field_card_image',
+							'label' => 'Image',
+							'name' => 'image',
+							'type' => 'image',
+							'instructions' => 'Enter the image for the card',
+							'required' => 1,
+						),
 					),
+
 					'min' => '',
 					'max' => '',
 				),
