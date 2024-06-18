@@ -3,7 +3,11 @@
 @import "tailwindcss/utilities";
 @import "./parts/global.scss";
 
-body {
-    background-color: #77B0AA;
-    
-  }
+  body{
+    background-image: linear-gradient(
+     to bottom,
+      #E7F0F9 50%,
+      #ffffff 50%
+   );
+   }
+  
