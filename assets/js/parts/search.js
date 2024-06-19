@@ -5,11 +5,12 @@ function clearSearchOverlay() {
   document.getElementById("search-results").innerHTML = "";
 }
 
-function handleInputChange() {
-  if (document.getElementById("search-input-overlay").value === "") {
-    document.getElementById("search-results").innerHTML = "";
-  }
-}
+// function handleInputChange() {
+//   if (document.getElementById("search-input-overlay").value === "") {
+//     document.getElementById("search-results").innerHTML = "";
+//   }
+// }
+
 
 function closeSearchOverlay() {
   document.getElementById("search-overlay").classList.add("hidden");
@@ -22,6 +23,16 @@ document.getElementById("search-icon").addEventListener("click", function () {
 });
 
 document.getElementById("close-search").addEventListener("click", closeSearchOverlay);
+
+
+
+document.addEventListener("keydown", function(event) {
+  if ((event.ctrlKey && event.key === " ") || (event.metaKey && event.key === " ")) {
+    event.preventDefault();
+    document.getElementById("search-overlay").classList.remove("hidden");
+    document.getElementById("search-input-overlay").focus();
+  }
+});
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
@@ -66,7 +77,11 @@ function fetchAndDisplayResults(query) {
         }
 
         if (categories.posts.length > 0) {
-          resultsContainer.innerHTML += `<h3 class="text-xl font-bold mt-4 mb-2">Posts</h3>`;
+          if (categories.pages.length > 0) {
+            resultsContainer.innerHTML += `<h3 class="text-xl font-bold mt-4 mb-2">Posts</h3>`; 
+          } else {
+            resultsContainer.innerHTML += `<h3 class="text-xl font-bold mb-2">Posts</h3>`; 
+          }
           categories.posts.forEach((result) => {
             resultsContainer.innerHTML += `<div class="mb-2"><a href="${result.link}" class="text-blue-600 hover:underline">${result.title}</a></div>`;
           });
@@ -83,4 +98,4 @@ function fetchAndDisplayResults(query) {
       resultsContainer.innerHTML = `<p class="text-center">Error fetching results.</p>`;
     }
   });
-}
+} 
