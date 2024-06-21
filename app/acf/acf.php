@@ -89,6 +89,35 @@ add_action( 'acf/include_fields', function() {
 					'min' => '',
 					'max' => '',
 				),
+
+'layout_66741577303f8' => array(
+					'key' => 'layout_66741577303f8',
+					'name' => 'iframe_block',
+					'label' => 'Iframe Block',
+					'display' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_66741591303fa',
+							'label' => 'URL',
+							'name' => 'url',
+							'aria-label' => '',
+							'type' => 'url',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+						),
+					),
+					'min' => '',
+					'max' => '',
+				),
+
 			),
 			'min' => '',
 			'max' => '',
