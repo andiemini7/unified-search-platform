@@ -6,7 +6,7 @@
         echo '<div class="flex flex-wrap -mx-4">';
         while (have_rows('modules')) : the_row();
             $layout = get_row_layout();
-            
+
            {
                 include(get_template_directory() . '/modules/' . $layout . '.php');
             }
@@ -19,5 +19,3 @@
 </div>
 
 <?php get_footer(); ?>
-
-
