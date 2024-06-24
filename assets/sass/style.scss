@@ -2,6 +2,10 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-body {
-    background-color: #77B0AA;
-  }
+  body{
+    background-image: linear-gradient(
+     to bottom,
+      #E7F0F9 50%,
+      #ffffff 
+   );
+   }
