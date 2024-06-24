@@ -1,4 +1,6 @@
-import './parts/search';
+// import './parts/search';
 import seeMore from './parts/see-more';
+import navigation from './parts/navigation';
 
-seeMore();
+seeMore(jQuery);
+navigation(jQuery);
