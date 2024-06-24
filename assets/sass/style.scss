@@ -1,11 +1,107 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import 'variables.scss';
 
-  body{
-    background-image: linear-gradient(
-     to bottom,
-      #E7F0F9 50%,
-      #ffffff 
-   );
-   }
+body {
+    background-color: #77B0AA;
+  }
+
+
+.menu-item-has-children {
+    position: relative;
+
+    & > a::after {
+        content: "\f107";
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        margin-left: 8px;
+        transition: transform 0.3s;
+    }
+
+    &:hover > a::after,
+    & > a.active::after {
+        content: "\f106"; 
+        transform: rotate(180deg);
+    }
+}
+
+.sub-menu {
+    display: none;
+    background-color: white;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #C2C7CF;
+    width: 200px;
+    position: absolute;
+
+    &.show {
+        display: block;
+    }
+
+    li a {
+        color: #51606F;
+        padding: 8px 12px;
+        display: block;
+        border-radius: 8px;
+        margin-bottom: 10px;
+
+        &:hover {
+            background-color: #ECEEF3;
+            color: #51606F;
+        }
+    }
+}
+
+nav.hidden {
+    display: none;
+}
+
+#mobile-menu-toggle {
+    padding: 10px;
+
+    & i {
+        font-size: 24px;
+    }
+}
+
+#mobile-menu a {
+    color: #2F628C;
+    text-decoration: none;
+
+    &:hover {
+        color: #ECEEF3;
+    }
+}
+
+#mobile-menu-toggle .fa-times {
+    display: none;
+    position: fixed;
+    z-index: 999;
+}
+
+nav .flex .text-2xl {
+    margin-left: auto; 
+}
+
+@media only screen and (max-width: 767px) {
+    .menu-item {
+        padding: 8px 0;
+        border-bottom: 1px solid grey;
+    }
+}
+
+.menu-item a {
+    padding: 8px;
+    display: block;
+    color: #2F628C;
+}
+
+.sub-menu .menu-item {
+    padding: 0;
+    border-bottom: none;
+}
+
+.sub-menu .menu-item a {
+    padding: 8px 12px;
+}

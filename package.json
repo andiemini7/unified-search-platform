@@ -1,7 +1,5 @@
 {
-  "scripts": {
-    "build": "npx tailwindcss-cli build assets/scss/front.scss -o style.css"
-  },
+
   "devDependencies": {
     "@types/bun": "latest",
     "autoprefixer": "^10.4.19",
