@@ -18,6 +18,27 @@ class Search_Endpoint {
             'methods' => 'GET',
             'callback' => array($this, 'handle_search'),
         ));
+
+        //trello endopoint for see-more.js
+        register_rest_route('wp/v1', '/trello', array(
+            'methods' => 'GET',
+            'callback' => array($this, 'handle_trello_data_showed'),
+            'permission_callback' => '__return_true',
+            'args' => array(
+                's' => array(
+                    'required' => true,
+                    'validate_callback' => function($param, $request, $key) {
+                        return is_string($param);
+                    }
+                ),
+                'page' => array(
+                    'required' => false,
+                    'validate_callback' => function($param, $request, $key) {
+                        return is_numeric($param);
+                    }
+                )
+            ),
+        ));
     }
 
     public function handle_search($request) {
@@ -75,6 +96,42 @@ class Search_Endpoint {
         }
 
         return new WP_REST_Response($data, 200);
+    }
+
+    //trello endopoint for see-more.js
+    public function handle_trello_data_showed($request) {
+        $search_query = sanitize_text_field($request->get_param('s'));
+        $paged = $request->get_param('page') ? intval($request->get_param('page')) : 1;
+        $posts_per_page = get_option('posts_per_page');
+    
+        $trelloData = $this->trelloService->fetchTrelloData();
+        $results = array();
+    
+        if (!empty($trelloData)) {
+            $trelloData = json_decode($trelloData, true);
+    
+            if (isset($trelloData['cards']) && is_array($trelloData['cards'])) {
+                $filtered_cards = array_filter($trelloData['cards'], function ($card) use ($search_query) {
+                    return stripos($card['name'], $search_query) !== false || stripos($card['desc'], $search_query) !== false;
+                });
+    
+                $start = ($paged - 1) * $posts_per_page;
+                $paged_cards = array_slice($filtered_cards, $start, $posts_per_page);
+    
+                foreach ($paged_cards as $card) {
+                    $results[] = array(
+                        'id' => $card['id'],
+                        'title' => $card['name'],
+                        'content' => $card['desc'],
+                        'url' => $card['url'],
+                        'type' => 'Trello Card',
+                        'website' => 'Trello',
+                    );
+                }
+            }
+        }
+    
+        return new WP_REST_Response($results, 200);
     }
     
 }

@@ -114,7 +114,6 @@ function seeMore($) {
             if (!noMorePages) {
                 loadPosts(endpoint1, currentPage1, pageContainer, loadedPages, pageTitle, 'Pages', function(error, data) {
                     if (error) {
-                        console.error('Error loading data from endpoint 1:', error);
                         noMorePages = true;
                     } else {
                         currentPage1++;
@@ -126,7 +125,6 @@ function seeMore($) {
             if (!noMorePosts) {
                 loadPosts(endpoint2, currentPage2, postContainer, loadedPosts, postTitle, 'Posts', function(error, data) {
                     if (error) {
-                        console.error('Error loading data from endpoint 2:', error);
                         noMorePosts = true;
                     } else {
                         currentPage2++;
@@ -138,7 +136,6 @@ function seeMore($) {
             if (!noMoreTrellos) {
                 loadPosts(endpoint3, currentPage3, trelloContainer, loadedTrellos, trelloTitle, 'Trello Cards', function(error, data) {
                     if (error) {
-                        console.error('Error loading data from endpoint 3:', error);
                         noMoreTrellos = true;
                     } else {
                         currentPage3++;
@@ -169,5 +166,3 @@ function seeMore($) {
 }
 
 export default seeMore;
-
-seeMore(jQuery);
