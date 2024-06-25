@@ -1,8 +1,8 @@
 <?php 
-     $id = get_the_id();
-     var_dump($id);
-    $text = get_sub_field('text_block', $id);
-    var_dump($text);
+    //  $id = get_the_id();
+    //  var_dump($id);
+    // $text = get_sub_field('text_block', $id);
+    // var_dump($text);
    
 ?>
 

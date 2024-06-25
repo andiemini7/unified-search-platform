@@ -1,5 +1,5 @@
 module.exports = {
-  ontent: ["./**/*.{html,js,php}","./assets/**/*.scss","./assets/**/*.js"],
+  content: ["./**/*.{html,js,php}","./assets/**/*.scss","./assets/**/*.js"],
   theme: {
     extend: {},
   },

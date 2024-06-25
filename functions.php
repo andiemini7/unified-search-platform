@@ -67,4 +67,3 @@ function custom_search_callback($data) {
     return new WP_REST_Response($posts, 200);
 }
 require get_template_directory() .'/app/acf/acf.php';
-
