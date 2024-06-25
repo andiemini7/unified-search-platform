@@ -9,7 +9,7 @@
   "scripts": {
     "build:bun": "bun build assets/js/main.js --minify --outdir=assets/dist/js",
     "watch": "mix watch",
-    "build": "tailwindcss -i ./assets/sass/style.scss -o ./assets/dist/css/style.css --minify postcss assets/dist/css/*.css --use autoprefixer cssnano -d assets/dist/css/ bun build ./assets/js/main.js --outdir ./assets/dist/js"
+    "build": "tailwindcss -i ./assets/sass/style.scss -o ./assets/dist/css/style.css --minify postcss assets/dist/css/*.css --use autoprefixer cssnano -d assets/dist/css/"
   },
   "dependencies": {
     "cssnano": "^7.0.1",
