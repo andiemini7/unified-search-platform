@@ -12,10 +12,12 @@
     "autoload": {
         "psr-4": {
             "Hp\\UnifiedSearchPlatform\\": "includes/",
-            "Hp\\UnifiedSearchPlatform\\App\\": "app/"
+            "Hp\\UnifiedSearchPlatform\\App\\": "app/",
+            "Hp\\UnifiedSearchPlatform\\App\\Endpoints\\": "app/endpoints/"
         }
     },
     "require": {
-        "php": ">=8.1"
+        "php": ">=8.1",
+        "mashape/unirest-php": "^3.0"
     }
 }
