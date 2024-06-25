@@ -24,9 +24,10 @@ class Search_Endpoint {
             'callback' => array($this, 'handle_trello_search'),
         ));
 
-        register_rest_route('wp/v1', '/trello-search', array(
+        //trello endopoint for see-more.js
+        register_rest_route('wp/v1', '/trello', array(
             'methods' => 'GET',
-            'callback' => array($this, 'handle_trello_search_show'),
+            'callback' => array($this, 'handle_trello_data_showed'),
             'permission_callback' => '__return_true',
             'args' => array(
                 's' => array(
@@ -114,7 +115,8 @@ class Search_Endpoint {
         return new WP_REST_Response($results, 200);
     }
 
-    public function handle_trello_search_show($request) {
+        //trello endopoint for see-more.js
+    public function handle_trello_data_showed($request) {
         $search_query = sanitize_text_field($request->get_param('s'));
         $paged = $request->get_param('page') ? intval($request->get_param('page')) : 1;
         $posts_per_page = get_option('posts_per_page');
@@ -139,9 +141,8 @@ class Search_Endpoint {
                         'title' => $card['name'],
                         'content' => $card['desc'],
                         'url' => $card['url'],
-                        'post_type' => 'trello_card',
+                        'type' => 'Trello Card',
                         'website' => 'Trello',
-                        'source' => 'trello',
                     );
                 }
             }
