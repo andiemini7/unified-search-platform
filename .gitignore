@@ -1,3 +1,4 @@
 /vendor/
 /node_modules/
-/assets/dist/js/main.js
+/assets/dist/
+modules/card-module.php
