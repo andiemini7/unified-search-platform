@@ -2,7 +2,8 @@
 
 namespace Hp\UnifiedSearchPlatform;
 
-class Enqueue {
+class Enqueue
+{
 
 function enqueueStyles() {
     wp_enqueue_style('custom-tailwind', get_template_directory_uri() . '/assets/dist/css/style.css', array(), filemtime(get_template_directory() . '/assets/dist/css/style.css'));
