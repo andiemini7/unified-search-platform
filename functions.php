@@ -101,4 +101,3 @@ function custom_search_callback($data, $post_type) {
 }
 
 require get_template_directory() .'/app/acf/acf.php';
-

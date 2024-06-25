@@ -1,6 +1,9 @@
-<?php
-// Get ACF fields
-$text_block = get_sub_field('text_block');
+<?php 
+     $id = get_the_id();
+    //  var_dump($id);
+    $text = get_sub_field('text_block', $id);
+    // var_dump($text);
+   
 ?>
 
 <div class="w-full">
