@@ -4,6 +4,6 @@ import './parts/search';
 
 
 jQuery(document).ready(function($) {
+    seeMore($);
     navigation($);
 });
-seeMore();
