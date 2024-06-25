@@ -4,6 +4,8 @@ require get_template_directory() . '/vendor/autoload.php';
 require_once get_template_directory() . '/includes/employee-registration.php';
 require_once get_template_directory() . '/includes/employee-login.php';
 require get_template_directory() . '/includes/init.php';
+require get_template_directory() . '/app/cpt/cpt-members.php';
+require get_template_directory() . '/app/cpt/cpt-teams.php';
 
 
 // API Endpoint
@@ -101,6 +103,5 @@ function custom_search_callback($data, $post_type) {
     wp_reset_postdata();
     return new WP_REST_Response($results, 200);
 }
+
 require get_template_directory() .'/app/acf/acf.php';
-require get_template_directory() . '/includes/widgets.php';
-require get_template_directory() . '/includes/redirect-login.php';
