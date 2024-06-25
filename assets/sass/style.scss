@@ -10,7 +10,6 @@ body {
 
 .menu-item-has-children {
     position: relative;
-
     & > a::after {
         content: "\f107";
         font-family: 'Font Awesome 5 Free';
@@ -34,6 +33,9 @@ body {
     border: 1px solid #C2C7CF;
     width: 200px;
     position: absolute;
+    &.show {
+        display: block;
+    }
 
     &.show {
         display: block;
@@ -68,7 +70,6 @@ nav.hidden {
 #mobile-menu a {
     color: #2F628C;
     text-decoration: none;
-
     &:hover {
         color: #ECEEF3;
     }
@@ -105,3 +106,62 @@ nav .flex .text-2xl {
 .sub-menu .menu-item a {
     padding: 8px 12px;
 }
+
+
+
+.wysiwyg-content {
+    h1 {
+        @apply text-4xl font-bold text-blue-900 mb-4;
+    }
+
+    h2 {
+        @apply text-3xl font-bold text-blue-800 mb-3;
+    }
+
+    h3 {
+        @apply text-2xl font-bold text-blue-700 mb-2;
+    }
+
+    h4 {
+        @apply text-xl font-bold text-blue-700 mb-2;
+    }
+
+    h5 {
+        @apply text-lg font-bold text-blue-600 mb-1;
+    }
+
+    h6 {
+        @apply text-base font-bold text-blue-600 mb-1;
+    }
+
+    p {
+        @apply text-base text-blue-800 mb-4 leading-relaxed; 
+    }
+
+    a {
+        @apply text-blue-500 no-underline hover:underline;
+    }
+
+    ul, ol {
+        @apply mb-4 pl-5;
+    }
+
+    ul li, ol li {
+        @apply mb-2;
+    }
+
+    blockquote {
+        @apply my-4 pl-4 border-l-4 border-gray-300 bg-gray-100 italic;
+    }
+
+    code {
+        @apply font-mono bg-gray-200 px-1 rounded;
+    }
+
+    pre {
+        @apply bg-gray-200 p-4 rounded overflow-x-auto;
+    }
+}
+
+
+
