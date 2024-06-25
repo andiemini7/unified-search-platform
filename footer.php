@@ -1,16 +1,13 @@
 <?php
-
 $menu_name = 'product_menu'; 
 $locations = get_nav_menu_locations(); 
 $menu_items = [];
 if (isset($locations[$menu_name])) {
     $menu_id = $locations[$menu_name];
     $menu_items_raw = wp_get_nav_menu_items($menu_id); 
-  
 
     foreach ($menu_items_raw as $item) {
         if (empty($item->menu_item_parent)) {
-            
             $menu_items[$item->ID] = [
                 'item' => $item,
                 'children' => []
@@ -26,15 +23,39 @@ if (isset($locations[$menu_name])) {
     <div class="container mx-auto px-4">
         <div class="grid gap-y-8 md:grid-cols-2 lg:grid-cols-5 lg:gap-x-36 text-center md:text-left">
             
-            <div class="block lg:hidden col-span-full mb-4">
-                <h1 class="text-2xl font-normal mb-2 max-w-full break-words">Logo here</h1>
-                <p class="text-sm font-normal leading-5 text-gray-200">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div class="block lg:hidden col-span-full mb-4 flex flex-col items-center">
+                <?php 
+                $footer_logo = get_field('footer_logo', 'option');
+                $footer_text = get_field('footer_text', 'option');
+                
+                if ($footer_logo) {
+                    echo '<img class="h-10 w-auto mb-2" src="' . esc_url($footer_logo) . '" alt="Footer Logo">';
+                } else {
+                    echo '<p class="text-sm font-normal leading-5 text-red-500">Footer logo is missing. Please add it in the general settings.</p>';
+                    echo '<img class=" w-full mb-2" src="' . esc_url(get_template_directory_uri() . '/path/to/default-logo.png') . '" alt="Unified Search">';
+                }
+                if ($footer_text) {
+                    echo '<p class="text-sm font-normal leading-5 text-gray-200">' . esc_html($footer_text) . '</p>';
+                } else {
+                    echo '<p class="text-sm font-normal leading-5 text-red-500">Footer text is missing. Please add it in the site settings.</p>';
+                }
+                ?>
             </div>
 
-          
             <div class="hidden lg:block">
-                <h1 class="text-2xl font-normal mb-2">Logo here</h1>
-                <p class="text-sm font-normal leading-5 text-gray-200">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <?php 
+                if ($footer_logo) {
+                    echo '<img class=" w-auto mb-2" src="' . esc_url($footer_logo) . '" alt="Footer Logo">';
+                } else {
+                    echo '<p class="text-sm font-normal leading-5 text-red-500">Footer logo is missing. Please add it in the general settings.</p>';
+                    echo '<img class=" w-auto mb-2" src="' . esc_url(get_template_directory_uri() . '/path/to/default-logo.png') . '" alt="Unified Search">';
+                }
+                if ($footer_text) {
+                    echo '<p class="text-sm font-normal leading-5 text-gray-200">' . esc_html($footer_text) . '</p>';
+                } else {
+                    echo '<p class="text-sm font-normal leading-5 text-red-500">Footer text is missing. Please add it in the site settings.</p>';
+                }
+                ?>
             </div>
 
             <?php foreach ($menu_items as $parent): ?>
@@ -61,3 +82,18 @@ if (isset($locations[$menu_name])) {
 <?php wp_footer(); ?>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
