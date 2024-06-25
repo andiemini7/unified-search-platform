@@ -1,16 +1,15 @@
-<?php 
-
+<?php
 add_action( 'acf/include_fields', function() {
 	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
 		return;
 	}
 
 	acf_add_local_field_group( array(
-	'key' => 'group_665ceda5a06fb',
-	'title' => 'Modules',
+	'key' => 'group_666006d52a9c0',
+	'title' => 'Modules List',
 	'fields' => array(
 		array(
-			'key' => 'field_665ceda6e6584',
+			'key' => 'field_666006d561672',
 			'label' => 'Modules',
 			'name' => 'modules',
 			'aria-label' => '',
@@ -24,14 +23,14 @@ add_action( 'acf/include_fields', function() {
 				'id' => '',
 			),
 			'layouts' => array(
-				'layout_665ceddca30d0' => array(
-					'key' => 'layout_665ceddca30d0',
-					'name' => 'Text_Block',
+				'layout_666006e451376' => array(
+					'key' => 'layout_666006e451376',
+					'name' => 'text_block',
 					'label' => 'Text Block',
 					'display' => 'block',
 					'sub_fields' => array(
 						array(
-							'key' => 'field_665cee06e6586',
+							'key' => 'field_6660074c61673',
 							'label' => 'Text Block',
 							'name' => 'text_block',
 							'aria-label' => '',
@@ -50,18 +49,8 @@ add_action( 'acf/include_fields', function() {
 							'placeholder' => '',
 							'new_lines' => '',
 						),
-					),
-					'min' => '',
-					'max' => '',
-				),
-				'layout_665cee29e6587' => array(
-					'key' => 'layout_665cee29e6587',
-					'name' => 'Image_Block',
-					'label' => 'Image Block',
-					'display' => 'block',
-					'sub_fields' => array(
 						array(
-							'key' => 'field_665cee3ce6589',
+							'key' => 'field_6660079161674',
 							'label' => 'Image Block',
 							'name' => 'image_block',
 							'aria-label' => '',
@@ -135,17 +124,11 @@ add_action( 'acf/include_fields', function() {
 			),
 			'min' => '',
 			'max' => '',
-			'button_label' => 'Add Module',
+			'button_label' => 'Add Row',
 		),
 	),
 	'location' => array(
 		array(
-			array(
-				'param' => 'post_type',
-				'operator' => '==',
-				'value' => 'documentation',
-			),
-
 			array(
 				'param' => 'post_type',
 				'operator' => '==',
