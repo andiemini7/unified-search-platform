@@ -11,3 +11,4 @@ function enqueueStyles() {
     wp_enqueue_script('main-script', get_template_directory_uri() . '/assets/dist/js/main.js', ['jquery'], null, true);
 
 }
+}

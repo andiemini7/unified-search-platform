@@ -14,8 +14,6 @@
     else :
         echo '<p>No modules found for this post.</p>';
     endif;
-  
-</div> 
  ?>
 
 <?php get_footer(); ?>
