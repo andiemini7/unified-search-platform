@@ -1,7 +1,7 @@
 @import 'variables.scss';
 .menu-item-has-children {
     position: relative;
-    
+
     & > a::after {
         content: "\f107";
         font-family: 'Font Awesome 5 Free';
@@ -25,18 +25,18 @@
     border: 1px solid #C2C7CF;
     width: 200px;
     position: absolute;
-    
+
     &.show {
         display: block;
     }
-    
+
     li a {
         color: #51606F;
         padding: 8px 12px;
         display: block;
         border-radius: 8px;
         margin-bottom: 10px;
-        
+
         &:hover {
             background-color: #ECEEF3;
             color: #51606F;
@@ -50,7 +50,7 @@ nav.hidden {
 
 #mobile-menu-toggle {
     padding: 10px;
-    
+
     & i {
         font-size: 24px;
     }
@@ -59,7 +59,7 @@ nav.hidden {
 #mobile-menu a {
     color: #2F628C;
     text-decoration: none;
-    
+
     &:hover {
         color: #ECEEF3;
     }
