@@ -78,6 +78,49 @@ add_action( 'acf/include_fields', function() {
 					'min' => '',
 					'max' => '',
 				),
+				'layout_cards_module' => array(
+					'key' => 'layout_card',
+					'name' => 'Card',
+					'label' => 'Card',
+					'display' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_card_name',
+							'label' => 'Name',
+							'name' => 'name',
+							'type' => 'text',
+							'instructions' => 'Enter the name for the card',
+							'required' => 1,
+						),
+						array(
+							'key' => 'field_card_date',
+							'label' => 'Date',
+							'name' => 'date',
+							'type' => 'date_picker',
+							'instructions' => 'Select the date for the card',
+							'required' => 1,
+						),
+						array(
+							'key' => 'field_card_description',
+							'label' => 'Description',
+							'name' => 'description',
+							'type' => 'text',
+							'instructions' => 'Enter the description for the card',
+							'required' => 1,
+						),
+						array(
+							'key' => 'field_card_image',
+							'label' => 'Image',
+							'name' => 'image',
+							'type' => 'image',
+							'instructions' => 'Enter the image for the card',
+							'required' => 1,
+						),
+					),
+
+					'min' => '',
+					'max' => '',
+				),
 			),
 			'min' => '',
 			'max' => '',
@@ -91,6 +134,7 @@ add_action( 'acf/include_fields', function() {
 				'operator' => '==',
 				'value' => 'post',
 			),
+			
 		),
 	),
 	'menu_order' => 0,
@@ -102,7 +146,7 @@ add_action( 'acf/include_fields', function() {
 	'active' => true,
 	'description' => '',
 	'show_in_rest' => 0,
-) );
-} );
+));
+});
 
 
