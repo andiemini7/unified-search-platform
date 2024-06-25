@@ -9,7 +9,11 @@
         var_dump(get_row_layout());
             include (get_template_directory().'/modules/'.get_row_layout().'.php');
         endwhile;
+        echo '</div>';
+    else :
+        echo '<p>No modules found for this post.</p>';
     endif;
-?>
+    ?>
+</div>
 
 <?php get_footer(); ?>
