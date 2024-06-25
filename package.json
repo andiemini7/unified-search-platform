@@ -1,4 +1,5 @@
 {
+
   "devDependencies": {
     "@types/bun": "latest",
     "autoprefixer": "^10.4.19",

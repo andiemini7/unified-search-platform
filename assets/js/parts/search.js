@@ -14,7 +14,7 @@ function closeSearchOverlay() {
   clearSearchOverlay();
 }
 
-function displayRecentSearches() {
+function displayRecentSearches() =
   let recentSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
   let recentSearchesContainer = document.getElementById("recent-searches");
 
