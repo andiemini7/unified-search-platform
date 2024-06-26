@@ -134,7 +134,13 @@ add_action( 'acf/include_fields', function() {
 				'operator' => '==',
 				'value' => 'post',
 			),
-			
+		),
+		array(
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'page',
+			),
 		),
 	),
 	'menu_order' => 0,
