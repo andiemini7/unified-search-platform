@@ -50,7 +50,7 @@ function fetchAndDisplayResults(query) {
         data: { query: query },
         success: function(response) {
             let categories = { pages: [], posts: [], trello: [] };
-    
+
             if (response && response.length > 0) {
                 response.forEach((result) => {
                     if (result.post_type === 'page') {
@@ -61,43 +61,39 @@ function fetchAndDisplayResults(query) {
                         categories.trello.push(result);
                     }
                 });
-    
+
+                let resultsHtml = '';
+
                 if (categories.pages.length > 0) {
-                    resultsContainer.innerHTML += `<h3 class="text-xl font-bold mb-2">Pages</h3>`;
+                    resultsHtml += `<h3 class="text-xl font-bold mb-2">Pages</h3>`;
                     categories.pages.forEach((result) => {
-                        resultsContainer.innerHTML += `<div class="mb-2"><a href="${result.link}" class="text-blue-600 hover:underline">${result.title}</a></div>`;
+                        resultsHtml += `<div class="mb-2"><a href="${result.link}" class="text-blue-600 hover:underline">${result.title}</a></div>`;
                     });
                 }
-    
+
                 if (categories.posts.length > 0) {
-                    if (categories.pages.length > 0) {
-                        resultsContainer.innerHTML += `<h3 class="text-xl font-bold mt-4 mb-2">Posts</h3>`;
-                    } else {
-                        resultsContainer.innerHTML += `<h3 class="text-xl font-bold mb-2">Posts</h3>`;
-                    }
+                    resultsHtml += `<h3 class="text-xl font-bold mt-4 mb-2">Posts</h3>`;
                     categories.posts.forEach((result) => {
-                        resultsContainer.innerHTML += `<div class="mb-2"><a href="${result.link}" class="text-blue-600 hover:underline">${result.title}</a></div>`;
+                        resultsHtml += `<div class="mb-2"><a href="${result.link}" class="text-blue-600 hover:underline">${result.title}</a></div>`;
                     });
                 }
-    
+
                 if (categories.trello.length > 0) {
-                    if (categories.pages.length > 0 || categories.posts.length > 0) {
-                        resultsContainer.innerHTML += `<h3 class="text-xl font-bold mt-4 mb-2">Trello Cards</h3>`;
-                    } else {
-                        resultsContainer.innerHTML += `<h3 class="text-xl font-bold mb-2">Trello Cards</h3>`;
-                    }
+                    resultsHtml += `<h3 class="text-xl font-bold mt-4 mb-2">Trello Cards</h3>`;
                     categories.trello.forEach((result) => {
-                        resultsContainer.innerHTML += `
+                        resultsHtml += `
                             <div class="mb-4">
                                 <a href="${result.url}" class="text-blue-600 hover:underline text-base mb-2" target="_blank">${result.title}</a>
                                 <div class="text-sm text-gray-600">${result.content}</div>
                             </div>`;
                     });
                 }
-    
-                if (categories.pages.length === 0 && categories.posts.length === 0 && categories.trello.length === 0) {
-                    resultsContainer.innerHTML = `<p class="text-center">No results found.</p>`;
+
+                if (resultsHtml === '') {
+                    resultsHtml = `<p class="text-center">No results found.</p>`;
                 }
+
+                resultsContainer.innerHTML = resultsHtml;
             } else {
                 resultsContainer.innerHTML = `<p class="text-center">No results found.</p>`;
             }
