@@ -379,6 +379,7 @@ add_action( 'acf/include_fields', function() {
 				'operator' => '==',
 				'value' => 'post',
 			),
+			
 		),
 	),
 	'menu_order' => 0,
@@ -390,7 +391,7 @@ add_action( 'acf/include_fields', function() {
 	'active' => true,
 	'description' => '',
 	'show_in_rest' => 0,
-) );
-} );
+));
+});
 
 

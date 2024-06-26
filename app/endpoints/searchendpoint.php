@@ -19,14 +19,10 @@ class Search_Endpoint {
             'callback' => array($this, 'handle_search'),
         ));
 
-        register_rest_route('myplugin/v1', '/trello-search', array(
+        //trello endopoint for see-more.js
+        register_rest_route('wp/v1', '/trello', array(
             'methods' => 'GET',
-            'callback' => array($this, 'handle_trello_search'),
-        ));
-
-        register_rest_route('wp/v1', '/trello-search', array(
-            'methods' => 'GET',
-            'callback' => array($this, 'handle_trello_search_show'),
+            'callback' => array($this, 'handle_trello_data_showed'),
             'permission_callback' => '__return_true',
             'args' => array(
                 's' => array(
@@ -47,8 +43,8 @@ class Search_Endpoint {
 
     public function handle_search($request) {
         $search_query = $request->get_param('query');
+        $data = array();
 
-        // Query WordPress posts
         $args = array(
             'post_type' => 'any',
             's' => $search_query,
@@ -56,8 +52,6 @@ class Search_Endpoint {
         );
 
         $query = new WP_Query($args);
-
-        $data = array();
 
         if ($query->have_posts()) {
             while ($query->have_posts()) {
@@ -79,26 +73,15 @@ class Search_Endpoint {
             wp_reset_postdata();
         }
 
-        return new WP_REST_Response($data, 200);
-    }
-
-    public function handle_trello_search($request) {
-        $search_query = $request->get_param('query');
-
-        // Fetch Trello data based on TrelloService
         $trelloData = $this->trelloService->fetchTrelloData();
-
-        // Handle Trello data
-        $results = [];
 
         if (!empty($trelloData)) {
             $trelloData = json_decode($trelloData, true); // Decode JSON data
 
-            // Example: Include Trello cards that match search query
             if (isset($trelloData['cards']) && is_array($trelloData['cards'])) {
                 foreach ($trelloData['cards'] as $card) {
                     if (stripos($card['name'], $search_query) !== false || stripos($card['desc'], $search_query) !== false) {
-                        $results[] = array(
+                        $data[] = array(
                             'id' => $card['id'],
                             'title' => $card['name'],
                             'content' => $card['desc'],
@@ -111,10 +94,12 @@ class Search_Endpoint {
                 }
             }
         }
-        return new WP_REST_Response($results, 200);
+
+        return new WP_REST_Response($data, 200);
     }
 
-    public function handle_trello_search_show($request) {
+    //trello endopoint for see-more.js
+    public function handle_trello_data_showed($request) {
         $search_query = sanitize_text_field($request->get_param('s'));
         $paged = $request->get_param('page') ? intval($request->get_param('page')) : 1;
         $posts_per_page = get_option('posts_per_page');
@@ -139,9 +124,8 @@ class Search_Endpoint {
                         'title' => $card['name'],
                         'content' => $card['desc'],
                         'url' => $card['url'],
-                        'post_type' => 'trello_card',
+                        'type' => 'Trello Card',
                         'website' => 'Trello',
-                        'source' => 'trello',
                     );
                 }
             }
@@ -149,6 +133,5 @@ class Search_Endpoint {
     
         return new WP_REST_Response($results, 200);
     }
-    
     
 }

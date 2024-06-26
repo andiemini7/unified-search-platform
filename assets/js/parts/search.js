@@ -44,30 +44,31 @@ function fetchAndDisplayResults(query) {
     let resultsContainer = document.getElementById("search-results");
     resultsContainer.innerHTML = "";
 
-    // Fetch WordPress search results
     $.ajax({
         url: 'http://unified-seach-platform.test/wp-json/myplugin/v1/search/',
         type: 'GET',
-        data: { query: query, type: 'wordpress' },
+        data: { query: query },
         success: function(response) {
-            let categories = { pages: [], posts: [] };
-
+            let categories = { pages: [], posts: [], trello: [] };
+    
             if (response && response.length > 0) {
                 response.forEach((result) => {
                     if (result.post_type === 'page') {
                         categories.pages.push(result);
                     } else if (result.post_type === 'post') {
                         categories.posts.push(result);
+                    } else if (result.post_type === 'trello_card') {
+                        categories.trello.push(result);
                     }
                 });
-
+    
                 if (categories.pages.length > 0) {
                     resultsContainer.innerHTML += `<h3 class="text-xl font-bold mb-2">Pages</h3>`;
                     categories.pages.forEach((result) => {
                         resultsContainer.innerHTML += `<div class="mb-2"><a href="${result.link}" class="text-blue-600 hover:underline">${result.title}</a></div>`;
                     });
                 }
-
+    
                 if (categories.posts.length > 0) {
                     if (categories.pages.length > 0) {
                         resultsContainer.innerHTML += `<h3 class="text-xl font-bold mt-4 mb-2">Posts</h3>`;
@@ -78,40 +79,31 @@ function fetchAndDisplayResults(query) {
                         resultsContainer.innerHTML += `<div class="mb-2"><a href="${result.link}" class="text-blue-600 hover:underline">${result.title}</a></div>`;
                     });
                 }
-
-                if (categories.pages.length === 0 && categories.posts.length === 0) {
-                    resultsContainer.innerHTML = `<p class="text-center">No WordPress results found.</p>`;
+    
+                if (categories.trello.length > 0) {
+                    if (categories.pages.length > 0 || categories.posts.length > 0) {
+                        resultsContainer.innerHTML += `<h3 class="text-xl font-bold mt-4 mb-2">Trello Cards</h3>`;
+                    } else {
+                        resultsContainer.innerHTML += `<h3 class="text-xl font-bold mb-2">Trello Cards</h3>`;
+                    }
+                    categories.trello.forEach((result) => {
+                        resultsContainer.innerHTML += `
+                            <div class="mb-4">
+                                <a href="${result.url}" class="text-blue-600 hover:underline text-base mb-2" target="_blank">${result.title}</a>
+                                <div class="text-sm text-gray-600">${result.content}</div>
+                            </div>`;
+                    });
+                }
+    
+                if (categories.pages.length === 0 && categories.posts.length === 0 && categories.trello.length === 0) {
+                    resultsContainer.innerHTML = `<p class="text-center">No results found.</p>`;
                 }
             } else {
-                resultsContainer.innerHTML = `<p class="text-center">No WordPress results found.</p>`;
+                resultsContainer.innerHTML = `<p class="text-center">No results found.</p>`;
             }
         },
         error: function() {
-            resultsContainer.innerHTML = `<p class="text-center">Error fetching WordPress results.</p>`;
-        }
-    });
-
-    // Fetch Trello search results
-    $.ajax({
-        url: 'http://unified-seach-platform.test//wp-json/myplugin/v1/trello-search/',
-        type: 'GET',
-        data: { query: query },
-        success: function(response) {
-            if (response && response.length > 0) {
-                resultsContainer.innerHTML += `<h3 class="text-xl font-bold mt-4 mb-2">Trello Cards</h3>`;
-                response.forEach((result) => {
-                    resultsContainer.innerHTML += `
-                        <div class="mb-4">
-                            <a href="${result.url}" class="text-blue-600 hover:underline text-base mb-2" target="_blank">${result.title}</a>
-                            <div class="text-sm text-gray-600">${result.content}</div>
-                        </div>`;
-                });
-            } else {
-                resultsContainer.innerHTML += `<p class="text-center mt-4">No Trello results found.</p>`;
-            }
-        },
-        error: function() {
-            resultsContainer.innerHTML += `<p class="text-center mt-4">Error fetching Trello results.</p>`;
+            resultsContainer.innerHTML = `<p class="text-center">Error fetching results.</p>`;
         }
     });
 }

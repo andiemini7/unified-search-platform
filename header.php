@@ -38,13 +38,7 @@
         </div>
 
         <div class="flex items-center justify-end hidden lg:flex">
-            <form action="/" method="get" class="relative">
-                <div class="relative">
-                    <i class="fa fa-search absolute left-0 top-0 mt-4 ml-2"></i>
-                    <input type="text" name="s" class="bg-white text-[#2F628C] rounded-full py-2 pl-7">
-                </div>
-                <!-- <button type="submit" class="bg-[#2F628C] text-white py-2 px-4 rounded">Submit</button> -->
-            </form>
+            <?php include_once 'views/searchBar.php' ?>
         </div>
     </nav>
 
