@@ -119,16 +119,4 @@ function redirect_if_not_logged_in() {
 add_action('template_redirect', 'redirect_if_not_logged_in');
 
 
-
-function add_signin_register_to_menu($items, $args) {
-    if (!is_user_logged_in() && $args->theme_location == 'primary') {
-        $signin = '<li><a href="' . site_url('/signin') . '">Sign In</a></li>';
-        $register = '<li><a href="' . site_url('/register') . '">Register</a></li>';
-        $items .= $signin . $register;
-    }
-    return $items;
-}
-add_filter('wp_nav_menu_items', 'add_signin_register_to_menu', 10, 2);
-
-
 require get_template_directory() .'/app/acf/acf.php';
