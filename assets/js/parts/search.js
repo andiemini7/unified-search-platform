@@ -45,7 +45,7 @@ function fetchAndDisplayResults(query) {
     resultsContainer.innerHTML = "";
 
     $.ajax({
-        url: 'http://unified-seach-platform.test/wp-json/myplugin/v1/search/',
+        url: '/wp-json/myplugin/v1/search/',
         type: 'GET',
         data: { query: query },
         success: function(response) {
