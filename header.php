@@ -18,12 +18,9 @@
             <a href="<?php echo home_url(); ?>" class="flex items-center text-[#2F628C] text-xl font-bold">
                 <?php if ($navbar_logo): ?>
                     <img src="<?php echo esc_url($navbar_logo); ?>" alt="Logo" class="h-8">
-                <?php endif; ?>
-                <?php if ($navbar_logo && $navbar_text): ?>
-                    <span class="text-[#2F628C] ml-2"><?php echo esc_html($navbar_text); ?></span>
-                <?php elseif (!$navbar_logo && $navbar_text): ?>
+                <?php elseif ($navbar_text): ?>
                     <span><?php echo esc_html($navbar_text); ?></span>
-                <?php elseif (!$navbar_logo && !$navbar_text): ?>
+                <?php else: ?>
                     <span class="text-sm text-red-500">Please set the logo in general settings</span>
                 <?php endif; ?>
             </a>
@@ -57,18 +54,14 @@
     <!-- Mobile -->
     <div id="mobile-menu" class="lg:hidden hidden bg-white w-full h-full fixed top-0 left-0 z-50 overflow-y-auto">
         <div class="flex items-center justify-start py-4 pl-4 mt-7">
-        <?php if ($navbar_logo): ?>
-                    <img src="<?php echo esc_url($navbar_logo); ?>" alt="Logo" class="h-8">
-                <?php endif; ?>
-                <?php if ($navbar_logo && $navbar_text): ?>
-                    <span class="text-[#2F628C] ml-2"><?php echo esc_html($navbar_text); ?></span>
-                <?php elseif (!$navbar_logo && $navbar_text): ?>
-                    <span><?php echo esc_html($navbar_text); ?></span>
-                <?php elseif (!$navbar_logo && !$navbar_text): ?>
-                    <span class="text-sm text-red-500">Please set the logo in general settings</span>
-                    <img class="w-full mb-2" src="<?php echo esc_url(get_template_directory_uri() . '/path/to/default-logo.png'); ?>" alt="Default Logo">
-                <?php endif; ?>
-            </a>
+            <?php if ($navbar_logo): ?>
+                <img src="<?php echo esc_url($navbar_logo); ?>" alt="Logo" class="h-8">
+            <?php elseif ($navbar_text): ?>
+                <span class="text-[#2F628C] ml-2"><?php echo esc_html($navbar_text); ?></span>
+            <?php else: ?>
+                <span class="text-sm text-red-500">Please set the logo in general settings</span>
+                <img class="w-full mb-2" src="<?php echo esc_url(get_template_directory_uri() . '/path/to/default-logo.png'); ?>" alt="Default Logo">
+            <?php endif; ?>
         </div>
         <div class="flex flex-col text-center justify-start text-2xl space-y-4 pt-8 px-4 border-t-1 border-b-1 border-gray-300">
             <?php
@@ -91,4 +84,7 @@
     </form> -->
 
 </div>
+<?php wp_footer(); ?>
 </body>
+</html>
+
