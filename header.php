@@ -17,7 +17,7 @@
         </div>
 
         <div class="flex items-center justify-end lg:hidden">
-            <button id="mobile-menu-toggle" class="text-[#2F628C]">
+            <button id="mobile-menu-toggle" class="text-[#2F628C] pr-5">
                 <i class="fas fa-bars"></i>
                 <i class="fas fa-times hidden"></i>
             </button>
@@ -45,12 +45,12 @@
     <!-- Mobile -->
     <div id="mobile-menu" class="lg:hidden hidden bg-white w-full h-full fixed top-0 left-0 z-50 overflow-y-auto">
 
-        <div class="flex items-center justify-start py-4 pl-4 mt-70">
+        <div class="flex items-center justify-start py-4 pl-4 pr-4 mt-55">
             <a href="<?php echo home_url(); ?>" class="text-[#2F628C] text-2xl font-bold">
                 <img src="<?php echo get_template_directory_uri(); ?>/path/to/your/logo.png" alt="Logo" class="h-8">
             </a>
         </div>
-        <div class="flex flex-col text-center justify-start text-2xl space-y-4 pt-8 px-4 border-t-1 border-b-1 border-gray-300">
+        <div class="flex flex-col text-center justify-start text-2xl space-y-4 pt-6 px-4 border-t-1 border-b-1 border-gray-300">
             <?php
             wp_nav_menu(array(
                 'theme_location' => 'unified-search-menu',
@@ -62,9 +62,6 @@
             ?>
         </div>
     </div>
-
-    <h1 class="text-4xl font-bold text-center my-4">Unified Search Results</h1>
-
     <!-- <form action="/" method="get" class="flex justify-center my-4">
         <input type="text" name="s" class="border border-gray-300 p-2 rounded-l w-full max-w-md">
         <button type="submit" class="bg-blue-500 text-white p-2 rounded-r">Search</button>

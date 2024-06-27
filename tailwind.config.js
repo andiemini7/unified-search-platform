@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       margin: {
-        '70': '70px',
+        '55': '55px',
       },
       boxShadow: {
         'nav-shadow': '0 4px 4px -4px rgba(0, 0, 0, 0.3)',
