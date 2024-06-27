@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-<div class="container mx-auto p-4">
-    <nav class="bg-white p-4 mb-4 flex justify-between items-center">
+<div class="w-full mx-auto">
+    <nav class="bg-white p-4 mb-4 flex justify-between items-center shadow-nav-shadow">
 
         <div class="flex items-center">
             <a href="<?php echo home_url(); ?>" class="text-[#2F628C] text-2xl font-bold">
@@ -37,21 +37,15 @@
             ?>
         </div>
 
-        <div class="flex items-center justify-end hidden lg:flex">
-            <form action="/" method="get" class="relative">
-                <div class="relative">
-                    <i class="fa fa-search absolute left-0 top-0 mt-4 ml-2"></i>
-                    <input type="text" name="s" class="bg-white text-[#2F628C] rounded-full py-2 pl-7">
-                </div>
-                <!-- <button type="submit" class="bg-[#2F628C] text-white py-2 px-4 rounded">Submit</button> -->
-            </form>
+        <div class="flex items-center justify-end hidden lg:flex pr-5">
+            <?php include_once 'views/searchBar.php' ?>
         </div>
     </nav>
 
     <!-- Mobile -->
     <div id="mobile-menu" class="lg:hidden hidden bg-white w-full h-full fixed top-0 left-0 z-50 overflow-y-auto">
 
-        <div class="flex items-center justify-start py-4 pl-4 mt-7">
+        <div class="flex items-center justify-start py-4 pl-4 mt-70">
             <a href="<?php echo home_url(); ?>" class="text-[#2F628C] text-2xl font-bold">
                 <img src="<?php echo get_template_directory_uri(); ?>/path/to/your/logo.png" alt="Logo" class="h-8">
             </a>
