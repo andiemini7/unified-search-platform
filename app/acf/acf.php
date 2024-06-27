@@ -454,7 +454,13 @@ add_action( 'acf/include_fields', function() {
 				'operator' => '==',
 				'value' => 'post',
 			),
-			
+		),
+		array(
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'page',
+			),
 		),
 		array(
 			array(
@@ -475,4 +481,3 @@ add_action( 'acf/include_fields', function() {
 	'show_in_rest' => 0,
 ));
 });
-
