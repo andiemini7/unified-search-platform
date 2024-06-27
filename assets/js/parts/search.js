@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $ from 'jquery'; // Import jQuery if not already imported
 
 function clearSearchOverlay() {
     document.getElementById("search-input-overlay").value = "";
@@ -10,27 +10,36 @@ function closeSearchOverlay() {
     clearSearchOverlay();
 }
 
-document.getElementById("search-icon").addEventListener("click", function () {
+// Function to show search overlay
+function showSearchOverlay() {
     document.getElementById("search-overlay").classList.remove("hidden");
     document.getElementById("search-input-overlay").focus();
+}
+
+// Event listener for search icon click
+document.getElementById("search-icon").addEventListener("click", function () {
+    showSearchOverlay();
 });
 
+// Event listener for close search overlay button
 document.getElementById("close-search").addEventListener("click", closeSearchOverlay);
 
+// Event listener for Ctrl/Cmd + Space to open search overlay
 document.addEventListener("keydown", function(event) {
     if ((event.ctrlKey && event.key === " ") || (event.metaKey && event.key === " ")) {
         event.preventDefault();
-        document.getElementById("search-overlay").classList.remove("hidden");
-        document.getElementById("search-input-overlay").focus();
+        showSearchOverlay();
     }
 });
 
+// Event listener for Escape key to close search overlay
 document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
         closeSearchOverlay();
     }
 });
 
+// Event listener for search input
 document.getElementById("search-input-overlay").addEventListener("input", function(event) {
     let query = event.target.value.trim();
     if (query !== "") {
@@ -40,6 +49,7 @@ document.getElementById("search-input-overlay").addEventListener("input", functi
     }
 });
 
+// Function to fetch and display search results
 function fetchAndDisplayResults(query) {
     let resultsContainer = document.getElementById("search-results");
     resultsContainer.innerHTML = "";
@@ -103,3 +113,29 @@ function fetchAndDisplayResults(query) {
         }
     });
 }
+
+// Check if user is logged in and adjust behavior
+document.addEventListener("DOMContentLoaded", function() {
+    $.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        type: 'POST',
+        data: {
+            action: 'check_logged_in'
+        },
+        success: function(response) {
+            if (response.logged_in) {
+                // User is logged in
+                document.getElementById("search-icon").style.display = "block"; // Show search icon
+                document.getElementById("search-overlay").classList.add("hidden"); // Hide search overlay initially
+            } else {
+                // User is not logged in
+                document.getElementById("search-icon").style.display = "none"; // Hide search icon
+                document.getElementById("search-overlay").classList.add("hidden"); // Hide search overlay initially
+            }
+        },
+        error: function() {
+            // Handle error if AJAX request fails
+            console.error('Error checking logged-in status.');
+        }
+    });
+});

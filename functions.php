@@ -103,5 +103,16 @@ function custom_search_callback($data, $post_type) {
     wp_reset_postdata();
     return new WP_REST_Response($results, 200);
 }
+// Add AJAX endpoint for checking if user is logged in
+add_action('wp_ajax_check_logged_in', 'check_logged_in');
+add_action('wp_ajax_nopriv_check_logged_in', 'check_logged_in'); // for non-logged-in users
+
+function check_logged_in() {
+    $response = array(
+        'logged_in' => is_user_logged_in()
+    );
+
+    wp_send_json($response);
+}
 
 require get_template_directory() .'/app/acf/acf.php';
