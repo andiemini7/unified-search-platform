@@ -37,7 +37,7 @@
             ?>
         </div>
 
-       <div class="flex items-center justify-end hidden lg:flex pr-5">
+        <div class="flex items-center justify-end hidden lg:flex pr-5">
             <?php include_once 'views/searchBar.php' ?>
         </div>
 

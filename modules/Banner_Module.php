@@ -29,4 +29,3 @@ if ($image_block) {
         <?php endif; ?> <br><br> 
     </div>
 </div>
-
