@@ -165,3 +165,36 @@ nav .flex .text-2xl {
 
 
 
+/* Desktop */
+nav .sub-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+nav .menu-item-has-children:hover > .sub-menu {
+    display: block;
+}
+
+/* Ensure the parent menu items are positioned correctly */
+nav .menu-item-has-children {
+    position: relative;
+}
+
+/* Mobile */
+#mobile-menu .sub-menu {
+    display: none;
+}
+
+#mobile-menu .menu-item-has-children.active > .sub-menu {
+    display: block;
+}
+
+/* Mobile Hover - not recommended for actual mobile use, but for testing purposes */
+@media (max-width: 1024px) {
+    #mobile-menu .menu-item-has-children:hover > .sub-menu {
+        display: block;
+    }
+}
