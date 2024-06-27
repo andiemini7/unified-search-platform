@@ -1,7 +1,8 @@
+
 <?php
 
 function redirect_to_signin_page() {
-    if (!is_user_logged_in() && !is_page('signin')) {
+    if (!is_user_logged_in() && !is_page(array('signin', 'register'))) {
         wp_redirect(site_url('/signin'));
         exit;
     }

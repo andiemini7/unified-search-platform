@@ -3,26 +3,16 @@
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
     <?php wp_head(); ?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-<div class="container mx-auto p-4">
-    <nav class="bg-white p-4 mb-4 flex justify-between items-center">
+<div class="w-full mx-auto">
+    <nav class="bg-white p-4 mb-4 flex justify-between items-center shadow-nav-shadow">
+
         <div class="flex items-center">
-            <?php 
-            $navbar_logo = get_field('navbar_logo', 'option');
-            $navbar_text = get_field('navbar_text', 'option');
-            ?>
-            <a href="<?php echo home_url(); ?>" class="flex items-center text-[#2F628C] text-xl font-bold">
-                <?php if ($navbar_logo): ?>
-                    <img src="<?php echo esc_url($navbar_logo); ?>" alt="Logo" class="h-8">
-                <?php elseif ($navbar_text): ?>
-                    <span><?php echo esc_html($navbar_text); ?></span>
-                <?php else: ?>
-                    <span class="text-sm text-red-500">Please set the logo in general settings</span>
-                <?php endif; ?>
+            <a href="<?php echo home_url(); ?>" class="text-[#2F628C] text-2xl font-bold">
+                <img src="<?php echo get_template_directory_uri(); ?>/path/to/your/logo.png" alt="Logo" class="h-8">
             </a>
         </div>
 
@@ -32,6 +22,7 @@
                 <i class="fas fa-times hidden"></i>
             </button>
         </div>
+
 
         <!-- Desktop -->
         <div class="flex justify-center flex-grow lg:flex lg:space-x-10 hidden lg:block">
@@ -46,22 +37,27 @@
             ?>
         </div>
 
-        <div class="flex items-center justify-end hidden lg:flex">
+
+        <ul>
+        <!-- Other menu items -->
+        <?php if (is_user_logged_in()) : ?>
+            <div class="flex items-center justify-end hidden lg:flex pr-5">
             <?php include_once 'views/searchBar.php' ?>
         </div>
+        <?php else : ?>
+            <li class="block mb-2.5 rounded-xl text-center h-7 w-24 bg-slate-400 hover:bg-slate-300 transition ease-out duration-300"><a href="<?php echo home_url('/signin/');?>">Sign In</a></li>
+            <li class="block mb-2.5 rounded-xl text-center h-7 w-24 bg-slate-400 hover:bg-slate-300 transition ease-out duration-300"><a href="<?php echo home_url('/register/'); ?>">Register</a></li>
+        <?php endif; ?>
+    </ul>
     </nav>
 
     <!-- Mobile -->
     <div id="mobile-menu" class="lg:hidden hidden bg-white w-full h-full fixed top-0 left-0 z-50 overflow-y-auto">
-        <div class="flex items-center justify-start py-4 pl-4 mt-7">
-            <?php if ($navbar_logo): ?>
-                <img src="<?php echo esc_url($navbar_logo); ?>" alt="Logo" class="h-8">
-            <?php elseif ($navbar_text): ?>
-                <span class="text-[#2F628C] ml-2"><?php echo esc_html($navbar_text); ?></span>
-            <?php else: ?>
-                <span class="text-sm text-red-500">Please set the logo in general settings</span>
-                <img class="w-full mb-2" src="<?php echo esc_url(get_template_directory_uri() . '/path/to/default-logo.png'); ?>" alt="Default Logo">
-            <?php endif; ?>
+
+        <div class="flex items-center justify-start py-4 pl-4 mt-70">
+            <a href="<?php echo home_url(); ?>" class="text-[#2F628C] text-2xl font-bold">
+                <img src="<?php echo get_template_directory_uri(); ?>/path/to/your/logo.png" alt="Logo" class="h-8">
+            </a>
         </div>
         <div class="flex flex-col text-center justify-start text-2xl space-y-4 pt-8 px-4 border-t-1 border-b-1 border-gray-300">
             <?php
@@ -83,7 +79,5 @@
     </form> -->
 
 </div>
-<?php wp_footer(); ?>
-</body>
-</html>
 
+</body>
