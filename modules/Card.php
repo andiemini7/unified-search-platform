@@ -8,8 +8,8 @@ if (get_row_layout() == 'card') {
 
     // Display content
     ?>
-    <div class="relative bg-gray-100 rounded-lg shadow-md overflow-hidden mx-4 my-4" style="width: 330px; height: 400px;">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('http://unified-search-platform.test/wp-content/uploads/2024/06/image1.png');">
+    <div class="relative inline-block bg-gray-100 rounded-lg shadow-md overflow-hidden mx-4 my-4" style="width: 330px; height: 400px;">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/image1.png');">
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50"></div>
         </div>
         <div class="absolute bottom-0 flex flex-col justify-end text-white" style="padding-left:5px; padding-right: 20px; padding-top:300px; padding-bottom: 20px;">

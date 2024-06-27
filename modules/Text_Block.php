@@ -3,7 +3,7 @@
     //  var_dump($id);
     $text = get_sub_field('text_block', $id);
     // var_dump($text);
-   
+
 ?>
 
 <div class="w-full">
