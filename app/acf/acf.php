@@ -14,7 +14,7 @@ add_action( 'acf/include_fields', function() {
 			'name' => 'modules',
 			'aria-label' => '',
 			'type' => 'flexible_content',
-			'instructions' => '',
+			'instructions' => 'Add new modules to be rendered on this page',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
@@ -80,8 +80,8 @@ add_action( 'acf/include_fields', function() {
 				),
 				'layout_66680824e3abd' => array(
 					'key' => 'layout_66680824e3abd',
-					'name' => 'image_block',
-					'label' => 'Image Block',
+					'name' => 'banner_module',
+					'label' => 'Banner Module',
 					'display' => 'block',
 					'sub_fields' => array(
 						array(
@@ -148,6 +148,81 @@ add_action( 'acf/include_fields', function() {
 							'rows' => '',
 							'placeholder' => '',
 							'new_lines' => '',
+						),
+					),
+					'min' => '',
+					'max' => '',
+				),
+				'layout_6673c54e2104b' => array(
+					'key' => 'layout_6673c54e2104b',
+					'name' => 'faq',
+					'label' => 'Faq',
+					'display' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_6673cf525a7a7',
+							'label' => 'Faq',
+							'name' => 'faq',
+							'aria-label' => '',
+							'type' => 'repeater',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'layout' => 'table',
+							'min' => 0,
+							'max' => 0,
+							'collapsed' => '',
+							'button_label' => 'Add Row',
+							'rows_per_page' => 20,
+							'sub_fields' => array(
+								array(
+									'key' => 'field_6673cf6c5a7a8',
+									'label' => 'Question',
+									'name' => 'question',
+									'aria-label' => '',
+									'type' => 'text',
+									'instructions' => '',
+									'required' => 0,
+									'conditional_logic' => 0,
+									'wrapper' => array(
+										'width' => '',
+										'class' => '',
+										'id' => '',
+									),
+									'default_value' => '',
+									'maxlength' => '',
+									'placeholder' => '',
+									'prepend' => '',
+									'append' => '',
+									'parent_repeater' => 'field_6673cf525a7a7',
+								),
+								array(
+									'key' => 'field_6673cf785a7a9',
+									'label' => 'Answer',
+									'name' => 'answer',
+									'aria-label' => '',
+									'type' => 'wysiwyg',
+									'instructions' => '',
+									'required' => 1,
+									'conditional_logic' => 0,
+									'wrapper' => array(
+										'width' => '',
+										'class' => '',
+										'id' => '',
+									),
+									'default_value' => '',
+									'tabs' => 'all',
+									'toolbar' => 'full',
+									'media_upload' => 1,
+									'delay' => 0,
+									'parent_repeater' => 'field_6673cf525a7a7',
+								),
+							),
 						),
 					),
 					'min' => '',
@@ -369,7 +444,7 @@ add_action( 'acf/include_fields', function() {
 			),
 			'min' => '',
 			'max' => '',
-			'button_label' => 'Add Row',
+			'button_label' => 'Add Module',
 		),
 	),
 	'location' => array(
@@ -379,6 +454,7 @@ add_action( 'acf/include_fields', function() {
 				'operator' => '==',
 				'value' => 'post',
 			),
+			
 		),
 		array(
 			array(
@@ -399,5 +475,4 @@ add_action( 'acf/include_fields', function() {
 	'show_in_rest' => 0,
 ));
 });
-
 
