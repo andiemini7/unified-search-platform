@@ -76,8 +76,7 @@
         </div>
     </div>
 
-    <h1 class="text-4xl font-bold text-center my-4">Unified Search Results</h1>
-
+    
     <!-- <form action="/" method="get" class="flex justify-center my-4">
         <input type="text" name="s" class="border border-gray-300 p-2 rounded-l w-full max-w-md">
         <button type="submit" class="bg-blue-500 text-white p-2 rounded-r">Search</button>
