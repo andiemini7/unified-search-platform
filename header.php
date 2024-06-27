@@ -37,13 +37,14 @@
             ?>
         </div>
 
+       <div class="flex items-center justify-end hidden lg:flex pr-5">
+            <?php include_once 'views/searchBar.php' ?>
+        </div>
 
         <ul>
         <!-- Other menu items -->
         <?php if (is_user_logged_in()) : ?>
-            <div class="flex items-center justify-end hidden lg:flex pr-5">
-            <?php include_once 'views/searchBar.php' ?>
-        </div>
+            
         <?php else : ?>
             <li class="block mb-2.5 rounded-xl text-center h-7 w-24 bg-slate-400 hover:bg-slate-300 transition ease-out duration-300"><a href="<?php echo home_url('/signin/');?>">Sign In</a></li>
             <li class="block mb-2.5 rounded-xl text-center h-7 w-24 bg-slate-400 hover:bg-slate-300 transition ease-out duration-300"><a href="<?php echo home_url('/register/'); ?>">Register</a></li>
