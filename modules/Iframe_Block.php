@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iFrame Module</title>
-   
-</head>
-<body >
+
 <div class="w-full  p-8 space-y-6 ">
         <div class="extra-config">
             <?php
@@ -34,5 +26,3 @@
             <?php endif; ?>
         </div>
     </div>
-</body>
-</html>
