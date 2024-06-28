@@ -1,16 +1,20 @@
 <?php
 get_header();
+?>
 
-$modules = get_field('modules');
+<div class="container mx-auto p-4">
+    <?php
+    $modules = get_field('modules');
 
+    if (have_rows('modules')) :
+        while (have_rows('modules')) : the_row();
+            include(get_template_directory() . '/modules/' . get_row_layout() . '.php');
+        endwhile;
+    else :
+        echo '<p>No modules found for this post.</p>';
+    endif;
+    ?>
+</div>
 
-if (have_rows('modules')) :
-    while (have_rows('modules')) : the_row();
-        
-        include(get_template_directory() . '/modules/' . get_row_layout() . '.php');
-    endwhile;
-else :
-    echo '<p>No modules found for this post.</p>';
-endif;
-
+<?php
 get_footer();
