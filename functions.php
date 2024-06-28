@@ -104,4 +104,31 @@ function custom_search_callback($data, $post_type) {
     return new WP_REST_Response($results, 200);
 }
 
+function redirect_if_not_logged_in() {
+    // Get the current page slug
+    global $post;
+    $current_page_slug = $post ? $post->post_name : '';
+
+    // Check if the user is not logged in and not on the allowed pages
+    if (!is_user_logged_in() && !in_array($current_page_slug, ['signin', 'register'])) {
+        // Redirect to the login page
+        wp_redirect(home_url('/signin/'));
+        exit();
+    }
+}
+add_action('template_redirect', 'redirect_if_not_logged_in');
+
+
+
+function add_signin_register_to_menu($items, $args) {
+    if (!is_user_logged_in() && $args->theme_location == 'primary') {
+        $signin = '<li><a href="' . site_url('/signin') . '">Sign In</a></li>';
+        $register = '<li><a href="' . site_url('/register') . '">Register</a></li>';
+        $items .= $signin . $register;
+    }
+    return $items;
+}
+add_filter('wp_nav_menu_items', 'add_signin_register_to_menu', 10, 2);
+
+
 require get_template_directory() .'/app/acf/acf.php';

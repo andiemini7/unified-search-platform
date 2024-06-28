@@ -10,11 +10,12 @@ class Setup {
 
         // Register navigation menus
         register_nav_menus([
+            'primary' => __('Primary Menu'),
             'home-menu' => __('Home Menu'),
             'contact-us-menu' => __('Contact Us Menu'),
-            'unified-search-menu' => __('Unified Search Menu')
+            'unified-search-menu' => __('Unified Search Menu'),
+            'product_menu' => __( 'Product Menu' )
         ]);
-        
 
         $this->initialize_acf_options();
     }
@@ -84,5 +85,4 @@ class Setup {
             ));
         }
     }
-    
-}    
+}

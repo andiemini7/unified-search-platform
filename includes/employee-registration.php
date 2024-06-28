@@ -70,9 +70,9 @@ function employee_registration_form() {
     <form method="POST" class="flex flex-col items-center justify-center text-center justify-items-center">
         <label for="username" class="text-xl text-white">Register</label>
 
-        <input type="text" placeholder="Username" name="username" class="text-center m-1 rounded" required>
-        <input type="email" placeholder="Email" name="email" class="text-center m-1 rounded" required>
-        <input type="password" placeholder="Password" name="password" class="text-center m-1 rounded" required>
+        <input type="text" placeholder="Username" name="username" class="text-center decoration-white m-1 rounded-full bg-gray-300 w-72 h-11 mb-3.5 outline-none hover:bg-slate-200 transition ease-out duration-300 focus:bg-slate-100" required>
+        <input type="email" placeholder="Email" name="email" class="text-center decoration-white m-1 rounded-full bg-gray-300 w-72 h-11 mb-3.5 outline-none hover:bg-slate-200 transition ease-out duration-300 focus:bg-slate-100" required>
+        <input type="password" placeholder="Password" name="password" class="text-center decoration-white m-1 rounded-full bg-gray-300 w-72 h-11 mb-3.5 outline-none hover:bg-slate-200 transition ease-out duration-300 focus:bg-slate-100" required>
 
         <button type="submit" name="employee_register" class="rounded mt-1.5 mx-0 mb-7 bg-[#1f2937] text-white transition ease-out duration-300 p-1 hover:bg-[#00a2ff]">Sign Up</button>
     </form>
