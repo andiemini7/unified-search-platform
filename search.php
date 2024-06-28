@@ -2,7 +2,7 @@
 
 <?php $search_value = isset($_GET['s']) ? $_GET['s'] : ''; ?>
 
-<div class="mx-auto container">
+<div class="container mx-auto p-4">
     <div id="page-container" class="flex justify-start flex-wrap gap-[34px] my-5">
         <!-- Container for pages -->
     </div>
