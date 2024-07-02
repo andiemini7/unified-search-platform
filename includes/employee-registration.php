@@ -67,15 +67,26 @@ function employee_registration_form() {
     ob_start();
     ?>
     
+    <div class="w-[500px] bg-[#181A21] rounded-lg mt-[10%]">
+    <h2 class="text-xl text-white mt-3 font-bold">Register </h2>
     <form method="POST" class="flex flex-col items-center justify-center text-center justify-items-center">
-        <label for="username" class="text-xl text-white">Register</label>
-
-        <input type="text" placeholder="Username" name="username" class="text-center decoration-white m-1 rounded-full bg-gray-300 w-72 h-11 mb-3.5 outline-none hover:bg-slate-200 transition ease-out duration-300 focus:bg-slate-100" required>
-        <input type="email" placeholder="Email" name="email" class="text-center decoration-white m-1 rounded-full bg-gray-300 w-72 h-11 mb-3.5 outline-none hover:bg-slate-200 transition ease-out duration-300 focus:bg-slate-100" required>
-        <input type="password" placeholder="Password" name="password" class="text-center decoration-white m-1 rounded-full bg-gray-300 w-72 h-11 mb-3.5 outline-none hover:bg-slate-200 transition ease-out duration-300 focus:bg-slate-100" required>
-
-        <button type="submit" name="employee_register" class="rounded mt-1.5 mx-0 mb-7 bg-[#1f2937] text-white transition ease-out duration-300 p-1 hover:bg-[#00a2ff]">Sign Up</button>
+        <div class="mb-4">
+        <h2 class="font-sans mt-3 text text-[#afafaf] w-[100px]">USERNAME</h2>
+        <input type="text" name="username" class="ps-2.5 decoration-white text-white m-1 rounded bg-[#32353c] w-80 h-10 mb-2.5 outline-none hover:bg-[#393c44] transition ease-out duration-300 " required>
+        </div>
+        <div class="mb-4">
+        <h2 class="font-sans text text-[#afafaf] w-[60px]">EMAIL</h2>
+        <input type="email" name="email" class="ps-2.5 decoration-white text-white m-1 rounded bg-[#32353c] w-80 h-10 mb-2.5 outline-none hover:bg-[#393c44] transition ease-out duration-300 " required>
+        </div>
+        <div class="mb-4">
+        <h2 class="font-sans text text-[#afafaf] w-[100px]">PASSWORD</h2>
+        <input type="password" name="password" class="ps-2.5 decoration-white text-white m-1 rounded bg-[#32353c] w-80 h-10 mb-2.5 outline-none hover:bg-[#393c44] transition ease-out duration-300 " required>
+        </div>
+        <div class="mb-4">
+        <button type="submit" name="employee_register" class="rounded w-[200px] h-[45px] mb-3 bg-[#00a2ff] text-white transition ease-out duration-300 p-1 hover:bg-[#00c3ff] pointer-events-auto">Sign Up</button>
+        </div>
     </form>
+    </div>
 
     <?php
     handle_employee_registration();
