@@ -6,9 +6,9 @@
     <?php wp_head(); ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-<body style='background-color: #181a21; background-image: url("/unified-search-platform/wp-content/themes/unified-search-platform/assets/images/body-image.jpg"); background-repeat: no-repeat; background-size: 100% '>
+<body style='background-color: #F6F6F6; background-image: url("/unified-search-platform/wp-content/themes/unified-search-platform/assets/images/character1.png"); background-repeat: no-repeat; background-size: 25%; background-position: 11% 115%;'>
 <div class="w-full mx-auto">
-    <nav class="bg-[#181a21] p-4 mb-4 flex justify-between items-center">
+    <nav class="bg-[#F6F6F6] p-4 mb-4 flex justify-between items-center">
 
         <div class="flex items-center">
         <?php 
@@ -17,7 +17,7 @@
             ?>
             <a href="<?php echo home_url(); ?>" class="flex items-center text-[#2F628C] text-xl font-bold">
                 <?php if ($navbar_logo): ?>
-                    <img src="/unified-search-platform/wp-content/themes/unified-search-platform/assets/images/unified-logo.png" width="150px">
+                    <img src="/unified-search-platform/wp-content/themes/unified-search-platform/assets/images/unified-logo-black.png" width="150px">
                 <?php elseif ($navbar_text): ?>
                     <span><?php echo esc_html($navbar_text); ?></span>
                 <?php else: ?>
