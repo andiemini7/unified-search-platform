@@ -86,7 +86,7 @@ function employee_registration_form()
                 <input type="password" placeholder="Password" name="password" class="regel ps-2.5 decoration-white  font-bold m-1 rounded bg-[#eaf0f7] w-[500px] h-[55px] mb-2.5 outline-none hover:bg-[#DAE3EF] transition ease-out duration-300 " required>
             </div>
             <div class="mb-4">
-                <button type="submit" name="employee_register" class="regel rounded-full w-[500px] h-[55px] mt-5 mb-3 bg-[#030615] text-white font-bold transition ease-out duration-300 p-1 hover:bg-[#00c3ff] pointer-events-auto">Sign Up</button>
+                <button type="submit" name="employee_register" class="regel rounded-full w-[500px] h-[55px] mt-5 mb-3 bg-[#030615] text-white font-bold tracking-wider transition ease-out duration-300 p-1 hover:bg-[#00c3ff] pointer-events-auto">Sign Up</button>
             </div>
         </form>
     </div>
