@@ -16,9 +16,9 @@ if (get_row_layout() == 'image') {
         <?php
     } elseif ($image_source == 'url' && $image_url) {
         ?>
-        <div class="flex items-center justify-center min-h-screen">
+        <div class="w-7/12 mx-auto flex flex-col items-center py-8">
             <div class="image">
-                <img src="<?php echo esc_url($image_url); ?>" alt="Image from URL" class="url-image w-32 h-auto rounded-lg">
+                <img src="<?php echo esc_url($image_url); ?>" alt="Image from URL" class="url-image w-35 h-auto rounded-lg">
             </div>
         </div>
         <?php

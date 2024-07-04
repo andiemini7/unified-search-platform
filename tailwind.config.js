@@ -8,6 +8,9 @@ module.exports = {
       boxShadow: {
         'nav-shadow': '0 4px 4px -4px rgba(0, 0, 0, 0.3)',
       },
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
     },
   },
   variants: {

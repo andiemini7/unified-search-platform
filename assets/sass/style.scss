@@ -2,28 +2,34 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import 'variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 
 body {
     background-color: #77B0AA;
   }
 
 
-.menu-item-has-children {
+  /* Menu */
+  .menu-item-has-children {
     position: relative;
+
     & > a::after {
-        content: "\f107";
+        content: "\f0d7";
         font-family: 'Font Awesome 5 Free';
         font-weight: 900;
         margin-left: 8px;
         transition: transform 0.3s;
+        display: inline-block;
     }
 
     &:hover > a::after,
     & > a.active::after {
-        content: "\f106"; 
         transform: rotate(180deg);
+        color: black;
     }
 }
+
 
 .sub-menu {
     display: none;
@@ -60,7 +66,7 @@ nav.hidden {
 }
 
 #mobile-menu-toggle {
-    padding: 10px;
+    /*padding: 10px;*/
 
     & i {
         font-size: 24px;
@@ -68,10 +74,10 @@ nav.hidden {
 }
 
 #mobile-menu a {
-    color: #2F628C;
+    color: black;
     text-decoration: none;
     &:hover {
-        color: #ECEEF3;
+        color: black;
     }
 }
 
@@ -79,6 +85,8 @@ nav.hidden {
     display: none;
     position: fixed;
     z-index: 999;
+    margin-top: -14px;
+    margin-left: -19px;
 }
 
 nav .flex .text-2xl {
@@ -95,7 +103,8 @@ nav .flex .text-2xl {
 .menu-item a {
     padding: 8px;
     display: block;
-    color: #2F628C;
+    color: black;
+    margin: 0 5px 0 5px;
 }
 
 .sub-menu .menu-item {
@@ -111,35 +120,35 @@ nav .flex .text-2xl {
 
 .wysiwyg-content {
     h1 {
-        @apply text-4xl font-bold text-blue-900 mb-4;
+        @apply text-4xl   mb-4;
     }
 
     h2 {
-        @apply text-3xl font-bold text-blue-800 mb-3;
+        @apply text-3xl   mb-3;
     }
 
     h3 {
-        @apply text-2xl font-bold text-blue-700 mb-2;
+        @apply text-2xl   mb-2;
     }
 
     h4 {
-        @apply text-xl font-bold text-blue-700 mb-2;
+        @apply text-xl   mb-2;
     }
 
     h5 {
-        @apply text-lg font-bold text-blue-600 mb-1;
+        @apply text-lg   mb-1;
     }
 
     h6 {
-        @apply text-base font-bold text-blue-600 mb-1;
+        @apply text-base   mb-1;
     }
 
     p {
-        @apply text-base text-blue-800 mb-4 leading-relaxed; 
+        @apply text-base  mb-4 leading-relaxed; 
     }
 
     a {
-        @apply text-blue-500 no-underline hover:underline;
+        @apply  no-underline hover:underline;
     }
 
     ul, ol {
@@ -198,3 +207,57 @@ nav .menu-item-has-children {
         display: block;
     }
 }
+
+/*Sign In and Register Button(anchortag)*/ 
+
+#button-signup, #button-register {
+    position: relative;
+    text-rendering: geometricprecision;
+    text-transform: uppercase;
+    transition: opacity 300ms linear, background-color 100ms linear, color 100ms linear;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+  }
+  
+  #button-signup:hover, #button-register:hover {
+    opacity: 0.8; /* Add a slight change in opacity on hover */
+  }
+  
+  /* Additional styles for the pseudo-elements */
+  #button-signup:before, #button-register:before {
+    animation: opacityFallbackOut .3s step-end forwards;
+    backface-visibility: hidden;
+    background-color: #e0e0e0;
+    clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translateZ(0);
+    transition: clip-path .3s linear, -webkit-clip-path .3s linear;
+    width: 100%;
+    border-radius: 9999px;
+  }
+
+  #button-signup:before {
+    content: 'SIGN IN';
+    text-align: center;
+    color: #000;
+    padding: 12px 24px 12px 24px;
+  }
+  #button-register:before {
+    content: 'REGISTER';
+    text-align: center;
+    color: #000;
+    padding: 12px 24px 12px 24px;
+  }
+  
+  #button-signup:hover:before, #button-register:hover:before {
+    animation: opacityFallbackIn 0s step-start forwards;
+    clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+    border-radius: 9999px;
+  }
+  

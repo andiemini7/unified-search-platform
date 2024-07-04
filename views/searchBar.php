@@ -1,10 +1,13 @@
 <div id="main-content" class="max-w-md mx-auto">
     <label for="default-search" class="mb-2 text-sm font-medium text-gray-500 sr-only">Search</label>
     <div class="flex items-center justify-center">
-        <svg id="search-icon" class="w-6 h-6 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
+        <div id="search-icon" class="w-7 h-7 cursor-pointer">
+<svg fill="#000000" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 width="100%" height="100%" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+<path d="M8,15c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S11.9,15,8,15z M8,3C5.2,3,3,5.2,3,8s2.2,5,5,5s5-2.2,5-5S10.8,3,8,3z"/>
+<path d="M17.3,18.7l-3-3c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l3,3c0.4,0.4,0.4,1,0,1.4C18.3,19.1,17.7,19.1,17.3,18.7z"/>
+</svg>
+        </div>
     </div>
 </div>
 

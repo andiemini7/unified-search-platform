@@ -3,7 +3,7 @@
 .menu-item-has-children {
   position: relative;
   & > a::after {
-    content: "\f107";
+    content: "\f0dd";
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     margin-left: 8px;
@@ -11,7 +11,7 @@
   }
   &:hover > a::after,
     & > a.active::after {
-    content: "\f106";
+    content: "\f0de";
     transform: rotate(180deg);
   }
 }
@@ -52,7 +52,7 @@ nav.hidden {
 }
 
 #mobile-menu a {
-  color: #2F628C;
+  color: black;
   text-decoration: none;
   &:hover {
     color: #ECEEF3;
@@ -79,7 +79,7 @@ nav .flex .text-2xl {
 .menu-item a {
   padding: 8px;
   display: block;
-  color: #2F628C;
+  color: black;
 }
 
 .sub-menu .menu-item {
@@ -90,3 +90,5 @@ nav .flex .text-2xl {
 .sub-menu .menu-item a {
   padding: 8px 12px;
 }
+
+
