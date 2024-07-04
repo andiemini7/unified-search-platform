@@ -6,11 +6,57 @@
     <?php wp_head(); ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-<body style='background-color: #F6F6F6; background-image: url("/unified-search-platform/wp-content/themes/unified-search-platform/assets/images/character1.png"); background-repeat: no-repeat; background-size: 25%; background-position: 11% 115%;'>
-<div class="w-full mx-auto">
-    <nav class="bg-[#F6F6F6] p-4 mb-4 flex justify-between items-center">
+<style>
+/*Desktop styles */
 
-        <div class="flex items-center">
+body {
+            width: 100%;
+            height: 550px;
+            background-color: #F6F6F6;
+            background-image: url("/unified-search-platform/wp-content/themes/unified-search-platform/assets/images/character1.png");
+            background-repeat: no-repeat;
+            background-size: 25%;
+            background-position: 15% 115%;
+        }
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    body{
+        background-position: 50% 160%;
+        background-size: 50%;
+    }
+
+    .regh2{
+        margin-top: 20px;
+    }
+    .navbar{
+        width:400px;
+    }
+
+    #mobile-menu-toggle{
+        margin-right: 50%;
+    }
+    .logel{
+        
+        width: 60%;
+        height: 40px;
+    }
+
+    .regel{
+        margin-right: 50%;
+        width: 300px;
+        height: 40px;
+    }
+
+    
+}
+
+</style>
+<body>
+<div class="w-full mx-auto">
+    <nav class="navbar bg-[#F6F6F6] p-4 mb-4 flex justify-between items-center">
+
+        <div class="logo flex items-center">
         <?php 
             $navbar_logo = get_field('navbar_logo', 'option');
             $navbar_text = get_field('navbar_text', 'option');

@@ -73,20 +73,20 @@ function employee_registration_form()
 
 
     <h1 class="text-5xl text-black my-3 font-bold">Register </h1>
-    <h2 class="text-xl text-black my-3 font-bold">Already have an account?<a href="http://localhost/unified-search-platform/signin/" style="color:#4461F2"> Log in</a></h2>
+    <h2 class="regh2 text-xl text-black my-3 font-bold">Already have an account?<br><a href="http://localhost/unified-search-platform/signin/" style="color:#4461F2"> Log in</a></h2>
     <div class="w-[500px] mt-5">
         <form method="POST" class="flex flex-col items-center justify-center text-center justify-items-center">
             <div class="mb-4">
-                <input type="text" placeholder="Username" name="username" class="ps-2.5 decoration-white  m-1 rounded bg-[#eaf0f7] w-[500px] h-[55px] mb-2.5 outline-none hover:bg-[#DAE3EF] transition ease-out duration-300 " required>
+                <input type="text" placeholder="Username" name="username" class="regel ps-2.5 decoration-white  font-bold m-1 rounded bg-[#eaf0f7] w-[500px] h-[55px] mb-2.5 outline-none hover:bg-[#DAE3EF] transition ease-out duration-300 " required>
             </div>
             <div class="mb-4">
-                <input type="email" placeholder="Email" name="email" class="ps-2.5 decoration-white  m-1 rounded bg-[#eaf0f7] w-[500px] h-[55px] mb-2.5 outline-none hover:bg-[#DAE3EF] transition ease-out duration-300 " required>
+                <input type="email" placeholder="Email" name="email" class="regel ps-2.5 decoration-white  font-bold m-1 rounded bg-[#eaf0f7] w-[500px] h-[55px] mb-2.5 outline-none hover:bg-[#DAE3EF] transition ease-out duration-300 " required>
             </div>
             <div class="mb-4">
-                <input type="password" placeholder="Password" name="password" class="ps-2.5 decoration-white  m-1 rounded bg-[#eaf0f7] w-[500px] h-[55px] mb-2.5 outline-none hover:bg-[#DAE3EF] transition ease-out duration-300 " required>
+                <input type="password" placeholder="Password" name="password" class="regel ps-2.5 decoration-white  font-bold m-1 rounded bg-[#eaf0f7] w-[500px] h-[55px] mb-2.5 outline-none hover:bg-[#DAE3EF] transition ease-out duration-300 " required>
             </div>
             <div class="mb-4">
-                <button type="submit" name="employee_register" class="rounded-full w-[500px] h-[55px] mt-5 mb-3 bg-[#030615] shadow-lg shadow-[#030615] text-white transition ease-out duration-300 p-1 hover:bg-[#00c3ff] hover:shadow-lg hover:shadow-white pointer-events-auto">Sign Up</button>
+                <button type="submit" name="employee_register" class="regel rounded-full w-[500px] h-[55px] mt-5 mb-3 bg-[#030615] text-white font-bold transition ease-out duration-300 p-1 hover:bg-[#00c3ff] pointer-events-auto">Sign Up</button>
             </div>
         </form>
     </div>

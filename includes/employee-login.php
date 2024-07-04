@@ -11,13 +11,13 @@ function employee_login_form()
 
             <form id="loginform" action="<?php echo wp_login_url(home_url()); ?>" method="post">
                 <div class="mb-4">
-                    <input type="text" placeholder="Username" name="log" id="user_login" class="ps-2.5 decoration-white  m-1 rounded bg-[#eaf0f7] w-[500px] h-[55px] mb-2.5 outline-none hover:bg-[#DAE3EF] transition ease-out duration-300 " required>
+                    <input type="text" placeholder="Username" name="log" id="user_login" class="logel ps-2.5 decoration-white font-bold m-1 rounded bg-[#eaf0f7] w-[500px] h-[55px] mb-2.5 outline-none hover:bg-[#DAE3EF] transition ease-out duration-300 " required>
                 </div>
                 <div class="mb-4">
-                    <input type="password" placeholder="Password" name="pwd" id="user_pass" class="ps-2.5 decoration-white m-1 rounded bg-[#eaf0f7] w-[500px] h-[55px] mb-2.5 outline-none hover:bg-[#DAE3EF] transition ease-out duration-300 " required>
+                    <input type="password" placeholder="Password" name="pwd" id="user_pass" class="logel ps-2.5 decoration-white font-bold m-1 rounded bg-[#eaf0f7] w-[500px] h-[55px] mb-2.5 outline-none hover:bg-[#DAE3EF] transition ease-out duration-300 " required>
                 </div>
                 <div class="mb-4">
-                    <button type="submit" name="wp-submit" id="wp-submit" value="Log In" class="rounded-full w-[500px] h-[55px] mt-5 mb-3 bg-[#030615] shadow-lg shadow-[#030615] text-white transition ease-out duration-300 p-1 hover:bg-[#00c3ff] hover:shadow-lg hover:shadow-white pointer-events-auto">Sign in</button>
+                    <button type="submit" name="wp-submit" id="wp-submit" value="Log In" class="logel rounded-full w-[500px] h-[55px] mt-5 mb-3 bg-[#030615] text-white font-bold transition ease-out duration-300 p-1 hover:bg-[#00c3ff]  pointer-events-auto">Sign in</button>
                 </div>
                 <input type="hidden" name="redirect_to" value="<?php echo home_url(); ?>">
             </form>
