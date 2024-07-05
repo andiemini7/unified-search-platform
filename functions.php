@@ -1,5 +1,4 @@
 <?php
-
 require get_template_directory() . '/vendor/autoload.php';
 require_once get_template_directory() . '/includes/employee-registration.php';
 require_once get_template_directory() . '/includes/employee-login.php';
@@ -7,6 +6,8 @@ require get_template_directory() . '/includes/init.php';
 require get_template_directory() . '/app/cpt/cpt-members.php';
 require get_template_directory() . '/app/cpt/cpt-teams.php';
 require get_template_directory() . '/app/cpt/cpt-project.php';
+require_once get_template_directory() . '/includes/manage-pending-users.php';
+require get_template_directory() .'/app/acf/acf.php';
 
 // API Endpoint
 function custom_search_endpoints() {
@@ -106,13 +107,18 @@ function custom_search_callback($data, $post_type) {
 
 function redirect_if_not_logged_in() {
     if (!is_user_logged_in()) {
-        // Allow access to specific pages for non-logged-in users
         if (!is_page('signin') && !is_page('register')) {
             wp_redirect(home_url('/signin'));
             exit();
         }
     } else {
-        // Redirect logged-in users away from signin and register pages
+        $user = wp_get_current_user();
+        if (in_array('pending', (array) $user->roles)) {
+            wp_logout();
+            wp_redirect(home_url('/signin'));
+            exit();
+        }
+
         if (is_page('signin') || is_page('register')) {
             wp_redirect(home_url('/homepage'));
             exit();
@@ -121,8 +127,11 @@ function redirect_if_not_logged_in() {
 }
 add_action('template_redirect', 'redirect_if_not_logged_in');
 
-require get_template_directory() .'/app/acf/acf.php';
-
-
-
-
+function add_pending_user_role() {
+    add_role('pending', 'Pending', array(
+        'read' => false,
+        'edit_posts' => false,
+        'delete_posts' => false,
+    ));
+}
+add_action('init', 'add_pending_user_role');

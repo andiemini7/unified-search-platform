@@ -13,7 +13,7 @@ body {
             width: 100%;
             height: 550px;
             background-color: #F6F6F6;
-            background-image: url("/wp-content/themes/unified-search-platform/assets/images/character1.png");
+            background-image: url("/unified-search-platform/wp-content/themes/unified-search-platform/assets/images/character1.png");
             background-repeat: no-repeat;
             background-size: 25%;
             background-position: 15% 115%;
