@@ -22,10 +22,12 @@ body {
 /* Mobile styles */
 @media (max-width: 768px) {
     body{
-        background-position: 50% 160%;
+        background-position: 50% 165%;
         background-size: 50%;
     }
-
+    .logline{
+        width:10%;
+    }
     .regh2{
         margin-top: 20px;
     }

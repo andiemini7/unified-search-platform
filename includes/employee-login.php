@@ -19,6 +19,19 @@ function employee_login_form()
                 <div class="mb-4">
                     <button type="submit" name="wp-submit" id="wp-submit" value="Log In" class="logel rounded-full w-[500px] h-[55px] mt-5 mb-3 bg-[#030615] text-white font-bold tracking-wider transition ease-out duration-300 p-1 hover:bg-[#00c3ff]  pointer-events-auto">Sign In</button>
                 </div>
+                <div class="mb-4 flex justify-center">
+                    <hr class="logline w-[20%] border-gray-700 mt-[8px] mr-[10px]"><p class="text-xs text-gray-700"> Or continue with </p><hr class="logline w-[20%] border-gray-700 mt-[8px] ml-[10px]">
+                </div>
+                <div class="mb-4 h-[50px] flex justify-center">
+                <a href="http://localhost/unified-search-platform/wp-login.php?loginSocial=google" data-plugin="nsl" data-action="connect" data-redirect="current" data-provider="google" data-popupwidth="600" data-popupheight="600" >
+                    <img src="https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_google-512.png" class="h-[30px] w-[30px] mx-2.5 hover:bg-[#DAE3EF] hover:drop-shadow-lg transition ease-out duration-250" />
+                </a>
+                <a href="http://localhost/unified-search-platform/wp-login.php?loginSocial=twitter" data-plugin="nsl" data-action="connect" data-redirect="current" data-provider="twitter" data-popupwidth="600" data-popupheight="600">
+                <img src="https://cdn2.iconfinder.com/data/icons/threads-by-instagram/24/x-logo-twitter-new-brand-512.png" class="h-[30px] w-[30px] mx-2.5 hover:bg-[#DAE3EF] hover:drop-shadow-lg transition ease-out duration-250" />
+</a>
+                </div>
+
+
                 <input type="hidden" name="redirect_to" value="<?php echo home_url(); ?>">
             </form>
         </div>
