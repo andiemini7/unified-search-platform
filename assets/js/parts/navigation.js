@@ -18,3 +18,6 @@ function navigation($) {
 }
 
 export default navigation;
+{
+    navigation(jQuery);
+}
