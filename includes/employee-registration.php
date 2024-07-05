@@ -39,9 +39,27 @@ function handle_employee_registration() {
         $user_id = wp_insert_user($userdata);
 
         if (!is_wp_error($user_id)) {
-            echo '<div class="text-green-500">Thank you for registering, awaiting validation from admin.</div>';
+            echo '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Registration Successful",
+                        text: "Thank you for registering, awaiting validation from admin.",
+                        confirmButtonText: "OK"
+                    });
+                });
+            </script>';
         } else {
-            echo '<div class="text-red-500">Error: ' . $user_id->get_error_message() . '</div>';
+            echo '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Registration Failed",
+                        text: "Error: ' . $user_id->get_error_message() . '",
+                        confirmButtonText: "OK"
+                    });
+                });
+            </script>';
         }
     }
 }
