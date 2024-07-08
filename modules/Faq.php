@@ -28,7 +28,7 @@
             
             <!-- Right Column: Image -->
             <div class="faq-right-column">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/faq1.jpg" alt="photo" class="faq-image">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/man-thinking.jpg" alt="a man thinking" class="faq-image">
             </div>
         </div>
     </div>
