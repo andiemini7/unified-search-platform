@@ -378,23 +378,6 @@ add_action('acf/include_fields', function () {
 							),
 						),
 					),
-					'layout_666006e45137b' => array(
-						'key' => 'layout_666006e45137b',
-						'label' => 'Search Bar',
-						'name' => 'search_bar',
-						'type' => 'group',
-						'sub_fields' => array(
-							array(
-								'key' => 'field_search_input',
-								'label' => 'Search Input',
-								'name' => 'search_input',
-								'type' => 'text',
-								'instructions' => 'Enter placeholder text for the search input.',
-							
-						),
-					),
-				),
-
 					'layout_6672f432253d2' => array(
 						'key' => 'layout_6672f432253d2',
 						'name' => 'image',
