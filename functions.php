@@ -2,8 +2,11 @@
 
 require get_template_directory() . '/vendor/autoload.php';
 require_once get_template_directory() . '/includes/employee-registration.php';
+require_once get_template_directory() . '/includes/employee-login.php';
 require get_template_directory() . '/includes/init.php';
-
+require get_template_directory() . '/app/cpt/cpt-members.php';
+require get_template_directory() . '/app/cpt/cpt-teams.php';
+require get_template_directory() . '/app/cpt/cpt-project.php';
 
 // API Endpoint
 function custom_search_endpoints() {
@@ -101,4 +104,25 @@ function custom_search_callback($data, $post_type) {
     return new WP_REST_Response($results, 200);
 }
 
+function redirect_if_not_logged_in() {
+    if (!is_user_logged_in()) {
+        // Allow access to specific pages for non-logged-in users
+        if (!is_page('signin') && !is_page('register')) {
+            wp_redirect(home_url('/signin'));
+            exit();
+        }
+    } else {
+        // Redirect logged-in users away from signin and register pages
+        if (is_page('signin') || is_page('register')) {
+            wp_redirect(home_url('/homepage'));
+            exit();
+        }
+    }
+}
+add_action('template_redirect', 'redirect_if_not_logged_in');
+
 require get_template_directory() .'/app/acf/acf.php';
+
+
+
+

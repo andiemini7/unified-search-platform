@@ -10,18 +10,18 @@ class Setup {
 
         // Register navigation menus
         register_nav_menus([
+            'primary' => __('Primary Menu'),
             'home-menu' => __('Home Menu'),
             'contact-us-menu' => __('Contact Us Menu'),
-            'unified-search-menu' => __('Unified Search Menu')
+            'unified-search-menu' => __('Unified Search Menu'),
+            'product_menu' => __( 'Product Menu' )
         ]);
-        
 
         $this->initialize_acf_options();
     }
 
     private function initialize_acf_options() {
         if (function_exists('acf_add_options_page')) {
-           
             acf_add_options_page(array(
                 'page_title'    => 'Site Settings',
                 'menu_title'    => 'Site Settings',
@@ -31,8 +31,7 @@ class Setup {
                 'position'      => 2,
                 'icon_url'      => 'dashicons-admin-generic'
             ));
-
-           
+    
             acf_add_options_sub_page(array(
                 'page_title'    => 'General Settings',
                 'menu_title'    => 'General Settings',
@@ -41,7 +40,7 @@ class Setup {
                 'position'      => 99,
             ));
         }
-
+    
         if (function_exists('acf_add_local_field_group')) {
             acf_add_local_field_group(array(
                 'key' => 'group_general_settings',
@@ -52,13 +51,26 @@ class Setup {
                         'label' => 'Footer Logo',
                         'name' => 'footer_logo',
                         'type' => 'image',
-                        'return_format' => 'url', 
+                        'return_format' => 'url',
                     ),
                     array(
                         'key' => 'field_footer_text',
                         'label' => 'Footer Text',
                         'name' => 'footer_text',
-                        'type' => 'textarea', 
+                        'type' => 'textarea',
+                    ),
+                    array(
+                        'key' => 'field_navbar_logo',
+                        'label' => 'Navbar Logo',
+                        'name' => 'navbar_logo',
+                        'type' => 'image',
+                        'return_format' => 'url',
+                    ),
+                    array(
+                        'key' => 'field_navbar_text',
+                        'label' => 'Navbar Text',
+                        'name' => 'navbar_text',
+                        'type' => 'text',
                     ),
                 ),
                 'location' => array(
@@ -74,5 +86,3 @@ class Setup {
         }
     }
 }
-
-

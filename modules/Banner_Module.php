@@ -14,11 +14,7 @@ if ($image_block) {
 }
 ?>
 
-<<<<<<< Updated upstream
 <div class="w-full flex flex-col items-center text-center py-8">
-=======
-<div class="w-full flex flex-col items-center text-center py-8 background-color:#E7F0F9;">
->>>>>>> Stashed changes
     <div class="text-content">
         <?php if (!empty($title)) : ?> <br>
             <h2 class="text-4xl font-bold mb-2"><?php echo esc_html($title); ?></h2>
@@ -33,4 +29,3 @@ if ($image_block) {
         <?php endif; ?> <br><br> 
     </div>
 </div>
-

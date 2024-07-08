@@ -1,6 +1,3 @@
-
-
-
 <?php
 // Get the selected post type and selection type from ACF fields
 $post_type = get_sub_field('manual_post_type');
@@ -17,6 +14,7 @@ if ($selection_type === 'manual') {
     // Determine the correct relationship field based on the selected post type
     $manual_posts_field = 'manual_' . $post_type;
     $manual_posts = get_sub_field($manual_posts_field);
+
 
     if (!empty($manual_posts)) {
         $post_ids = wp_list_pluck($manual_posts, 'ID'); // Collect IDs of manually selected posts

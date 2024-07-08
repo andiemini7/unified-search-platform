@@ -173,6 +173,7 @@ add_action('acf/include_fields', function () {
 					'min' => '',
 					'max' => '',
 				),
+
 				'layout_6672f39075b35' => array(
 									'key' => 'layout_6672f39075b35',
 									'name' => 'card',
@@ -811,4 +812,6 @@ add_action( 'acf/include_fields', function() {
 	'description' => '',
 	'show_in_rest' => 0,
 ) );
+
 } );
+

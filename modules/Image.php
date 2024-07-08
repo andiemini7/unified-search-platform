@@ -8,7 +8,7 @@ if (get_row_layout() == 'image') {
     // Determine the image source and display accordingly
     if ($image_source == 'upload' && $image_upload) {
         ?>
-        <div class="flex items-center justify-top">
+        <div class="w-full flex flex-col items-center py-8">
             <div class="image">
                 <img src="<?php echo esc_url($image_upload_url); ?>" alt="<?php echo esc_attr($image_upload['alt']); ?>" class="uploaded-image w-35 h-auto rounded-lg">
             </div>
@@ -16,9 +16,9 @@ if (get_row_layout() == 'image') {
         <?php
     } elseif ($image_source == 'url' && $image_url) {
         ?>
-        <div class="flex items-center justify-center min-h-screen">
+        <div class="w-7/12 mx-auto flex flex-col items-center py-8">
             <div class="image">
-                <img src="<?php echo esc_url($image_url); ?>" alt="Image from URL" class="url-image w-32 h-auto rounded-lg">
+                <img src="<?php echo esc_url($image_url); ?>" alt="Image from URL" class="url-image w-35 h-auto rounded-lg">
             </div>
         </div>
         <?php

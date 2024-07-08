@@ -6,9 +6,55 @@
     <?php wp_head(); ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+<style>
+/*Desktop styles */
+
+body {
+            width: 100%;
+            height: 550px;
+            background-color: #F6F6F6;
+            background-image: url("/wp-content/themes/unified-search-platform/assets/images/character1.png");
+            background-repeat: no-repeat;
+            background-size: 25%;
+            background-position: 15% 115%;
+        }
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    body{
+        background-position: 50% 160%;
+        background-size: 50%;
+    }
+
+    .regh2{
+        margin-top: 20px;
+    }
+    .navbar{
+        width:400px;
+    }
+
+    #mobile-menu-toggle{
+        margin-right: 50%;
+    }
+    .logel{
+        
+        width: 60%;
+        height: 40px;
+    }
+
+    .regel{
+        margin-right: 50%;
+        width: 300px;
+        height: 40px;
+    }
+
+    
+}
+
+</style>
 <body>
 <div class="w-full mx-auto">
-<nav class="bg-white p-4 px-8 mb-4 flex items-center">
+<nav class="bg-[#F6F6F6] p-4 px-8 mb-4 flex items-center">
     <div class="flex items-center">
         <?php 
             $navbar_logo = get_field('navbar_logo', 'option');
@@ -118,3 +164,5 @@
     </div>
 </div>
 </div>
+
+<?php wp_footer(); ?>
