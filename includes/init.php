@@ -5,27 +5,74 @@ namespace Hp\UnifiedSearchPlatform;
 use Hp\UnifiedSearchPlatform\Enqueue;
 use Hp\UnifiedSearchPlatform\Setup;
 use Hp\UnifiedSearchPlatform\Routes;
-use Hp\UnifiedSearchPlatform\App\postTypes\PostTypes;
+use Hp\UnifiedSearchPlatform\App\CustomPostType\PostTypes;
 
 class Init {
     public function __construct() {
         add_action('after_setup_theme', [new Setup(), 'unifiedsearch_setup']);
+        //Documentaions
         add_action('init', [$this, 'register_documentations']);
-        add_action('init', [$this, 'documentation_taxonomies']); 
+        // add_action('init', [$this, 'documentation_taxonomies']);
+        //Members
+        add_action('init', [$this, 'register_members']); 
+        // add_action('init', [$this, 'member_taxonomies']); 
+        //Teams
+        add_action('init', [$this, 'register_teams']); 
+        // add_action('init', [$this, 'team_taxonomies']);
+        //Projects
+        add_action('init', [$this, 'register_projects']); 
+        // add_action('init', [$this, 'project_taxonomies']);
         add_action('wp_enqueue_scripts', [new Enqueue(), 'enqueueStyles']);
         add_action('rest_api_init', [new Routes(), 'register_routes']);
 
     }
 
+    //Documentaions
     public function register_documentations() {
         $postTypes = new PostTypes();
         $postTypes->register_documentations();
     }
 
-    public function documentation_taxonomies() {
+    // public function documentation_taxonomies() {
+    //     $postTypes = new PostTypes();
+    //     $postTypes->documentation_taxonomies();
+    // }
+
+    //Members
+    public function register_members() {
         $postTypes = new PostTypes();
-        $postTypes->documentation_taxonomies();
+        $postTypes->register_members();
     }
+
+    // public function member_taxonomies() {
+    //     $postTypes = new PostTypes();
+    //     $postTypes->member_taxonomies();
+    // }
+
+    //Teams
+    public function register_teams() {
+        $postTypes = new PostTypes();
+        $postTypes->register_teams();
+    }
+
+    // public function team_taxonomies() {
+    //     $postTypes = new PostTypes();
+    //     $postTypes->team_taxonomies();
+    // }
+
+    //Projects
+    public function register_projects() {
+        $postTypes = new PostTypes();
+        $postTypes->register_projects();
+    }
+
+    // public function project_taxonomies() {
+    //     $postTypes = new PostTypes();
+    //     $postTypes->project_taxonomies();
+    // }
+
+
+
 
     public function enqueueStyles() {
         // Enqueue your styles here
