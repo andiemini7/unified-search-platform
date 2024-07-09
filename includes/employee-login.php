@@ -1,3 +1,16 @@
+<!-- <style>
+
+    .signindiv{
+        width: 500px;
+    }
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .signindiv{
+        width: 100%;
+    }
+</style> -->
+
 <?php
 function employee_login_form()
 {
@@ -7,7 +20,7 @@ function employee_login_form()
 ?>
         <h1 class="text-5xl text-black my-3 font-bold">Sign in</h1>
         <h2 class="text-xl text-black my-3 font-bold">Don't have an account? <br /> You can <a href="http://localhost/unified-search-platform/register/" style="color:#4461F2">register here!</a></h2>
-        <div class="w-[500px] mt-5">
+        <div class="signindiv mt-5">
 
             <form id="loginform" action="<?php echo wp_login_url(home_url()); ?>" method="post">
                 <div class="mb-4">

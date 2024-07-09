@@ -5,7 +5,7 @@
 function approve_pending_user($user_id) {
     $user = get_user_by('ID', $user_id);
     if ($user) {
-        $user->set_role('subscriber'); // Change the role to 'subscriber' or any other appropriate role
+        $user->set_role('employee'); // Change the role to 'subscriber' or any other appropriate role
     }
 }
 

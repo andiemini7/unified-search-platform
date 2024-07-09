@@ -16,14 +16,40 @@ body {
             background-image: url("/unified-search-platform/wp-content/themes/unified-search-platform/assets/images/character1.png");
             background-repeat: no-repeat;
             background-size: 25%;
-            background-position: 15% 115%;
+            background-position: 15% 120%;
         }
+
+.msgcard {
+        width: 500px;
+        margin-top: 70px;
+    }
+
+.registerdiv {
+        width: 500px;
+    }
+
+.signindiv {
+        width: 500px;
+    }
+
+.navbtn {
+    display: block;
+    border-radius: 9999px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    padding: 12px 24px;
+    font-weight: 600;
+}
 
 /* Mobile styles */
 @media (max-width: 768px) {
     body{
-        background-position: 50% 165%;
+        background-position: 40% 160%;
         background-size: 50%;
+    }
+    .msgcard{
+        margin-top: 0.5px;
     }
     .logline{
         width:10%;
@@ -46,11 +72,33 @@ body {
 
     .regel{
         margin-right: 50%;
-        width: 300px;
+        width: 100%;
         height: 40px;
     }
 
+    .regelbtn{
+        margin-right: 50%;
+        width:220px;
+        height: 40px;
+    }
+    .retbtn{
+        width:220px;
+        height: 40px;
+    }
+
+    .signindiv{
+        width: 100%;
+    }
     
+}
+
+@media (max-width: 946px) {
+    .msgcard{
+        width: 90%;
+    }
+    .registerdiv{
+        width: 100%;
+    }
 }
 
 </style>
@@ -98,13 +146,13 @@ body {
                 <li class="inline-block mx-1">
                     <a href="<?php echo home_url('/signin/');?>" 
                        id="button-signup"
-                       class="rounded-full border-solid border-2 border-black py-3 px-6 text-black bg-white block font-semibold"
+                       class="navbtn text-black bg-white "
                     >Sign In</a>
                 </li>
                 <li class="inline-block mx-1">
                     <a id="button-register"
                        href="<?php echo home_url('/register/'); ?>" 
-                       class="rounded-full border-solid border-2 border-black py-3 px-6 text-white bg-black block font-semibold"
+                       class="navbtn text-white bg-black "
                     >Register</a>
                 </li>
             <?php endif; ?>
