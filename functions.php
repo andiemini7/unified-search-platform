@@ -161,3 +161,71 @@ function handle_autosuggest() {
     wp_send_json_success($suggestions);
     wp_die();
 }
+
+
+
+add_action('wp_ajax_get_team_details', 'get_team_details');
+add_action('wp_ajax_nopriv_get_team_details', 'get_team_details');
+
+function get_team_details() {
+    
+    $team_id = intval($_POST['team_id']);
+    $team_post = get_post($team_id);
+
+    if ($team_post) {
+        $team_image = get_field('team_image', $team_id); 
+        $team_name = get_the_title($team_id);
+        $team_members = get_field('select_members', $team_id);
+        $team_description = get_field('description', $team_id);
+        $projects = get_field('project', $team_id);
+        $team_leader = get_field('team_leader', $team_id);
+
+       
+        $num_members = $team_members ? count($team_members) : 0;
+
+       
+        $response .= '<div class="bg-white rounded-md p-4">';
+if ($team_image) {
+    $response .= '<img src="' . esc_url($team_image['url']) . '" alt="' . esc_attr($team_image['alt']) . '" class="w-full h-48 object-cover mt-3 mb-6 rounded-lg">';
+}
+$response .= '<h2 class="text-2xl font-bold text-gray-800 mb-4">' . esc_html($team_name) . '</h2>';
+$response .= '<p class="text-gray-800 mb-2"><strong>Description:</strong></p>';
+$response .= '<p class="text-gray-700 mb-4">' . esc_html($team_description) . '</p>';
+$response .= '<p class="text-gray-800 mb-2"><strong>Active members:</strong></p>';
+$response .= '<p class="text-gray-700 mb-6">' . esc_html($num_members) . ' members</p>';
+
+if ($projects) {
+    $response .= '<h3 class=" font-bold text-gray-800 mb-2">Current projects</h3>';
+    $response .= '<div class="flex flex-wrap gap-2 mb-4">';
+    foreach ($projects as $project) {
+        $response .= '<span class="shadow bg-white text-gray-800 px-3  py-2 rounded-lg shadow-md">' . esc_html(get_the_title($project->ID)) . '</span>';
+    }
+    $response .= '</div>';
+}
+
+if ($team_leader) {
+    $leader_name = get_the_title($team_leader->ID);
+    $leader_email = get_field('email', $team_leader->ID);
+    $leader_image = get_field('leader_image_', $team_leader->ID);
+
+
+$response .= '<div class="flex items-center bg-gray-300 p-4 rounded-lg mt-6 overflow-hidden">';
+if ($leader_image) {
+    $response .= '<img src="' . esc_url($leader_image['url']) . '" class="w-16 h-16 rounded-full mr-4" alt="' . esc_attr($leader_image['alt']) . '">';
+} else {
+    $response .= '<img src="' . esc_url(get_avatar_url($team_leader->ID)) . '" class="w-16 h-16 rounded-lg mr-4 text-sm" alt="Leader">';
+}
+$response .= '<div class="flex-1">';
+$response .= '<p class="font-bold text-gray-800">' . esc_html($leader_name) . '</p>';
+$response .= '<p class="text-gray-700 text-sm">' . esc_html($leader_email) . '</p>';
+$response .= '</div>';
+$response .= '<span class="bg-gray-200 text-black px-3 py-1 rounded-lg ml-auto">Team leader</span>';
+$response .= '</div>';
+}
+$response .= '</div>';
+
+        echo $response;
+    }
+
+    wp_die();
+}
