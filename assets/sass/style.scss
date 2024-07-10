@@ -261,3 +261,11 @@ nav .menu-item-has-children {
     border-radius: 9999px;
   }
   
+
+  .search-container {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
