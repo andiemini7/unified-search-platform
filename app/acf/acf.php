@@ -173,99 +173,157 @@ add_action('acf/include_fields', function () {
 					'min' => '',
 					'max' => '',
 				),
-					'layout_6672f39075b35' => array(
-						'key' => 'layout_6672f39075b35',
-						'name' => 'card',
-						'label' => 'Card',
-						'display' => 'block',
-						'sub_fields' => array(
-							array(
-								'key' => 'field_6672f3a575b37',
-								'label' => 'Name',
-								'name' => 'name',
-								'aria-label' => '',
-								'type' => 'text',
-								'instructions' => '',
-								'required' => 0,
-								'conditional_logic' => 0,
-								'wrapper' => array(
-									'width' => '',
-									'class' => '',
-									'id' => '',
+
+				'layout_6672f39075b35' => array(
+									'key' => 'layout_6672f39075b35',
+									'name' => 'card',
+									'label' => 'Card',
+									'sub_fields' => array(
+										array(
+											'key' => 'field_selection_type',
+											'label' => 'Selection Type',
+											'name' => 'selection_type',
+											'type' => 'radio',
+											'choices' => array(
+												'latest' => 'Latest',
+												'manual' => 'Manual',
+											),
+											'default_value' => 'latest',
+										),
+										array(
+											'key' => 'field_manual_post_type',
+											'label' => 'Select Post Type',
+											'name' => 'manual_post_type',
+											'type' => 'button_group',
+											'choices' => array(
+												'post' => 'Posts',
+												'teams' => 'Teams',
+												'members' => 'Members',
+												'documentation' => 'Documentation',
+											),
+											'layout' => 'horizontal',
+											'return_format' => 'value',
+											'conditional_logic' => array(
+												array(
+													array(
+														'field' => 'field_selection_type',
+														'operator' => '==',
+														'value' => 'manual',
+													),
+												),
+											),
+										),
+										array(
+											'key' => 'field_manual_posts',
+											'label' => 'Manual Posts',
+											'name' => 'manual_posts',
+											'type' => 'relationship',
+											'post_type' => array('post'), 
+											'conditional_logic' => array(
+												array(
+													array(
+														'field' => 'field_selection_type',
+														'operator' => '==',
+														'value' => 'manual',
+													),
+													array(
+														'field' => 'field_manual_post_type',
+														'operator' => '==',
+														'value' => 'post',
+													),
+												),
+											),
+											'filters' => array(
+												'search',
+											),
+											'elements' => array(
+												'featured_image',
+											),
+										),
+										array(
+											'key' => 'field_manual_teams',
+											'label' => 'Manual Teams',
+											'name' => 'manual_teams',
+											'type' => 'relationship',
+											'post_type' => array('teams'), 
+											'conditional_logic' => array(
+												array(
+													array(
+														'field' => 'field_selection_type',
+														'operator' => '==',
+														'value' => 'manual',
+													),
+													array(
+														'field' => 'field_manual_post_type',
+														'operator' => '==',
+														'value' => 'teams',
+													),
+												),
+											),
+											'filters' => array(
+												'search',
+											),
+											'elements' => array(
+												'featured_image',
+											),
+										),
+										array(
+											'key' => 'field_manual_members',
+											'label' => 'Manual Members',
+											'name' => 'manual_members',
+											'type' => 'relationship',
+											'post_type' => array('members'), 
+											'conditional_logic' => array(
+												array(
+													array(
+														'field' => 'field_selection_type',
+														'operator' => '==',
+														'value' => 'manual',
+													),
+													array(
+														'field' => 'field_manual_post_type',
+														'operator' => '==',
+														'value' => 'members',
+													),
+												),
+											),
+											'filters' => array(
+												'search',
+											),
+											'elements' => array(
+												'featured_image',
+											),
+										),
+										array(
+											'key' => 'field_manual_documentation',
+											'label' => 'Manual Documentation',
+											'name' => 'manual_documentation',
+											'type' => 'relationship',
+											'post_type' => array('documentation'), 
+											'conditional_logic' => array(
+												array(
+													array(
+														'field' => 'field_selection_type',
+														'operator' => '==',
+														'value' => 'manual',
+													),
+													array(
+														'field' => 'field_manual_post_type',
+														'operator' => '==',
+														'value' => 'documentation',
+													),
+												),
+											),
+											'filters' => array(
+												'search',
+											),
+											'elements' => array(
+												'featured_image',
+											),
+										),
+									),
 								),
-								'default_value' => '',
-								'maxlength' => '',
-								'placeholder' => '',
-								'prepend' => '',
-								'append' => '',
-							),
-							array(
-								'key' => 'field_6672f3ac75b38',
-								'label' => 'Date',
-								'name' => 'date',
-								'aria-label' => '',
-								'type' => 'date_picker',
-								'instructions' => '',
-								'required' => 0,
-								'conditional_logic' => 0,
-								'wrapper' => array(
-									'width' => '',
-									'class' => '',
-									'id' => '',
-								),
-								'display_format' => 'F j, Y',
-								'return_format' => 'F j, Y',
-								'first_day' => 1,
-							),
-							array(
-								'key' => 'field_6672f3c875b39',
-								'label' => 'Description',
-								'name' => 'description',
-								'aria-label' => '',
-								'type' => 'textarea',
-								'instructions' => '',
-								'required' => 0,
-								'conditional_logic' => 0,
-								'wrapper' => array(
-									'width' => '',
-									'class' => '',
-									'id' => '',
-								),
-								'default_value' => '',
-								'maxlength' => '',
-								'rows' => '',
-								'placeholder' => '',
-								'new_lines' => '',
-							),
-							array(
-								'key' => 'field_6672f3dc75b3a',
-								'label' => 'Image',
-								'name' => 'image',
-								'aria-label' => '',
-								'type' => 'image',
-								'instructions' => '',
-								'required' => 0,
-								'conditional_logic' => 0,
-								'wrapper' => array(
-									'width' => '',
-									'class' => '',
-									'id' => '',
-								),
-								'return_format' => 'array',
-								'library' => 'all',
-								'min_width' => '',
-								'min_height' => '',
-								'min_size' => '',
-								'max_width' => '',
-								'max_height' => '',
-								'max_size' => '',
-								'mime_types' => '',
-								'preview_size' => 'medium',
-							),
-						),
-						'min' => '',
-						'max' => '',
-					),
+
 					'layout_66741577303f8' => array(
 						'key' => 'layout_66741577303f8',
 						'name' => 'iframe_block',
@@ -467,16 +525,6 @@ add_action('acf/include_fields', function () {
 	));
 });
 
-
-
-
-
-
-
-
-
-
-//----
 add_action( 'acf/include_fields', function() {
 	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
 		return;
@@ -781,4 +829,6 @@ add_action( 'acf/include_fields', function() {
 	'description' => '',
 	'show_in_rest' => 0,
 ) );
+
 } );
+
