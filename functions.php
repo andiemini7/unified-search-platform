@@ -132,3 +132,32 @@ function add_pending_user_role() {
     ));
 }
 add_action('init', 'add_pending_user_role');
+
+
+function handle_autosuggest() {
+    if (ob_get_length()) ob_clean();
+
+    $search_term = sanitize_text_field($_GET['term']); 
+    $args = array(
+        's' => $search_term,
+        'post_type' => array('post', 'page','documentation','members','teams','projects'), 
+        'posts_per_page' => 10, 
+    );
+
+    $query = new WP_Query($args);
+    $suggestions = array();
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            $suggestions[] = array(
+                'title' => get_the_title(),
+                'link' => get_permalink(),
+            );
+        }
+    }
+
+    wp_reset_postdata();
+    wp_send_json_success($suggestions);
+    wp_die();
+}

@@ -45,8 +45,7 @@
         <ul class="hidden lg:flex items-center">
             <?php if (is_user_logged_in()) : ?>
                 <!-- Include search bar for desktop -->
-                <?php include_once 'views/searchBar.php'; ?>
-            <?php else : ?>
+                <?php else : ?>
                 <li class="inline-block mx-1">
                     <a href="<?php echo home_url('/signin/');?>" 
                        id="button-signup"
