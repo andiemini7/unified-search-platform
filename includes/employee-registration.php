@@ -1,22 +1,3 @@
-<!-- <style>
-    .msgcard{
-        width: 500px;
-    }
-
-    .registerdiv{
-        width: 500px;
-    }
-
-/* Mobile styles */
-@media (max-width: 946px) {
-    .msgcard{
-        width: 90%;
-    }
-    .registerdiv{
-        width: 100%;
-    }
-}
-</style> -->
 
 <?php
 // Create 'employee' role
