@@ -98,6 +98,51 @@ add_action('acf/include_fields', function () {
 						'min' => '',
 						'max' => '',
 					),
+					'layout_6688695f441ae' => array(
+						'key' => 'layout_6688695f441ae',
+						'name' => 'teams_module',
+						'label' => 'Teams Module',
+						'display' => 'block',
+						'sub_fields' => array(
+							array(
+								'key' => 'field_66886973441b0',
+								'label' => 'Teams Module',
+								'name' => 'teams_module',
+								'aria-label' => '',
+								'type' => 'relationship',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'post_type' => array(
+									0 => 'teams',
+								),
+								'post_status' => '',
+								'taxonomy' => '',
+								'filters' => array(
+									0 => 'search',
+									1 => 'post_type',
+									2 => 'taxonomy',
+								),
+								'return_format' => 'object',
+								'min' => '',
+								'max' => '',
+								'elements' => '',
+								'bidirectional' => 0,
+								'bidirectional_target' => array(
+								),
+							),
+						),
+						'min' => '',
+						'max' => '',
+					),
+
+
+
 					'layout_6673c54e2104b' => array(
 					'key' => 'layout_6673c54e2104b',
 					'name' => 'faq',
