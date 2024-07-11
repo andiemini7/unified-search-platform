@@ -13,7 +13,7 @@ body {
             width: 100%;
             height: 550px;
             background-color: #F6F6F6;
-            background-image: url("/unified-search-platform/wp-content/themes/unified-search-platform/assets/images/character1.png");
+            background-image: url("https://i.ibb.co/pP0pQmF/character1.png");
             background-repeat: no-repeat;
             background-size: 25%;
             background-position: 15% 120%;
@@ -112,7 +112,7 @@ body {
         ?>
         <a href="<?php echo home_url(); ?>" class="flex items-center text-[#2F628C] text-xl font-bold">
             <?php if ($navbar_logo): ?>
-                <img src="<?php echo esc_url($navbar_logo); ?>" alt="Logo" class="bg-cover bg-center h-10 w-full object-contain">
+                <img src="https://i.ibb.co/MBqkVxm/unified-logo-black.png" alt="Unified Logo" class="bg-cover bg-center h-10 w-full object-contain">
             <?php elseif ($navbar_text): ?>
                 <span><?php echo esc_html($navbar_text); ?></span>
             <?php else: ?>
