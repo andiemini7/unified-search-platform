@@ -1,15 +1,4 @@
-<!-- <style>
 
-    .signindiv{
-        width: 500px;
-    }
-
-/* Mobile styles */
-@media (max-width: 768px) {
-    .signindiv{
-        width: 100%;
-    }
-</style> -->
 
 <?php
 function employee_login_form()
