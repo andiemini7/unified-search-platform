@@ -1,5 +1,5 @@
 <?php if (have_rows('faq')) : ?>
-    <div class="faq-container py-8 px-4">
+    <div class="container mx-auto faq-container py-8 px-4">
         <div class="faq-content">
             <!-- Left Column: Frequently Asked Questions -->
             <div class="faq-left-column">

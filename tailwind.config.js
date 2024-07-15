@@ -11,6 +11,9 @@ module.exports = {
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
       },
+      backgroundImage: {
+        'grey-gradient': 'linear-gradient(to bottom, #e0e0e0, #ffffff)',
+      }
     },
   },
   variants: {
