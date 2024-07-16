@@ -1,13 +1,24 @@
 <?php
 $id = get_the_id();
-
 $search_input = get_field('search_input', $id);
+$topSuggestions = get_top_suggestions();
 ?>
-
-<div class="search-container flex justify-center items-center">
-    <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="max-w-lg mx-auto relative w-full">
-        <div class="relative flex items-center w-full">
-            <button type="submit" id="search-icon" class="absolute left-2 cursor-pointer">
+<div class="min-h-screen bg-gradient-to-b from-white to-gray-200 flex flex-col justify-center items-center w-full">
+    <!-- Top Suggestions Container -->
+    <div id="top-suggestions" class="max-w-5xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4 lg:px-0">
+        <?php foreach ($topSuggestions as $suggestion): ?>
+            <div class="suggestion-card flex flex-col items-start bg-white border border-gray-200 shadow-lg rounded-lg p-6 text-gray-800" data-title="<?php echo esc_attr($suggestion['title']); ?>">
+                <div class="icon mb-2"><?php echo $suggestion['icon']; ?></div>
+                <div class="text-left">
+                    <h3 class="text-xl font-medium mb-2"><?php echo $suggestion['title']; ?></h3>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <!-- Search Form -->
+    <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="w-full mx-auto relative mt-10">
+        <div class="relative flex items-center justify-center mx-auto w-3/4">
+            <button type="submit" id="search-icon" class="absolute left-4 cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28" viewBox="0 0 24 24" fill="#ffffff" stroke="#000000">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -21,27 +32,18 @@ $search_input = get_field('search_input', $id);
                 </svg>
             </button>
         </div>
-        <div id="suggestions" class="hidden absolute w-full bg-white border border-gray-200 shadow-lg rounded-lg mt-1 z-10"></div>
+        <div class="w-3/4 mx-auto">
+            <div id="suggestions" class="hidden w-3/4 absolute bg-white border border-gray-200 shadow-lg rounded-lg mt-1 z-10"></div>
+        </div>
     </form>
 </div>
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
     const clearSearch = document.getElementById('clear-search');
     const suggestions = document.getElementById('suggestions');
 
-    searchInput.addEventListener('input', function() {
-        const query = searchInput.value.trim();
-
-        if (query.length === 0) {
-            clearSearch.classList.add('hidden');
-            clearSuggestions();
-            return;
-        } else {
-            clearSearch.classList.remove('hidden');
-        }
-
+    function fetchSuggestions(query) {
         fetch(`<?php echo admin_url('admin-ajax.php'); ?>?action=autosuggest&term=${encodeURIComponent(query)}`)
             .then(response => response.text())
             .then(text => {
@@ -71,6 +73,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 suggestions.innerHTML = '<p class="p-2 text-sm">Error fetching suggestions</p>';
                 suggestions.classList.remove('hidden');
             });
+    }
+
+    searchInput.addEventListener('input', function() {
+        const query = searchInput.value.trim();
+
+        if (query.length === 0) {
+            clearSearch.classList.add('hidden');
+            clearSuggestions();
+            return;
+        } else {
+            clearSearch.classList.remove('hidden');
+        }
+
+        fetchSuggestions(query);
     });
 
     clearSearch.addEventListener('click', function() {
@@ -99,5 +115,89 @@ document.addEventListener('DOMContentLoaded', function() {
             clearSuggestions();
         }
     });
+
+    const suggestionCards = document.querySelectorAll('.suggestion-card');
+    suggestionCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const title = card.getAttribute('data-title');
+            searchInput.value = title;
+            fetchSuggestions(title);
+        });
+    });
 });
 </script>
+
+<style>
+#clear-search {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px; 
+    background-color: transparent;
+    border: none;
+}
+
+#clear-search svg {
+    width: 1.5rem; 
+    height: 1.5rem;
+    fill: #6B7280; 
+}
+
+#clear-search:hover svg {
+    fill: #000000; 
+}
+
+#top-suggestions {
+    max-width: 1100px; 
+    width: 100%;
+    margin-top: auto;
+    display: grid;
+    gap: 10px;
+}
+
+.suggestion-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.1), 0px 1px 1px 0px rgba(0, 0, 0, 0.06);
+    border-radius: 1rem; 
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    width: 100%;
+    padding: 0.7rem;
+    cursor: pointer;
+}
+
+.suggestion-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.1), 0px 8px 10px 1px rgba(0, 0, 0, 0.06);
+}
+
+.suggestion-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #111827;
+}
+
+@media (max-width: 768px) {
+    .suggestion-card {
+        padding: 1rem;
+    }
+}
+
+form {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 20px; 
+}
+
+.icon {
+    width: 30px; 
+    height: 30px;
+    margin-right: 10px; 
+}
+
+.icon svg {
+    width: 100%; 
+    height: 100%; 
+}
+</style>

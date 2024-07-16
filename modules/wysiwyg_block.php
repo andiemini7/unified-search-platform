@@ -6,7 +6,7 @@ $content = get_sub_field('wysiwyg_editor', $id);
 
 ?>
 
-<div id="content-module" class="wysiwyg-content">
+<div id="content-module" class="container mx-auto wysiwyg-content">
 <h1 id="wysiwyg_editor"> 
     <?= $content ?>
 </h1>
