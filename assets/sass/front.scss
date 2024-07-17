@@ -1,4 +1,8 @@
+
 @import 'variables.scss';
+@import 'parts/global.scss';
+@import 'parts/search-bar.scss';
+
 .menu-item-has-children {
     position: relative;
 
@@ -96,3 +100,4 @@ nav .flex .text-2xl {
 .sub-menu .menu-item a {
     padding: 8px 12px;
 }
+
