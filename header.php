@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="w-full mx-auto">
-<nav class="bg-white p-4 px-8 mb-4 flex items-center">
+<nav id="main-navbar" class="bg-white p-4 px-8 mb-4 flex items-center transition-shadow duration-300">
     <div class="flex items-center">
         <?php 
             $navbar_logo = get_field('navbar_logo', 'option');
@@ -16,7 +16,7 @@
         ?>
         <a href="<?php echo home_url(); ?>" class="flex items-center text-[#2F628C] text-xl font-bold">
             <?php if ($navbar_logo): ?>
-                <img src="<?php echo esc_url($navbar_logo); ?>" alt="Logo" class="bg-cover bg-center h-10 w-full object-contain">
+                <img src="https://i.ibb.co/bv8p1pn/starlabslogo.png" alt="Logo" class="starlabs-logo bg-cover bg-center h-[60px] ml-[35px] w-full object-contain">
             <?php elseif ($navbar_text): ?>
                 <span><?php echo esc_html($navbar_text); ?></span>
             <?php else: ?>
@@ -25,19 +25,21 @@
         </a>
 
         <!-- Desktop Menu -->
+        <div class="navbar-links ml-[40px]">
         <?php if (is_user_logged_in()) : ?>
-        <div class="hidden lg:flex lg:mx-10 text-lg uppercase ml-10">
+        <div class="hidden lg:flex lg:mx-10 text-sm uppercase">
             <?php
             wp_nav_menu(array(
                 'theme_location' => 'unified-search-menu',
                 'container' => false,
-                'menu_class' => 'flex text-[#2F628C]',
-                'link_before' => '<span class="text-black font-semibold">',
+                'menu_class' => 'flex text-[#2F628C] ',
+                'link_before' => '<span class="text-black font-extralight hover:text-stone-400 transition ease-out duration-100">',
                 'link_after' => '</span>',
             ));
             ?>
         </div>
         <?php endif; ?>
+        </div>
     </div>
 
     <!-- Search and Authentication Links -->
@@ -66,7 +68,7 @@
         <div class="flex items-center lg:hidden ml-auto">
             <button id="mobile-menu-toggle" class="text-black">
                 <i class="fas fa-bars"></i>
-                <i class="fas fa-times hidden"></i>
+
             </button>
         </div>
 </nav>
@@ -117,3 +119,16 @@
     </div>
 </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.getElementById('main-navbar');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 0) {
+            navbar.classList.add('sticky');
+        } else {
+            navbar.classList.remove('sticky');
+        }
+    });
+});
+</script>

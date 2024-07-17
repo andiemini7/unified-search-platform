@@ -117,7 +117,11 @@ if (isset($locations[$menu_name])) {
 
         <div class="newsletter-form">
             <?php if ($subscribed) : ?>
-                <h1 class="flex text-center mt-[40px] fas fa-bell">Thank you for subscribing to our newsletter</h1>
+                <div class="flex items-center">
+                <h1 class="flex text-center mt-[40px]"> Thank you for subscribing to our newsletter  </h1>
+                <h1 class="flex text-center mt-[40px] ml-[5px] fas fa-bell"></h1>
+                </div>
+                
             <?php else : ?>
                 <form class="subscribe-form flex mt-[30px] mr-[30%]" method="post" action="">
                     <input type="email" class="subscribe-email rounded-l-lg p-[5px] h-auto" name="email" placeholder="Subscribe to us" required>

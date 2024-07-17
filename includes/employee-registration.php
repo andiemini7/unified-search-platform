@@ -1,4 +1,3 @@
-
 <?php
 // Create 'employee' role
 function add_employee_role() {
