@@ -270,3 +270,30 @@ nav .menu-item-has-children {
     justify-content: center;
     align-items: center;
 }
+
+#main-navbar {
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+#main-navbar.sticky {
+    margin-top: 32px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    #main-navbar.sticky {
+        margin-top: 0px;
+    }
+    .starlabs-logo{
+        margin-left: 5px;
+    }
+}
