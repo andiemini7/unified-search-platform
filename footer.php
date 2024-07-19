@@ -21,7 +21,7 @@
         }
 
         .subscribe-button {
-            width: 120px;
+            width: 50px;
 
         }
     }
@@ -58,7 +58,7 @@ if (isset($locations[$menu_name])) {
                 $footer_text = get_field('footer_text', 'option');
 
                 if ($footer_logo) {
-                    echo '<img class="h-[80px] w-auto" src="' . esc_url($footer_logo) . '" alt="Footer Logo">';
+                    echo '<img class="h-[80px] w-auto" src="https://i.ibb.co/bv8p1pn/starlabslogo.png' . '" alt="Footer Logo">';
                 } else {
 
                     echo '<img class=" w-full mb-2" src="' . esc_url(get_template_directory_uri() . '/path/to/default-logo.png') . '" alt="Unified Search">';
@@ -97,7 +97,7 @@ if (isset($locations[$menu_name])) {
 
         <?php
         if ($footer_logo) {
-            echo '<img class="footer-logo w-auto mb-2 h-[100px] ml-[30%]" src="' . esc_url($footer_logo) . '" alt="Footer Logo">';
+            echo '<img class="footer-logo w-auto mb-2 h-[80px] ml-[20%] mt-[10px]" src="https://i.ibb.co/bv8p1pn/starlabslogo.png' . '" alt="Footer Logo">';
         } else {
             echo '<p class="text-sm font-normal leading-5 text-red-500">Footer logo is missing. Please add it in the general settings.</p>';
             echo '<img class=" w-auto mb-2" src="' . esc_url(get_template_directory_uri() . '/path/to/default-logo.png') . '" alt="Unified Search">';
@@ -125,7 +125,7 @@ if (isset($locations[$menu_name])) {
             <?php else : ?>
                 <form class="subscribe-form flex mt-[30px] mr-[30%]" method="post" action="">
                     <input type="email" class="subscribe-email rounded-l-lg p-[5px] h-auto" name="email" placeholder="Subscribe to us" required>
-                    <button type="submit" class="subscribe-button rounded-r-lg flex px-[5px] py-[10px] h-auto w-[150px] items-center text-white fas fa-arrow-right bg-black justify-center transition ease-out duration-300" name="subscribe"></button>
+                    <button type="submit" class="subscribe-button rounded-r-lg flex px-[5px] py-[10px] h-auto w-[50px] items-center text-white fas fa-arrow-right bg-black justify-center transition ease-out duration-300 hover:bg-[#000000b3]" name="subscribe"></button>
                 </form>
             <?php endif; ?>
         </div>
