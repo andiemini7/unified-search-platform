@@ -99,7 +99,16 @@ function custom_search_callback($data, $post_type) {
     }
 
     wp_reset_postdata();
-    return new WP_REST_Response($results, 200);
+
+    // Calculate total number of pages
+    $total_pages = $query->max_num_pages;
+
+    // Return results and total number of pages
+    return new WP_REST_Response(array(
+        'results' => $results,
+        'total_pages' => $total_pages,
+        'current_page' => $paged
+    ), 200);
 }
 
 function redirect_if_not_logged_in() {
