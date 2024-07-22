@@ -284,3 +284,138 @@ function get_top_suggestions() {
 
     return $top_suggestions;
 }
+
+
+function enqueue_custom_scripts() {
+    wp_enqueue_script( 'custom-modal-script', get_template_directory_uri() . '/js/custom-modal.js', array(), '1.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_custom_scripts' );
+function custom_post_type_resources() {
+    $labels = array(
+        'name'                  => _x('Resources', 'Post Type General Name', 'text_domain'),
+        'singular_name'         => _x('Resource', 'Post Type Singular Name', 'text_domain'),
+        'menu_name'             => __('Resources', 'text_domain'),
+        'name_admin_bar'        => __('Resource', 'text_domain'),
+        'archives'              => __('Resource Archives', 'text_domain'),
+        'attributes'            => __('Resource Attributes', 'text_domain'),
+        'parent_item_colon'     => __('Parent Resource:', 'text_domain'),
+        'all_items'             => __('All Resources', 'text_domain'),
+        'add_new_item'          => __('Add New Resource', 'text_domain'),
+        'add_new'               => __('Add New', 'text_domain'),
+        'new_item'              => __('New Resource', 'text_domain'),
+        'edit_item'             => __('Edit Resource', 'text_domain'),
+        'update_item'           => __('Update Resource', 'text_domain'),
+        'view_item'             => __('View Resource', 'text_domain'),
+        'view_items'            => __('View Resources', 'text_domain'),
+        'search_items'          => __('Search Resource', 'text_domain'),
+        'not_found'             => __('Not found', 'text_domain'),
+        'not_found_in_trash'    => __('Not found in Trash', 'text_domain'),
+        'featured_image'        => __('Featured Image', 'text_domain'),
+        'set_featured_image'    => __('Set featured image', 'text_domain'),
+        'remove_featured_image' => __('Remove featured image', 'text_domain'),
+        'use_featured_image'    => __('Use as featured image', 'text_domain'),
+        'insert_into_item'      => __('Insert into resource', 'text_domain'),
+        'uploaded_to_this_item' => __('Uploaded to this resource', 'text_domain'),
+        'items_list'            => __('Resources list', 'text_domain'),
+        'items_list_navigation' => __('Resources list navigation', 'text_domain'),
+        'filter_items_list'     => __('Filter resources list', 'text_domain'),
+    );
+    $args = array(
+        'label'                 => __('Resource', 'text_domain'),
+        'description'           => __('Resource Description', 'text_domain'),
+        'labels'                => $labels,
+        'supports'              => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
+        'taxonomies'            => array('resource_category'),
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'menu_position'         => 5,
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => true,
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'capability_type'       => 'post',
+    );
+    register_post_type('resources', $args);
+}
+add_action('init', 'custom_post_type_resources', 0);
+
+// Add Meta Box
+function add_custom_meta_box() {
+    add_meta_box(
+        'additional_description',
+        __('Additional Description', 'text_domain'),
+        'additional_description_callback',
+        'resources',
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'add_custom_meta_box');
+
+// Meta Box Callback
+function additional_description_callback($post) {
+    wp_nonce_field(basename(__FILE__), 'additional_description_nonce');
+    $additional_description = get_post_meta($post->ID, '_additional_description', true);
+    ?>
+    <textarea style="width:100%" rows="5" name="additional_description"><?php echo esc_textarea($additional_description); ?></textarea>
+    <?php
+}
+
+// Save Meta Box Data
+function save_additional_description($post_id) {
+    if (!isset($_POST['additional_description_nonce']) || !wp_verify_nonce($_POST['additional_description_nonce'], basename(__FILE__))) {
+        return;
+    }
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    if (isset($_POST['post_type']) && 'resources' == $_POST['post_type']) {
+        if (!current_user_can('edit_post', $post_id)) {
+            return;
+        }
+    }
+    $new_meta_value = (isset($_POST['additional_description']) ? sanitize_text_field($_POST['additional_description']) : '');
+    update_post_meta($post_id, '_additional_description', $new_meta_value);
+}
+add_action('save_post', 'save_additional_description');
+
+
+function custom_taxonomy_resource_category() {
+    $labels = array(
+        'name'                       => _x('Resource Categories', 'Taxonomy General Name', 'text_domain'),
+        'singular_name'              => _x('Resource Category', 'Taxonomy Singular Name', 'text_domain'),
+        'menu_name'                  => __('Resource Category', 'text_domain'),
+        'all_items'                  => __('All Items', 'text_domain'),
+        'parent_item'                => __('Parent Item', 'text_domain'),
+        'parent_item_colon'          => __('Parent Item:', 'text_domain'),
+        'new_item_name'              => __('New Item Name', 'text_domain'),
+        'add_new_item'               => __('Add New Item', 'text_domain'),
+        'edit_item'                  => __('Edit Item', 'text_domain'),
+        'update_item'                => __('Update Item', 'text_domain'),
+        'view_item'                  => __('View Item', 'text_domain'),
+        'separate_items_with_commas' => __('Separate items with commas', 'text_domain'),
+        'add_or_remove_items'        => __('Add or remove items', 'text_domain'),
+        'choose_from_most_used'      => __('Choose from the most used', 'text_domain'),
+        'popular_items'              => __('Popular Items', 'text_domain'),
+        'search_items'               => __('Search Items', 'text_domain'),
+        'not_found'                  => __('Not Found', 'text_domain'),
+        'no_terms'                   => __('No items', 'text_domain'),
+        'items_list'                 => __('Items list', 'text_domain'),
+        'items_list_navigation'      => __('Items list navigation', 'text_domain'),
+    );
+    $args = array(
+        'labels'                     => $labels,
+        'hierarchical'               => true,
+        'public'                     => true,
+        'show_ui'                    => true,
+        'show_admin_column'          => true,
+        'show_in_nav_menus'          => true,
+        'show_tagcloud'              => true,
+    );
+    register_taxonomy('resource_category', array('resources'), $args);
+}
+add_action('init', 'custom_taxonomy_resource_category', 0);
