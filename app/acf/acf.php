@@ -218,6 +218,106 @@ add_action('acf/include_fields', function () {
 					'min' => '',
 					'max' => '',
 				),
+				'layout_6697a178fb162' => array(
+					'key' => 'layout_6697a178fb162',
+					'name' => 'resources_module',
+					'label' => 'Resources Module',
+					'display' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_6697a1b0fb164',
+							'label' => 'Resource Category',
+							'name' => 'resource_category',
+							'aria-label' => '',
+							'type' => 'taxonomy',
+							'instructions' => 'Select the resources category.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'taxonomy' => 'resource_category',
+							'add_term' => 0,
+							'save_terms' => 0,
+							'load_terms' => 0,
+							'return_format' => 'id',
+							'field_type' => 'select',
+							'allow_null' => 0,
+							'bidirectional' => 0,
+							'multiple' => 0,
+							'bidirectional_target' => array(
+							),
+						),
+						array(
+							'key' => 'field_6697a20afb165',
+							'label' => 'Resource Selection Type',
+							'name' => 'resource_selection_type',
+							'aria-label' => '',
+							'type' => 'radio',
+							'instructions' => 'Choose whether to display the latest 7 resources or manually select resources.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'choices' => array(
+								'Latest' => 'Latest',
+								'Manual' => 'Manual',
+							),
+							'default_value' => '',
+							'return_format' => 'value',
+							'allow_null' => 0,
+							'other_choice' => 0,
+							'layout' => 'horizontal',
+							'save_other_choice' => 0,
+						),
+						array(
+							'key' => 'field_6697a23efb166',
+							'label' => 'Select Resources',
+							'name' => 'select_resources',
+							'aria-label' => '',
+							'type' => 'relationship',
+							'instructions' => 'Select resources.',
+							'required' => 0,
+							'conditional_logic' => array(
+								array(
+									array(
+										'field' => 'field_6697a20afb165',
+										'operator' => '==',
+										'value' => 'Manual',
+									),
+								),
+							),
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'post_type' => array(
+								0 => 'resources',
+							),
+							'post_status' => '',
+							'taxonomy' => '',
+							'filters' => array(
+								0 => 'taxonomy',
+							),
+							'return_format' => 'object',
+							'min' => '',
+							'max' => '',
+							'elements' => '',
+							'bidirectional' => 0,
+							'bidirectional_target' => array(
+							),
+						),
+					),
+					'min' => '',
+					'max' => '',
+				),
+
 				'layout_668da3b98a49e' => array(
 					'key' => 'layout_668da3b98a49e',
 					'name' => 'stats_module',
@@ -613,6 +713,7 @@ add_action('acf/include_fields', function () {
 						'max' => '',
 					),
 				),
+				
 
 				
 				'min' => '',
