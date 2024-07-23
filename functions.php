@@ -251,17 +251,17 @@ function get_top_suggestions() {
     $top_suggestions = array();
 
     $icons = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FF5733"  viewBox="0 0 24 24">
     <path d="M12 2c-3.31 0-6 2.69-6 6v6c0 .55.45 1 1 1h10c.55 0 1-.45 1-1v-6c0-3.31-2.69-6-6-6zm-2 16h4v2h-4v-2zm2-5.5c1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5-2.5 1.12-2.5 2.5 1.12 2.5 2.5 2.5z"/>
 </svg>',
-    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#33FF57" viewBox="0 0 24 24">
     <path d="M12 3L2 12h3v8h6v-6h4v6h6v-8h3L12 3zm7 15h-4v-6h-4v6H7v-8.18l5-4.5 5 4.5V18z"/>
 </svg>',
-'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#3357FF"  viewBox="0 0 24 24">
     <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 2H7v2h5V4zm6 16H7v-2h11v2zm0-4H7v-2h11v2zm0-4H7V8h11v2z"/>
 </svg>
 ',
-'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FF8C00" viewBox="0 0 24 24">
     <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
 </svg>',
     ];
