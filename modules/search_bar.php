@@ -39,15 +39,13 @@ $topSuggestions = get_top_suggestions();
 </div>
 
 <script>
-    // assets/js/parts/search-bar.js
-
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
     const clearSearch = document.getElementById('clear-search');
     const suggestions = document.getElementById('suggestions');
 
     function fetchSuggestions(query) {
-        fetch(`http://localhost/wp-admin/admin-ajax.php?action=autosuggest&term=${encodeURIComponent(query)}`)
+        fetch(`<?php echo admin_url('admin-ajax.php'); ?>?action=autosuggest&term=${encodeURIComponent(query)}`)
             .then(response => response.text())
             .then(text => {
                 try {
@@ -128,5 +126,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
 </script>

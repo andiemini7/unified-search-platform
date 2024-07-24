@@ -419,3 +419,4 @@ function custom_taxonomy_resource_category() {
     register_taxonomy('resource_category', array('resources'), $args);
 }
 add_action('init', 'custom_taxonomy_resource_category', 0);
+
