@@ -70,7 +70,7 @@ if (isset($locations[$menu_name])) {
             <?php foreach ($menu_items as $parent) : ?>
                 <div class="flex flex-col items-center md:items-center">
                     <h2 class="text-lg font-medium mb-2 leading-5 font-semibold"><?php echo esc_html($parent['item']->post_title); ?></h2>
-                    <ul class="text-sm font-normal leading-5 text-gray-700">
+                    <ul class="text-sm font-normal leading-5 text-gray-700 text-center">
                         <?php foreach ($parent['children'] as $child) : ?>
                             <li class="mb-2">
                                 <a href="<?php echo esc_url($child->url); ?>" class="hover:underline"><?php echo esc_html($child->title); ?></a>
