@@ -3,7 +3,7 @@
         <div class="faq-content">
             <!-- Left Column: Frequently Asked Questions -->
             <div class="faq-left-column">
-                <h2 class="faq-title">Frequently Asked Questions</h2>
+                <h2 id="FAQs" class="faq-title">Frequently Asked Questions</h2>
                 <div class="faq-list">
                     <?php while (have_rows('faq')) : the_row(); 
                         $faq_question = get_sub_field('question');
