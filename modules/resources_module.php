@@ -76,6 +76,7 @@ if ( function_exists( 'get_sub_field' ) ) {
             echo '</div>';
             echo '<div id="modal-' . esc_attr( $resource['id'] ) . '" class="modal">';
             echo '<div class="modal-content">';
+            echo '<button class="modal-close" aria-label="Close modal">&times;</button>';
             echo '<h2>' . esc_html( $resource['title'] ) . '</h2>'; 
             echo '<h6>Description</h6>'; 
             echo '<div class="description">' . wpautop( $resource['description'] ) . '</div>';
@@ -218,7 +219,25 @@ if ( function_exists( 'get_sub_field' ) ) {
     line-height: 20px;
 }
 
-/* Close button styling in the overlay */
+/* Close button styling inside the modal */
+.modal .modal-close {
+    position: absolute;
+    top: 35px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    background-color: transparent;
+    border: none;
+    color: #333;
+    font-size: 36px; /* Increased size */
+    cursor: pointer;
+    padding: 5px;
+}
+
+.modal .modal-close:hover,
+.modal .modal-close:focus {
+    color: #000;
+}
+
+/* Remove overlay styles and the close button within it */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -232,32 +251,6 @@ if ( function_exists( 'get_sub_field' ) ) {
 
 .modal-overlay.show {
     display: block;
-}
-
-.overlay-close {
-    position: relative;
-    top: 40px;
-    margin-left: 1030px;
-    background-color: rgba(255, 255, 255, 0.42);
-    border: none;
-    color: #333;
-    font-size: 28px;
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.overlay-close .close-icon {
-    font-size: 20px;
-}
-
-.overlay-close:hover,
-.overlay-close:focus {
-    background-color: #ddd;
 }
 
 @media (max-width: 768px) {
@@ -284,20 +277,19 @@ if ( function_exists( 'get_sub_field' ) ) {
         font-size: 16px;
     }
 
+    .additional-description {
+        font-size: 12px;
+    }
+
+    .open-arrow {
+        font-size: 18px;
+    }
+
     .modal {
         width: 80%;
-        max-width: none;
-    }
-
-    .overlay-close {
-        top: 10px;
-        left: 10px;
-        font-size: 24px;
-        width: 36px;
-        height: 36px;
+        right: 0;
     }
 }
-
 </style>
 
 <script>
@@ -306,10 +298,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var modals = document.querySelectorAll('.modal');
     var overlay = document.createElement('div');
     overlay.classList.add('modal-overlay');
-    var overlayCloseButton = document.createElement('button');
-    overlayCloseButton.classList.add('overlay-close');
-    overlayCloseButton.innerHTML = '<span class="close-icon">X</span>';
-    overlay.appendChild(overlayCloseButton);
     document.body.appendChild(overlay);
 
     resources.forEach(function(resource) {
@@ -323,11 +311,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    overlayCloseButton.addEventListener('click', function() {
-        modals.forEach(function(modal) {
-            modal.classList.remove('show');
+    var closeButtons = document.querySelectorAll('.modal-close');
+    closeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            modals.forEach(function(modal) {
+                modal.classList.remove('show');
+            });
+            overlay.classList.remove('show');
         });
-        overlay.classList.remove('show');
     });
 
     overlay.addEventListener('click', function() {
