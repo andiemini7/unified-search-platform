@@ -141,7 +141,7 @@ add_action('acf/include_fields', function () {
 						'max' => '',
 					),
 
-
+					
 
 					'layout_6673c54e2104b' => array(
 					'key' => 'layout_6673c54e2104b',
@@ -544,6 +544,13 @@ add_action('acf/include_fields', function () {
 											'elements' => array(
 												'featured_image',
 											),
+										),
+										array(
+											'key' => 'field_card_title',
+											'label' => 'Card Title',
+											'name' => 'card_title',
+											'type' => 'text',
+											'instructions' => 'Enter the title for this card section',
 										),
 										array(
 											'key' => 'field_manual_documentation',
