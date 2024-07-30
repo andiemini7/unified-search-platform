@@ -98,15 +98,19 @@ function register_documentations() {
         ]);
     }
 
-    //     function project_taxonomies() {
-    //         register_taxonomy('project_category', 'projects', [
-    //             'labels' => [
-    //                 'name' => __('Categories'),
-    //                 'singular_name' => __('Category'),
-    //             ],
-    //             'public' => true,
-    //             'hierarchical' => true,
-    //         ]);
-    // }
+      //Prodcts
+      function register_products() {
+        register_post_type('products', [
+            'labels' => [
+                'name' => __('Products'),
+                'singular_name' => __('Product'),
+            ],
+            'public' => true,
+            'has_archive' => true,
+            'supports' => ['title', 'editor', 'thumbnail','excpert'],
+            'menu_position' => 6,
+        ]);
+    }
+   
 }
 ?>

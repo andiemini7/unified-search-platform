@@ -449,8 +449,9 @@ add_action('acf/include_fields', function () {
 											'choices' => array(
 												'post' => 'Posts',
 												'teams' => 'Teams',
-												'members' => 'Members',
+												
 												'documentation' => 'Documentation',
+												'products' => 'Products',
 											),
 											'layout' => 'horizontal',
 											'return_format' => 'value',
@@ -518,33 +519,7 @@ add_action('acf/include_fields', function () {
 												'featured_image',
 											),
 										),
-										array(
-											'key' => 'field_manual_members',
-											'label' => 'Manual Members',
-											'name' => 'manual_members',
-											'type' => 'relationship',
-											'post_type' => array('members'), 
-											'conditional_logic' => array(
-												array(
-													array(
-														'field' => 'field_selection_type',
-														'operator' => '==',
-														'value' => 'manual',
-													),
-													array(
-														'field' => 'field_manual_post_type',
-														'operator' => '==',
-														'value' => 'members',
-													),
-												),
-											),
-											'filters' => array(
-												'search',
-											),
-											'elements' => array(
-												'featured_image',
-											),
-										),
+										
 										array(
 											'key' => 'field_manual_documentation',
 											'label' => 'Manual Documentation',
@@ -562,6 +537,33 @@ add_action('acf/include_fields', function () {
 														'field' => 'field_manual_post_type',
 														'operator' => '==',
 														'value' => 'documentation',
+													),
+												),
+											),
+											'filters' => array(
+												'search',
+											),
+											'elements' => array(
+												'featured_image',
+											),
+										),
+										array(
+											'key' => 'field_manual_members',
+											'label' => 'Manual Products',
+											'name' => 'manual_products',
+											'type' => 'relationship',
+											'post_type' => array('products'), 
+											'conditional_logic' => array(
+												array(
+													array(
+														'field' => 'field_selection_type',
+														'operator' => '==',
+														'value' => 'manual',
+													),
+													array(
+														'field' => 'field_manual_post_type',
+														'operator' => '==',
+														'value' => 'products',
 													),
 												),
 											),
@@ -647,6 +649,98 @@ add_action('acf/include_fields', function () {
 						),
 					),
 				),
+
+				'layout_benefits_bar' => array(
+    'key' => 'layout_benefits_bar',
+    'name' => 'benefits_bar',
+    'label' => 'Benefits Bar',
+    'display' => 'block',
+    'sub_fields' => array(
+        array(
+            'key' => 'field_benefits_bar_title',
+            'label' => 'Title',
+            'name' => 'title',
+            'type' => 'text',
+            'instructions' => 'Enter the title for the benefits bar.',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'default_value' => '',
+            'placeholder' => '',
+        ),
+        array(
+            'key' => 'field_benefits_bar_repeater',
+            'label' => 'Benefits',
+            'name' => 'benefits',
+            'type' => 'repeater',
+            'instructions' => 'Add the benefits here.',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'collapsed' => '',
+            'min' => 0,
+            'max' => 0,
+            'layout' => 'block',
+            'button_label' => 'Add Benefit',
+            'sub_fields' => array(
+                array(
+                    'key' => 'field_benefit_icon',
+                    'label' => 'Icon',
+                    'name' => 'icon',
+                    'type' => 'image',
+                    'instructions' => 'Select an icon for the benefit.',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'return_format' => 'url',
+                    'preview_size' => 'thumbnail',
+                    'library' => 'all',
+                    'min_width' => '',
+                    'min_height' => '',
+                    'min_size' => '',
+                    'max_width' => '',
+                    'max_height' => '',
+                    'max_size' => '',
+                    'mime_types' => 'svg,png',  
+                ),
+                array(
+                    'key' => 'field_benefit_text',
+                    'label' => 'Text',
+                    'name' => 'text',
+                    'type' => 'text',
+                    'instructions' => 'Enter the benefit text.',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+            ),
+        ),
+    ),
+    'min' => '',
+    'max' => '',
+),
+
 
 					'layout_6672f432253d2' => array(
 						'key' => 'layout_6672f432253d2',
@@ -743,8 +837,6 @@ add_action('acf/include_fields', function () {
 						'max' => '',
 					),
 				),
-				
-
 				
 				'min' => '',
 				'max' => '',
@@ -1308,6 +1400,8 @@ add_action( 'acf/include_fields', function() {
 			),
 		),
 	),
+    
+	
 	'menu_order' => 0,
 	'position' => 'normal',
 	'style' => 'default',
@@ -1319,3 +1413,56 @@ add_action( 'acf/include_fields', function() {
 	'show_in_rest' => 0,
 ) );
 } );
+
+add_action( 'acf/include_fields', function() {
+    if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+        return;
+    }
+
+    acf_add_local_field_group( array(
+        'key' => 'group_products_fields',
+        'title' => 'Products Fields',
+        'fields' => array(
+            array(
+                'key' => 'field_product_thumbnail',
+                'label' => 'Product Thumbnail',
+                'name' => 'product_thumbnail',
+                'type' => 'image',
+                'instructions' => 'Upload a thumbnail image for the product.',
+                'required' => 0,
+                'return_format' => 'url',
+                'preview_size' => 'medium',
+                'library' => 'all',
+            ),
+            array(
+                'key' => 'field_product_excerpt',
+                'label' => 'Product Excerpt',
+                'name' => 'product_excerpt',
+                'type' => 'textarea',
+                'instructions' => 'Enter a short description or excerpt for the product.',
+                'required' => 0,
+                'new_lines' => 'wpautop',
+                'maxlength' => '',
+                'rows' => 3,
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'products',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => true,
+        'description' => '',
+    ));
+});
+

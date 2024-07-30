@@ -22,6 +22,11 @@ class Init {
         //Projects
         add_action('init', [$this, 'register_projects']); 
         // add_action('init', [$this, 'project_taxonomies']);
+
+        //Products
+        add_action('init', [$this, 'register_products']);
+
+
         add_action('wp_enqueue_scripts', [new Enqueue(), 'enqueueStyles']);
         add_action('rest_api_init', [new Routes(), 'register_routes']);
         add_action('wp_ajax_nopriv_autosuggest', 'handle_autosuggest');
@@ -35,10 +40,7 @@ class Init {
         $postTypes->register_documentations();
     }
 
-    // public function documentation_taxonomies() {
-    //     $postTypes = new PostTypes();
-    //     $postTypes->documentation_taxonomies();
-    // }
+    
 
     //Members
     public function register_members() {
@@ -46,10 +48,7 @@ class Init {
         $postTypes->register_members();
     }
 
-    // public function member_taxonomies() {
-    //     $postTypes = new PostTypes();
-    //     $postTypes->member_taxonomies();
-    // }
+   
 
     //Teams
     public function register_teams() {
@@ -57,10 +56,7 @@ class Init {
         $postTypes->register_teams();
     }
 
-    // public function team_taxonomies() {
-    //     $postTypes = new PostTypes();
-    //     $postTypes->team_taxonomies();
-    // }
+    
 
     //Projects
     public function register_projects() {
@@ -68,10 +64,11 @@ class Init {
         $postTypes->register_projects();
     }
 
-    // public function project_taxonomies() {
-    //     $postTypes = new PostTypes();
-    //     $postTypes->project_taxonomies();
-    // }
+    //Products
+    public function register_products() {
+        $postTypes = new PostTypes();
+        $postTypes->register_products();
+    }
 
 
 

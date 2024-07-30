@@ -149,7 +149,7 @@ function handle_autosuggest() {
     $search_term = sanitize_text_field($_GET['term']); 
     $args = array(
         's' => $search_term,
-        'post_type' => array('post', 'page','documentation','members','teams','projects'), 
+        'post_type' => array('post', 'page','documentation','members','teams','projects','products'), 
         'posts_per_page' => 10, 
     );
 
@@ -420,3 +420,18 @@ function custom_taxonomy_resource_category() {
 }
 add_action('init', 'custom_taxonomy_resource_category', 0);
 
+
+// Allow SVG file upload
+function cc_mime_types($mimes) {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+  }
+  add_filter('upload_mimes', 'cc_mime_types');
+  
+  // Sanitize SVG files
+  function sanitize_svg($svg) {
+    return $svg;
+  }
+  add_filter('wp_handle_sideload_prefilter', 'sanitize_svg');
+  add_filter('wp_handle_upload_prefilter', 'sanitize_svg');
+  
