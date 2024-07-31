@@ -319,5 +319,16 @@ nav .menu-item-has-children {
     .container{
         display: block;
     }
-     
+    
+    .griditems-teammodule{
+        display: grid;
+    }
+    .teammodule-li{
+        height: 400px;
+    }
+    .teammodule-elem{
+        padding: 1px;
+        
+    }
+    
 }
