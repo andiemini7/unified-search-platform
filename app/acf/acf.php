@@ -98,6 +98,50 @@ add_action('acf/include_fields', function () {
 						'min' => '',
 						'max' => '',
 					),
+					'layout_6688695f441ae' => array(
+						'key' => 'layout_6688695f441ae',
+						'name' => 'teams_module',
+						'label' => 'Teams Module',
+						'display' => 'block',
+						'sub_fields' => array(
+							array(
+								'key' => 'field_66886973441b0',
+								'label' => 'Teams Module',
+								'name' => 'teams_module',
+								'aria-label' => '',
+								'type' => 'relationship',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'post_type' => array(
+									0 => 'teams',
+								),
+								'post_status' => '',
+								'taxonomy' => '',
+								'filters' => array(
+									0 => 'search',
+									1 => 'post_type',
+									2 => 'taxonomy',
+								),
+								'return_format' => 'object',
+								'min' => '',
+								'max' => '',
+								'elements' => '',
+								'bidirectional' => 0,
+								'bidirectional_target' => array(
+								),
+							),
+						),
+						'min' => '',
+						'max' => '',
+					),
+
+
 					'layout_6673c54e2104b' => array(
 					'key' => 'layout_6673c54e2104b',
 					'name' => 'faq',
@@ -382,6 +426,43 @@ add_action('acf/include_fields', function () {
 					'max' => '',
 				),
 
+				
+                'layout_6688695f441af' => array(
+                    'key' => 'layout_6688695f441af',
+                    'name' => 'infocard_module',
+                    'label' => 'Infocard Module',
+                    'display' => 'block',
+                    'sub_fields' => array(
+                        array(
+                            'key' => 'field_66886973441b1',
+                            'label' => 'Title',
+                            'name' => 'title',
+                            'type' => 'text',
+                            'instructions' => 'Enter the title for the infocard.',
+                            'required' => 1,
+                        ),
+                        array(
+                            'key' => 'field_66886973441b2',
+                            'label' => 'Description',
+                            'name' => 'description',
+                            'type' => 'textarea',
+                            'instructions' => 'Enter the description for the infocard (max 2 lines).',
+                            'required' => 1,
+                            'maxlength' => 120,
+                        ),
+                        array(
+                            'key' => 'field_66886973441b3',
+                            'label' => 'Image',
+                            'name' => 'image',
+                            'type' => 'image',
+                            'instructions' => 'Upload an image for the infocard.',
+                            'required' => 1,
+                            'return_format' => 'array',
+                            'preview_size' => 'medium',
+                        ),
+                    ),
+                ),
+            
 				'layout_6672f39075b35' => array(
 									'key' => 'layout_6672f39075b35',
 									'name' => 'card',
@@ -477,6 +558,13 @@ add_action('acf/include_fields', function () {
 											),
 										),
 										
+										array(
+											'key' => 'field_card_title',
+											'label' => 'Card Title',
+											'name' => 'card_title',
+											'type' => 'text',
+											'instructions' => 'Enter the title for this card section',
+										),
 										array(
 											'key' => 'field_manual_documentation',
 											'label' => 'Manual Documentation',
