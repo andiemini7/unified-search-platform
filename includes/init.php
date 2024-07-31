@@ -13,9 +13,7 @@ class Init {
         //Documentaions
         add_action('init', [$this, 'register_documentations']);
         // add_action('init', [$this, 'documentation_taxonomies']);
-        //Members
-        add_action('init', [$this, 'register_members']); 
-        // add_action('init', [$this, 'member_taxonomies']); 
+       
         //Teams
         add_action('init', [$this, 'register_teams']); 
         // add_action('init', [$this, 'team_taxonomies']);
@@ -42,12 +40,6 @@ class Init {
 
     
 
-    //Members
-    public function register_members() {
-        $postTypes = new PostTypes();
-        $postTypes->register_members();
-    }
-
    
 
     //Teams
@@ -64,12 +56,16 @@ class Init {
         $postTypes->register_projects();
     }
 
+
     //Products
     public function register_products() {
         $postTypes = new PostTypes();
         $postTypes->register_products();
     }
 
+
+
+    
 
 
 

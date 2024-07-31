@@ -98,51 +98,6 @@ add_action('acf/include_fields', function () {
 						'min' => '',
 						'max' => '',
 					),
-					'layout_6688695f441ae' => array(
-						'key' => 'layout_6688695f441ae',
-						'name' => 'teams_module',
-						'label' => 'Teams Module',
-						'display' => 'block',
-						'sub_fields' => array(
-							array(
-								'key' => 'field_66886973441b0',
-								'label' => 'Teams Module',
-								'name' => 'teams_module',
-								'aria-label' => '',
-								'type' => 'relationship',
-								'instructions' => '',
-								'required' => 0,
-								'conditional_logic' => 0,
-								'wrapper' => array(
-									'width' => '',
-									'class' => '',
-									'id' => '',
-								),
-								'post_type' => array(
-									0 => 'teams',
-								),
-								'post_status' => '',
-								'taxonomy' => '',
-								'filters' => array(
-									0 => 'search',
-									1 => 'post_type',
-									2 => 'taxonomy',
-								),
-								'return_format' => 'object',
-								'min' => '',
-								'max' => '',
-								'elements' => '',
-								'bidirectional' => 0,
-								'bidirectional_target' => array(
-								),
-							),
-						),
-						'min' => '',
-						'max' => '',
-					),
-
-
-
 					'layout_6673c54e2104b' => array(
 					'key' => 'layout_6673c54e2104b',
 					'name' => 'faq',
@@ -218,6 +173,7 @@ add_action('acf/include_fields', function () {
 					'min' => '',
 					'max' => '',
 				),
+
 				'layout_6697a178fb162' => array(
 					'key' => 'layout_6697a178fb162',
 					'name' => 'resources_module',
@@ -425,6 +381,7 @@ add_action('acf/include_fields', function () {
 					'min' => '',
 					'max' => '',
 				),
+
 				'layout_6672f39075b35' => array(
 									'key' => 'layout_6672f39075b35',
 									'name' => 'card',
@@ -832,12 +789,11 @@ add_action('acf/include_fields', function () {
 								'placeholder' => '',
 							),
 						),
-						
 						'min' => '',
 						'max' => '',
 					),
 				),
-				
+
 				'min' => '',
 				'max' => '',
 				'button_label' => 'Add Module',
@@ -923,12 +879,12 @@ add_action( 'acf/include_fields', function() {
 				'append' => '',
 			),
 			array(
-				'key' => 'field_6685db4724dd4',
-				'label' => 'Select_members',
+				'key' => 'field_6685d8f0a4f4e',
+				'label' => 'Select Members',
 				'name' => 'select_members',
 				'aria-label' => '',
-				'type' => 'relationship',
-				'instructions' => '',
+				'type' => 'user', // Change this to 'user'
+				'instructions' => 'Select team members',
 				'required' => 0,
 				'conditional_logic' => 0,
 				'wrapper' => array(
@@ -936,23 +892,10 @@ add_action( 'acf/include_fields', function() {
 					'class' => '',
 					'id' => '',
 				),
-				'post_type' => array(
-					0 => 'members',
-				),
-				'post_status' => '',
-				'taxonomy' => '',
-				'filters' => array(
-					0 => 'search',
-					1 => 'post_type',
-					2 => 'taxonomy',
-				),
-				'return_format' => 'object',
-				'min' => '',
-				'max' => '',
-				'elements' => '',
-				'bidirectional' => 0,
-				'bidirectional_target' => array(
-				),
+				'role' => '', // Optional: specify user roles to display
+				'allow_null' => 1,
+				'multiple' => 1, // Allow selecting multiple users
+				'return_format' => 'object', // You can use 'array' or 'id' based on your preference
 			),
 			array(
 				'key' => 'field_668d03122ba39',
@@ -1056,32 +999,12 @@ add_action( 'acf/include_fields', function() {
 				'preview_size' => 'medium',
 			),
 			array(
-				'key' => 'field_668e2bafa6133',
-				'label' => 'Team Leader',
-				'name' => 'team_leader',
-				'aria-label' => '',
-				'type' => 'post_object',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'post_type' => array(
-					0 => 'members',
-				),
-				'post_status' => '',
-				'taxonomy' => '',
-				'return_format' => 'object',
-				'multiple' => 0,
-				'allow_null' => 0,
-				'bidirectional' => 0,
-				'ui' => 1,
-				'bidirectional_target' => array(
-				),
-			),
+                'key' => 'field_668e2bafa6133',
+                'label' => 'Team Leader',
+                'name' => 'team_leader',
+                'type' => 'post_object',
+                'return_format' => 'object',
+            ),
 		),
 		'location' => array(
 			array(
@@ -1102,141 +1025,7 @@ add_action( 'acf/include_fields', function() {
 		'description' => '',
 		'show_in_rest' => 0,
 	) );
-	acf_add_local_field_group( array(
-		'key' => 'group_6685d08228611',
-		'title' => 'Members',
-		'fields' => array(
-			array(
-				'key' => 'field_6685d08295b24',
-				'label' => 'Emri',
-				'name' => 'emri',
-				'aria-label' => '',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'maxlength' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-			),
-			array(
-				'key' => 'field_668628b8ca47f',
-				'label' => 'Mbiemri',
-				'name' => 'mbiemri',
-				'aria-label' => '',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'maxlength' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-			),
-			array(
-				'key' => 'field_6685d1661f377',
-				'label' => 'Roli',
-				'name' => 'roli',
-				'aria-label' => '',
-				'type' => 'select',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'choices' => array(
-					'team_leader' => 'Team Leader',
-					'inter' => 'Inter',
-				),
-				'default_value' => false,
-				'return_format' => 'value',
-				'multiple' => 0,
-				'allow_null' => 0,
-				'ui' => 0,
-				'ajax' => 0,
-				'placeholder' => '',
-			),
-			array(
-				'key' => 'field_668e239945d21',
-				'label' => 'Email',
-				'name' => 'email',
-				'aria-label' => '',
-				'type' => 'email',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-			),
-			array(
-				'key' => 'field_668e24aa4c4da',
-				'label' => 'Leader Image',
-				'name' => 'leader_image_',
-				'aria-label' => '',
-				'type' => 'image',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'return_format' => 'array',
-				'library' => 'all',
-				'min_width' => '',
-				'min_height' => '',
-				'min_size' => '',
-				'max_width' => '',
-				'max_height' => '',
-				'max_size' => '',
-				'mime_types' => '',
-				'preview_size' => 'medium',
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'members',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => true,
-		'description' => '',
-		'show_in_rest' => 0,
-	) );
-
+	
 	acf_add_local_field_group( array(
 		'key' => 'group_6683c90b13cab',
 		'title' => 'Projects',
@@ -1302,6 +1091,123 @@ add_action( 'acf/include_fields', function() {
 		'show_in_rest' => 0,
 	) );
 } );
+
+
+add_action('acf/include_fields', function () {
+    if (!function_exists('acf_add_local_field_group')) {
+        return;
+    }
+
+    acf_add_local_field_group(array(
+        'key' => 'group_user_profile_fields',
+        'title' => 'User Profile Fields',
+        'fields' => array(
+            array(
+                'key' => 'field_full_name',
+                'label' => 'Full Name',
+                'name' => 'full_name',
+                'type' => 'text',
+                'required' => 1,
+            ),
+            array(
+                'key' => 'field_email',
+                'label' => 'Email',
+                'name' => 'email',
+                'type' => 'email',
+                'required' => 1,
+            ),
+            array(
+                'key' => 'field_phone',
+                'label' => 'Phone',
+                'name' => 'phone',
+                'type' => 'text',
+                'required' => 1,
+            ),
+            array(
+                'key' => 'field_address',
+                'label' => 'Address',
+                'name' => 'address',
+                'type' => 'text',
+            ),
+            array(
+                'key' => 'field_position',
+                'label' => 'Role in Company',
+                'name' => 'role',
+                'type' => 'text',
+            ),
+            array(
+                'key' => 'field_user_picture',
+                'label' => 'User Picture',
+                'name' => 'user_picture',
+                'type' => 'image',
+                'return_format' => 'url',
+                'preview_size' => 'medium',
+                'library' => 'all',
+            ),
+            array(
+                'key' => 'field_experience',
+                'label' => 'Experience',
+                'name' => 'experience',
+                'type' => 'text',
+            ),
+            array(
+                'key' => 'field_age',
+                'label' => 'Age',
+                'name' => 'age',
+                'type' => 'text',
+            ),
+            
+            array(
+                'key' => 'field_gender',
+                'label' => 'Gender',
+                'name' => 'gender',
+                'type' => 'text',
+            ),
+            array(
+                'key' => 'field_language',
+                'label' => 'Language',
+                'name' => 'language',
+                'type' => 'text',
+            ),
+            array(
+                'key' => 'field_education_level',
+                'label' => 'Education Level',
+                'name' => 'education_level',
+                'type' => 'text',
+            ),
+			array(
+                'key' => 'field_about',
+                'label' => 'About',
+                'name' => 'about',
+                'type' => 'wysiwyg',
+            ),
+			array(
+                'key' => 'field_member_since',
+                'label' => 'Member Since',
+                'name' => 'member_since',
+                'type' => 'date_picker',
+                'display_format' => 'F j, Y',
+                'return_format' => 'F j, Y',
+            ),
+			array(
+                'key' => 'field_user_tags',
+                'label' => 'User Skills',
+                'name' => 'user_tags',
+                'type' => 'text',
+                'instructions' => 'Enter tags separated by commas.',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'user_form',
+                    'operator' => '==',
+                    'value' => 'all',
+                ),
+            ),
+        ),
+    ));
+});
 
 add_action( 'acf/include_fields', function() {
 	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
@@ -1413,6 +1319,7 @@ add_action( 'acf/include_fields', function() {
 	'show_in_rest' => 0,
 ) );
 } );
+
 
 add_action( 'acf/include_fields', function() {
     if ( ! function_exists( 'acf_add_local_field_group' ) ) {

@@ -6,32 +6,32 @@ $selection_type = get_sub_field('selection_type');
 // Initialize the query arguments
 $args = array(
     'post_type' => $post_type,
-    'posts_per_page' => ($selection_type === 'latest') ? 10 : -1, // Limit to 10 posts if 'latest' is selected
+    'posts_per_page' => ($selection_type === 'latest') ? 10 : -1, 
 );
 
 // If manual selection, get the selected posts
 if ($selection_type === 'manual') {
-    // Determine the correct relationship field based on the selected post type
+    
     $manual_posts_field = 'manual_' . $post_type;
     $manual_posts = get_sub_field($manual_posts_field);
 
     if (!empty($manual_posts)) {
-        $post_ids = wp_list_pluck($manual_posts, 'ID'); // Collect IDs of manually selected posts
-        $args['post__in'] = $post_ids; // Limit query to these specific post IDs
-        $args['orderby'] = 'post__in'; // Preserve the order of the selected posts
+        $post_ids = wp_list_pluck($manual_posts, 'ID'); 
+        $args['post__in'] = $post_ids; 
+        $args['orderby'] = 'post__in'; 
     } else {
-        $args['post__in'] = array(0); // If no posts are selected, make sure no posts are queried
+        $args['post__in'] = array(0); 
     }
 }
 
-// Query the posts
+
 $posts_query = new WP_Query($args);
 
 // Display posts
 if ($posts_query->have_posts()) :
     echo '<div class="container mx-auto px-4 flex flex-wrap -mx-4 justify-start">';
     while ($posts_query->have_posts()) : $posts_query->the_post();
-        // Get the title and excerpt
+        
         $title = get_the_title();
         $excerpt = get_the_excerpt();
         $edit_link = get_edit_post_link();
