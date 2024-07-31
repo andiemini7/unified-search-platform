@@ -16,44 +16,7 @@ function register_documentations() {
     ]);
 }
 
-    // function documentation_taxonomies() {
-    //     register_taxonomy('documentation_category', 'documentation', [
-    //         'labels' => [
-    //             'name' => __('Categories'),
-    //             'singular_name' => __('Category'),
-    //         ],
-    //         'public' => true,
-    //         'hierarchical' => true,
-    //     ]);
-    //}
 
-    // Members
-    function register_members() {
-        register_post_type('members', [
-            'labels' => [
-            'name' => __( 'Members', 'textdomain' ),
-            'singular_name' => __( 'Member', 'textdomain' ),
-            ],
-    
-            'public' => true,
-            'has_archive' => true,
-            'supports' => ['title', 'editor', 'thumbnail'],
-            'menu_position' => 4,
-            'show_in_rest' => true,
-            'menu_icon'    => 'dashicons-id',
-        ]);
-    }
-
-    // function member_taxonomies() {
-    //     register_taxonomy('member_category', 'members', [
-    //         'labels' => [
-    //             'name' => __('Categories'),
-    //             'singular_name' => __('Category'),
-    //         ],
-    //         'public' => true,
-    //         'hierarchical' => true,
-    //     ]);
-    // }
 
     // Teams
     function register_teams() {
@@ -72,16 +35,7 @@ function register_documentations() {
         ]);
     }
 
-    // function team_taxonomies() {
-    //     register_taxonomy('team_category', 'teams', [
-    //         'labels' => [
-    //             'name' => __('Categories'),
-    //             'singular_name' => __('Category'),
-    //         ],
-    //         'public' => true,
-    //         'hierarchical' => true,
-    //     ]);
-    // }
+   
 
      //Projects
      function register_projects() {
@@ -98,15 +52,5 @@ function register_documentations() {
         ]);
     }
 
-    //     function project_taxonomies() {
-    //         register_taxonomy('project_category', 'projects', [
-    //             'labels' => [
-    //                 'name' => __('Categories'),
-    //                 'singular_name' => __('Category'),
-    //             ],
-    //             'public' => true,
-    //             'hierarchical' => true,
-    //         ]);
-    // }
 }
 ?>
