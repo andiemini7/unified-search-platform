@@ -11,7 +11,7 @@ function register_documentations() {
             'singular_name' => __('Documentation'),
         ],
         'public' => true,
-        'supports' => ['title', 'editor'],
+        'supports' => ['title', 'editor', 'thumbnail'],
         'menu_icon' => 'dashicons-media-document',
     ]);
 }

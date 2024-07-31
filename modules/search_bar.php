@@ -4,7 +4,7 @@ $search_input = 'Search for information within the company...';
 $topSuggestions = get_top_suggestions();
 ?>
 <div class="px-4 md:px-16 py-4 mx-auto">
-    <div class="p-4 rounded-3xl relative bg-cover bg-center bg-custom  flex flex-col justify-center items-center" style="background-image: url('<?php echo get_template_directory_uri() . '/assets/images/bg.png'; ?>');">
+    <div class="p-4 rounded-3xl relative bg-cover bg-center bg-custom  flex flex-col justify-center items-center" style="background-image: url('https://i.ibb.co/SfY7kzM/bg.png');">
         <!-- Overlay -->
         <div class="rounded-3xl absolute inset-0 bg-black opacity-50"></div>
         
