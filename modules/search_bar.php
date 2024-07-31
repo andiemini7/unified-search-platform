@@ -1,45 +1,73 @@
 <?php
 $id = get_the_id();
-$search_input = get_field('search_input', $id);
+$search_input = 'Search for information within the company...'; 
 $topSuggestions = get_top_suggestions();
 ?>
-<div class="min-h-screen bg-gradient-to-b from-white to-gray-200 flex flex-col justify-center items-center w-full">
-    <!-- Top Suggestions Container -->
-    <div id="top-suggestions" class="max-w-5xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4 lg:px-0">
-        <?php foreach ($topSuggestions as $suggestion): ?>
-            <div class="suggestion-card flex flex-col items-start bg-white border border-gray-200 shadow-lg rounded-lg p-6 text-gray-800" data-title="<?php echo esc_attr($suggestion['title']); ?>">
-                <div class="icon mb-2"><?php echo $suggestion['icon']; ?></div>
-                <div class="text-left">
-                    <h3 class="text-xl font-medium mb-2"><?php echo $suggestion['title']; ?></h3>
+<div class="px-4 md:px-16 py-4 mx-auto">
+    <div class="p-4 rounded-3xl relative bg-cover bg-center bg-custom  flex flex-col justify-center items-center" style="background-image: url('<?php echo get_template_directory_uri() . '/assets/images/bg.png'; ?>');">
+        <!-- Overlay -->
+        <div class="rounded-3xl absolute inset-0 bg-black opacity-50"></div>
+        
+        <!-- Content Section -->
+        <div class="relative z-[1] px-4 lg:px-6 py-8 w-full max-w-5xl">
+            <!-- Container for text and cards -->
+            <div class="content-container flex flex-col items-center">
+                <!-- Text Section -->
+                <div class="text-section mb-8 text-center">
+                    <h1 class="text-2xl lg:text-4xl mb-2 font-bold text-white">Discover & Explore</h1>
+                    <h1 class="text-2xl lg:text-4xl mb-4 font-bold text-white">Our Unified Search Platform</h1>
+                    <h6 class="mb-6 text-gray-300 text-lg">Explore Our Top Suggestions – Delve into a World of Curated Content and Discover What’s Trending and Relevant to Your Needs</h6>
                 </div>
+
+                <!-- Top Suggestions Container -->
+                <div id="top-suggestions" class="max-w-5xl w-full mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
+                    <?php foreach ($topSuggestions as $suggestion): ?>
+                        <div class="tooltip-wrapper">
+                            <div class="tooltip hidden absolute bg-black text-white text-xs py-1 px-2 rounded">
+                                Search Suggestion
+                            </div>
+                            <div class="suggestion-card h-full grow flex flex-col gap-2 items-center justify-center bg-white border border-gray-200 shadow-lg rounded-lg p-4 text-gray-800 transition-transform duration-300 transform hover:-translate-y-1" data-title="<?php echo esc_attr($suggestion['title']); ?>">
+                                <div class="bg-white-500 p-2 text-2xl flex items-center justify-center bg-gray-100 rounded-full">
+                                    <?php echo $suggestion['icon']; ?>
+                                </div>
+                                <div class="text-center">
+                                    <h3 class="text-base font-medium"><?php echo $suggestion['title']; ?></h3>
+                                    <p class="text-sm text-gray-500">Suggested Search</p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+
+                <!-- Search Form -->
+                <form id="search-form" role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="w-full mx-auto relative">
+                    <div class="relative flex items-center mx-auto w-full lg:w-3/4">
+                        <input name="s" id="search-input" class="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-lg text-lg placeholder-gray-400 focus:outline-none focus:border-blue-500" type="text" placeholder="<?php echo esc_attr($search_input); ?>" />
+                        <button type="button" id="clear-search" class="absolute right-16 top-1/2 transform -translate-y-1/2 cursor-pointer hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                        <button type="submit" id="search-button" class="absolute right-0 top-0 h-full py-2 px-4 text-white rounded-lg hover:bg-gray-700 flex items-center justify-center transition duration-300 ease-in-out" style="background-color: #808080;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="relative w-full lg:w-3/4 mx-auto mt-4 lg:mt-0">
+                        <div id="suggestions" class="hidden absolute w-full bg-white border border-gray-200 shadow-lg rounded-lg mt-1 z-10" style="top: 100%; left: 0;"></div>
+                    </div>
+                </form>
             </div>
-        <?php endforeach; ?>
+        </div>
     </div>
-    <!-- Search Form -->
-    <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="w-full mx-auto relative mt-10">
-        <div class="relative flex items-center justify-center mx-auto w-3/4">
-            <button type="submit" id="search-icon" class="absolute left-4 cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28" viewBox="0 0 24 24" fill="#ffffff" stroke="#000000">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-            </button>
-            <input name="s" id="search-input" class="w-full pl-12 pr-10 py-3 border border-gray-300 rounded-lg text-lg placeholder-gray-400 focus:outline-none focus:border-blue-500" type="text" placeholder="<?php echo esc_attr($search_input); ?>" />
-            <button type="button" id="clear-search" class="absolute right-2 cursor-pointer hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" stroke="#000000">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-        </div>
-        <div class="w-3/4 mx-auto">
-            <div id="suggestions" class="hidden w-3/4 absolute bg-white border border-gray-200 shadow-lg rounded-lg mt-1 z-10"></div>
-        </div>
-    </form>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('search-input');
     const clearSearch = document.getElementById('clear-search');
     const suggestions = document.getElementById('suggestions');
@@ -96,12 +124,10 @@ document.addEventListener('DOMContentLoaded', function() {
         clearSuggestions();
     });
 
-    const searchIcon = document.getElementById('search-icon');
-    searchIcon.addEventListener('click', function(event) {
-        event.preventDefault();
+    searchForm.addEventListener('submit', function(event) {
         const query = searchInput.value.trim();
-        if (query.length > 0) {
-            searchInput.closest('form').submit();
+        if (query.length === 0) {
+            event.preventDefault(); // Prevent form submission
         }
     });
 
@@ -123,6 +149,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const title = card.getAttribute('data-title');
             searchInput.value = title;
             fetchSuggestions(title);
+        });
+    });
+
+    document.querySelectorAll('.tooltip-wrapper').forEach(wrapper => {
+        const tooltip = wrapper.querySelector('.tooltip');
+        wrapper.addEventListener('mouseover', () => {
+            tooltip.classList.remove('hidden');
+        });
+        wrapper.addEventListener('mouseout', () => {
+            tooltip.classList.add('hidden');
         });
     });
 });

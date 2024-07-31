@@ -1,3 +1,13 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.min-h-screen {
+    min-height: 100vh;
+}
+
 #clear-search {
     top: 50%;
     transform: translateY(-50%);
@@ -17,56 +27,73 @@
 }
 
 #top-suggestions {
-    max-width: 1100px; 
+    max-width: 1100px;
     width: 100%;
-    margin-top: auto;
+    margin-top: 20px;
     display: grid;
     gap: 10px;
+    grid-template-columns: repeat(2, 1fr); 
+}
+
+@media (min-width: 640px) {
+    #top-suggestions {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (min-width: 768px) {
+    #top-suggestions {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+@media (min-width: 1024px) {
+    #top-suggestions {
+        grid-template-columns: repeat(4, 1fr); 
+    }
 }
 
 .suggestion-card {
     background: #FFFFFF;
     border: 1px solid #E5E7EB;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.1), 0px 1px 1px 0px rgba(0, 0, 0, 0.06);
-    border-radius: 1rem; 
+    border-radius: 1rem;
     overflow: hidden;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     width: 100%;
-    padding: 0.7rem;
+    height: 150px; /* Default height */
+    padding: 1rem;
     cursor: pointer;
+    position: relative;
+    flex-grow: 1;
 }
 
 .suggestion-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.1), 0px 8px 10px 1px rgba(0, 0, 0, 0.06);
+    transform: translateY(-4px);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.suggestion-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-    color: #111827;
+.tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    z-index: 10;
+    display: none;
 }
 
-@media (max-width: 768px) {
-    .suggestion-card {
-        padding: 1rem;
+@media (max-width: 640px) {
+    #search-input {
+        padding-left: 3rem;
     }
 }
-
-form {
-    width: 100%;
-    max-width: 800px;
-    margin: auto;
-    margin-top: 20px; 
-}
-
-.icon {
-    width: 30px; 
-    height: 30px;
-    margin-right: 10px; 
-}
-
-.icon svg {
-    width: 100%; 
-    height: 100%; 
+#search-input {
+    padding-left: 10px; 
+    padding-right: 40px; /* Space for the search button */
 }
