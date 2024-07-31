@@ -20,6 +20,11 @@ class Init {
         //Projects
         add_action('init', [$this, 'register_projects']); 
         // add_action('init', [$this, 'project_taxonomies']);
+
+        //Products
+        add_action('init', [$this, 'register_products']);
+
+
         add_action('wp_enqueue_scripts', [new Enqueue(), 'enqueueStyles']);
         add_action('rest_api_init', [new Routes(), 'register_routes']);
         add_action('wp_ajax_nopriv_autosuggest', 'handle_autosuggest');
@@ -34,6 +39,7 @@ class Init {
     }
 
     
+
    
 
     //Teams
@@ -50,7 +56,17 @@ class Init {
         $postTypes->register_projects();
     }
 
+
+    //Products
+    public function register_products() {
+        $postTypes = new PostTypes();
+        $postTypes->register_products();
+    }
+
+
+
     
+
 
 
     public function enqueueStyles() {

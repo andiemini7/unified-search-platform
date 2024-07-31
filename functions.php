@@ -426,3 +426,18 @@ function custom_taxonomy_resource_category() {
 }
 add_action('init', 'custom_taxonomy_resource_category', 0);
 
+
+// Allow SVG file upload
+function cc_mime_types($mimes) {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+  }
+  add_filter('upload_mimes', 'cc_mime_types');
+  
+  // Sanitize SVG files
+  function sanitize_svg($svg) {
+    return $svg;
+  }
+  add_filter('wp_handle_sideload_prefilter', 'sanitize_svg');
+  add_filter('wp_handle_upload_prefilter', 'sanitize_svg');
+  

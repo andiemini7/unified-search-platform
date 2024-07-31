@@ -52,5 +52,20 @@ function register_documentations() {
         ]);
     }
 
+
+      //Prodcts
+      function register_products() {
+        register_post_type('products', [
+            'labels' => [
+                'name' => __('Products'),
+                'singular_name' => __('Product'),
+            ],
+            'public' => true,
+            'has_archive' => true,
+            'supports' => ['title', 'editor', 'thumbnail','excpert'],
+            'menu_position' => 6,
+        ]);
+    }
+   
 }
 ?>

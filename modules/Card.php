@@ -46,6 +46,7 @@ if ($posts_query->have_posts()) :
         echo '<h2 class="' . esc_attr($title_class) . '">' . esc_html($card_title) . '</h2>';
     }
     echo '<div class="' . esc_attr($container_class) . '">';
+    echo '<div class="container mx-auto px-4 flex flex-wrap -mx-4 justify-start">';
     while ($posts_query->have_posts()) : $posts_query->the_post();
         
         $title = get_the_title();
@@ -55,10 +56,69 @@ if ($posts_query->have_posts()) :
             $excerpt = mb_substr($excerpt, 0, 40) . '...';
         }
         $edit_link = get_edit_post_link();
+        $post_type = get_post_type();
+
+        // Default values for non-Products post types
         $team_members = get_field('select_members');
         $num_members = $team_members ? count($team_members) : 0;
         $team_image_url = get_field('team_image') ? get_field('team_image')['url'] : get_the_post_thumbnail_url();
+
+        // Check if the post type is 'products'
+        if ($post_type === 'products') {
+            // Get custom fields for the 'products' post type
+            $custom_thumbnail = get_field('product_thumbnail');
+            $custom_excerpt = get_field('product_excerpt');
+
+            // Set the fields if they exist
+            if ($custom_thumbnail) {
+                $thumbnail_url = $custom_thumbnail; // Since the return format is 'url'
+            } else {
+                $thumbnail_url = get_the_post_thumbnail_url(); // Fallback
+            }
+            if ($custom_excerpt) {
+                $excerpt = $custom_excerpt;
+            }
+            $title = get_the_title(); // No change for title
 ?>
+        <a href="<?php echo esc_url($edit_link); ?>" class="inline-block p-4 max-w-md mx-auto rounded-xl hover:scale-105 transition-transform duration-300 m-2 bg-[#97979724] shadow-md w-full h-auto">
+    <div class="flex items-center space-x-4">
+        
+        <div class="w-[150px] h-[130px] flex-shrink-0 bg-white rounded-lg overflow-hidden">
+           
+            <img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($title); ?>" class="w-full h-full object-cover">
+        </div>
+        <div class="flex flex-col justify-center flex-grow p-2">
+            <h2 class="text-xl font-bold leading-tight text-black break-words">
+                <?php echo esc_html($title); ?>
+            </h2>
+            <p class="text-gray-700 text-sm mt-1 break-words">
+                <?php echo wp_strip_all_tags($excerpt); ?>
+            </p>
+        </div>
+    </div>
+</a>
+
+
+<?php
+
+        } else {
+?>
+            <a href="<?php echo esc_url($edit_link); ?>" class="block p-6 max-w-sm mx-auto rounded-xl hover:scale-105 transition-transform duration-300 m-4 bg-[#97979724] w-[350px]">
+                <div class="relative inline-block bg-gray-100 rounded-lg shadow-md overflow-hidden mx-4 my-4 table-cell w-[330px] h-[250px]">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url($team_image_url); ?>');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50"></div>
+                    </div>
+                </div>
+                <h2 class="text-[30px] font-poppins font-bold leading-tight text-black mr-2 mt-[20px] font-sans">
+                    <?php echo esc_html($title); ?>
+                </h2>
+                <p class="text-[#353434] mt-[10px] text-[20px] font-sans">
+                    <?php echo esc_html($excerpt); ?>
+                </p>
+                <p class="text-[#353434] mt-[10px] text-[20px] font-sans">
+                    <?php echo esc_html($num_members) . ' members'; ?>
+                </p>
+            </a>
         <a href="<?php echo esc_url($edit_link); ?>" class="griditems grid grid-flow-col auto-cols-fr gap-8 rounded-xl hover:scale-105 transition-transform duration-300 m-4 ">
             <div class="relative inline-block bg-gray-100 rounded-lg shadow-md overflow-hidden mx-4 my-4 w-[330px] h-[200px]">
                 <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url($team_image_url); ?>');">
@@ -78,8 +138,10 @@ if ($posts_query->have_posts()) :
             </div>
         </a>
 <?php
+        }
     endwhile;
     echo '</div>';
     wp_reset_postdata();
 endif;
 ?>
+
