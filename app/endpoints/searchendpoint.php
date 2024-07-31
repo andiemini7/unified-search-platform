@@ -20,7 +20,7 @@ class Search_Endpoint {
         ));
 
         //trello endopoint for see-more.js
-        register_rest_route('wp/v1', '/trello', array(
+         register_rest_route('wp/v1', '/trello', array(
             'methods' => 'GET',
             'callback' => array($this, 'handle_trello_data_showed'),
             'permission_callback' => '__return_true',
@@ -39,6 +39,7 @@ class Search_Endpoint {
                 )
             ),
         ));
+
     }
 
     public function handle_search($request) {
@@ -98,8 +99,8 @@ class Search_Endpoint {
         return new WP_REST_Response($data, 200);
     }
 
-    //trello endopoint for see-more.js
-    public function handle_trello_data_showed($request) {
+     //trello endopoint for see-more.js
+     public function handle_trello_data_showed($request) {
         $search_query = sanitize_text_field($request->get_param('s'));
         $paged = $request->get_param('page') ? intval($request->get_param('page')) : 1;
         $posts_per_page = get_option('posts_per_page');
@@ -114,6 +115,9 @@ class Search_Endpoint {
                 $filtered_cards = array_filter($trelloData['cards'], function ($card) use ($search_query) {
                     return stripos($card['name'], $search_query) !== false || stripos($card['desc'], $search_query) !== false;
                 });
+    
+                $total_items = count($filtered_cards);
+                $total_pages = ceil($total_items / $posts_per_page);
     
                 $start = ($paged - 1) * $posts_per_page;
                 $paged_cards = array_slice($filtered_cards, $start, $posts_per_page);
@@ -131,7 +135,12 @@ class Search_Endpoint {
             }
         }
     
-        return new WP_REST_Response($results, 200);
+        // Return results and total number of pages
+        return new WP_REST_Response(array(
+            'results' => $results,
+            'total_pages' => isset($total_pages) ? $total_pages : 0,
+            'current_page' => $paged
+        ), 200);
     }
     
 }

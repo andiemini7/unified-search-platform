@@ -49,9 +49,8 @@ if (isset($locations[$menu_name])) {
 ?>
 
 <footer class="bg-[#e0e0e0] py-8">
-    <div class="container mx-auto px-4">
-        <div class="grid gap-y-8 md:grid-cols-2 lg:grid-cols-5 lg:gap-x-36 text-center md:text-left">
-
+    <div class="container mx-auto px-4 mr-auto">
+        <div class="grid gap-y-8 grid-cols-[repeat(auto-fit,_minmax(0,_1fr))] justify-center text-center md:text-left">
             <div class="block lg:hidden col-span-full mb-4 flex flex-col items-center">
                 <?php
                 $footer_logo = get_field('footer_logo', 'option');
@@ -60,27 +59,18 @@ if (isset($locations[$menu_name])) {
                 if ($footer_logo) {
                     echo '<img class="h-[80px] w-auto" src="https://i.ibb.co/bv8p1pn/starlabslogo.png' . '" alt="Footer Logo">';
                 } else {
-
-                    echo '<img class=" w-full mb-2" src="' . esc_url(get_template_directory_uri() . '/path/to/default-logo.png') . '" alt="Unified Search">';
+                    echo '<img class="w-full mb-2" src="' . esc_url(get_template_directory_uri() . '/path/to/default-logo.png') . '" alt="Unified Search">';
                 }
                 if ($footer_text) {
                     echo '<p class="text-sm font-normal leading-5 text-gray-200">' . esc_html($footer_text) . '</p>';
-                } else {
                 }
                 ?>
-
             </div>
-
-            <div class="hidden lg:block">
-
-            </div>
-
-
 
             <?php foreach ($menu_items as $parent) : ?>
-                <div>
-                    <h2 class="text-lg font-medium mb-2 leading-5  font-semibold text-center"><?php echo esc_html($parent['item']->post_title); ?></h2>
-                    <ul class="text-sm font-normal leading-5 text-gray-700 text-center">
+                <div class="flex flex-col items-center md:items-center">
+                    <h2 class="text-lg font-medium mb-2 leading-5 font-semibold"><?php echo esc_html($parent['item']->post_title); ?></h2>
+                    <ul class="text-sm font-normal leading-5 text-gray-700">
                         <?php foreach ($parent['children'] as $child) : ?>
                             <li class="mb-2">
                                 <a href="<?php echo esc_url($child->url); ?>" class="hover:underline"><?php echo esc_html($child->title); ?></a>
@@ -89,22 +79,19 @@ if (isset($locations[$menu_name])) {
                     </ul>
                 </div>
             <?php endforeach; ?>
-
         </div>
     </div>
-    <hr class="border-[#91919170] ml-[8%] mr-[8%] mt-[20px] mb-[10px]">
-    <div class="flex justify-between">
-
+    <hr class="border-[#91919170] mx-[8%] my-[20px]">
+    <div class="flex justify-between items-center">
         <?php
         if ($footer_logo) {
             echo '<img class="footer-logo w-auto mb-2 h-[80px] ml-[20%] mt-[10px]" src="https://i.ibb.co/bv8p1pn/starlabslogo.png' . '" alt="Footer Logo">';
         } else {
             echo '<p class="text-sm font-normal leading-5 text-red-500">Footer logo is missing. Please add it in the general settings.</p>';
-            echo '<img class=" w-auto mb-2" src="' . esc_url(get_template_directory_uri() . '/path/to/default-logo.png') . '" alt="Unified Search">';
+            echo '<img class="w-auto mb-2" src="' . esc_url(get_template_directory_uri() . '/path/to/default-logo.png') . '" alt="Unified Search">';
         }
         if ($footer_text) {
             echo '<p class="text-sm font-normal leading-5 text-gray-200">' . esc_html($footer_text) . '</p>';
-        } else {
         }
         ?>
         <?php
@@ -131,12 +118,11 @@ if (isset($locations[$menu_name])) {
         </div>
     </div>
 
-    <div class="text-center ">
+    <div class="text-center mt-4">
         <p class="text-sm text-gray-600">&copy; <?php echo date("Y"); ?> All Rights Reserved.</p>
     </div>
 </footer>
 
 <?php wp_footer(); ?>
 </body>
-
 </html>

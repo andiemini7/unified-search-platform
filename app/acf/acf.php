@@ -174,6 +174,214 @@ add_action('acf/include_fields', function () {
 					'max' => '',
 				),
 
+				'layout_6697a178fb162' => array(
+					'key' => 'layout_6697a178fb162',
+					'name' => 'resources_module',
+					'label' => 'Resources Module',
+					'display' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_6697a1b0fb164',
+							'label' => 'Resource Category',
+							'name' => 'resource_category',
+							'aria-label' => '',
+							'type' => 'taxonomy',
+							'instructions' => 'Select the resources category.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'taxonomy' => 'resource_category',
+							'add_term' => 0,
+							'save_terms' => 0,
+							'load_terms' => 0,
+							'return_format' => 'id',
+							'field_type' => 'select',
+							'allow_null' => 0,
+							'bidirectional' => 0,
+							'multiple' => 0,
+							'bidirectional_target' => array(
+							),
+						),
+						array(
+							'key' => 'field_6697a20afb165',
+							'label' => 'Resource Selection Type',
+							'name' => 'resource_selection_type',
+							'aria-label' => '',
+							'type' => 'radio',
+							'instructions' => 'Choose whether to display the latest 7 resources or manually select resources.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'choices' => array(
+								'Latest' => 'Latest',
+								'Manual' => 'Manual',
+							),
+							'default_value' => '',
+							'return_format' => 'value',
+							'allow_null' => 0,
+							'other_choice' => 0,
+							'layout' => 'horizontal',
+							'save_other_choice' => 0,
+						),
+						array(
+							'key' => 'field_6697a23efb166',
+							'label' => 'Select Resources',
+							'name' => 'select_resources',
+							'aria-label' => '',
+							'type' => 'relationship',
+							'instructions' => 'Select resources.',
+							'required' => 0,
+							'conditional_logic' => array(
+								array(
+									array(
+										'field' => 'field_6697a20afb165',
+										'operator' => '==',
+										'value' => 'Manual',
+									),
+								),
+							),
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'post_type' => array(
+								0 => 'resources',
+							),
+							'post_status' => '',
+							'taxonomy' => '',
+							'filters' => array(
+								0 => 'taxonomy',
+							),
+							'return_format' => 'object',
+							'min' => '',
+							'max' => '',
+							'elements' => '',
+							'bidirectional' => 0,
+							'bidirectional_target' => array(
+							),
+						),
+					),
+					'min' => '',
+					'max' => '',
+				),
+
+				'layout_668da3b98a49e' => array(
+					'key' => 'layout_668da3b98a49e',
+					'name' => 'stats_module',
+					'label' => 'Stats Module',
+					'display' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_668da4072801b',
+							'label' => 'Stats Module',
+							'name' => 'stats_module',
+							'aria-label' => '',
+							'type' => 'repeater',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'layout' => 'table',
+							'min' => 0,
+							'max' => 0,
+							'collapsed' => '',
+							'button_label' => 'Add Row',
+							'rows_per_page' => 20,
+							'sub_fields' => array(
+								array(
+									'key' => 'field_668da41a2801c',
+									'label' => 'Statistic Value',
+									'name' => 'statistic_value',
+									'aria-label' => '',
+									'type' => 'number',
+									'instructions' => '',
+									'required' => 0,
+									'conditional_logic' => 0,
+									'wrapper' => array(
+										'width' => '',
+										'class' => '',
+										'id' => '',
+									),
+									'default_value' => '',
+									'min' => '',
+									'max' => '',
+									'placeholder' => '',
+									'step' => '',
+									'prepend' => '',
+									'append' => '',
+									'parent_repeater' => 'field_668da4072801b',
+								),
+								array(
+									'key' => 'field_668da4282801d',
+									'label' => 'Statistic Text',
+									'name' => 'statistic_text',
+									'aria-label' => '',
+									'type' => 'text',
+									'instructions' => '',
+									'required' => 0,
+									'conditional_logic' => 0,
+									'wrapper' => array(
+										'width' => '',
+										'class' => '',
+										'id' => '',
+									),
+									'default_value' => '',
+									'maxlength' => '',
+									'placeholder' => '',
+									'prepend' => '',
+									'append' => '',
+									'parent_repeater' => 'field_668da4072801b',
+								),
+							),
+						),
+					),
+					'min' => '',
+					'max' => '',
+				),
+				'layout_669cf37c4f9c2' => array(
+					'key' => 'layout_669cf37c4f9c2',
+					'name' => 'anchor_menu',
+					'label' => 'Anchor Menu',
+					'display' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_669cf3914f9c8',
+							'label' => 'Anchor Menu',
+							'name' => 'anchor_menu',
+							'aria-label' => '',
+							'type' => 'text',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'maxlength' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+						),
+					),
+					'min' => '',
+					'max' => '',
+				),
+
 				'layout_6672f39075b35' => array(
 									'key' => 'layout_6672f39075b35',
 									'name' => 'card',
@@ -379,6 +587,7 @@ add_action('acf/include_fields', function () {
 							),
 						),
 					),
+				
 					'layout_666006e45137b' => array(
 						'key' => 'layout_666006e45137b',
 						'label' => 'Search Bar',
@@ -490,6 +699,7 @@ add_action('acf/include_fields', function () {
 						'max' => '',
 					),
 				),
+
 				'min' => '',
 				'max' => '',
 				'button_label' => 'Add Module',
@@ -788,6 +998,7 @@ add_action( 'acf/include_fields', function() {
 	) );
 } );
 
+
 add_action('acf/include_fields', function () {
     if (!function_exists('acf_add_local_field_group')) {
         return;
@@ -903,3 +1114,113 @@ add_action('acf/include_fields', function () {
         ),
     ));
 });
+
+add_action( 'acf/include_fields', function() {
+	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+		return;
+	}
+
+	acf_add_local_field_group( array(
+	'key' => 'group_66a0c83debaed',
+	'title' => 'Resource Fields',
+	'fields' => array(
+		array(
+			'key' => 'field_66a0c8fd48c8a',
+			'label' => 'Resource Type',
+			'name' => 'resource_type',
+			'aria-label' => '',
+			'type' => 'radio',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'choices' => array(
+				'file' => 'File',
+				'link' => 'Link',
+			),
+			'default_value' => '',
+			'return_format' => 'value',
+			'allow_null' => 0,
+			'other_choice' => 0,
+			'layout' => 'vertical',
+			'save_other_choice' => 0,
+		),
+		array(
+			'key' => 'field_66a0c83e671c8',
+			'label' => 'Resource File',
+			'name' => 'resource_file',
+			'aria-label' => '',
+			'type' => 'file',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array(
+				array(
+					array(
+						'field' => 'field_66a0c8fd48c8a',
+						'operator' => '==',
+						'value' => 'file',
+					),
+				),
+			),
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'array',
+			'library' => 'all',
+			'min_size' => '',
+			'max_size' => '',
+			'mime_types' => 'txt,pdf,doc,docx,html,xml',
+		),
+		array(
+			'key' => 'field_66a0c85a671c9',
+			'label' => 'Resource Link',
+			'name' => 'resource_link',
+			'aria-label' => '',
+			'type' => 'url',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array(
+				array(
+					array(
+						'field' => 'field_66a0c8fd48c8a',
+						'operator' => '==',
+						'value' => 'link',
+					),
+				),
+			),
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'resources',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => '',
+	'show_in_rest' => 0,
+) );
+} );
+

@@ -1,6 +1,3 @@
-<?php
-get_header();
-?>
 
 <?php
 $teams = get_posts(array(
@@ -132,4 +129,3 @@ jQuery(document).ready(function($) {
 });
 </script>
 
-<?php get_footer(); ?>

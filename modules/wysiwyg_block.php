@@ -7,7 +7,5 @@ $content = get_sub_field('wysiwyg_editor', $id);
 ?>
 
 <div id="content-module" class="container mx-auto wysiwyg-content flex justify-center">
-<h1 id="wysiwyg_editor"> 
     <?= $content ?>
-</h1>
 </div>
