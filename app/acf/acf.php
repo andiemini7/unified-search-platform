@@ -141,7 +141,6 @@ add_action('acf/include_fields', function () {
 						'max' => '',
 					),
 
-					
 
 					'layout_6673c54e2104b' => array(
 					'key' => 'layout_6673c54e2104b',
@@ -425,6 +424,44 @@ add_action('acf/include_fields', function () {
 					'min' => '',
 					'max' => '',
 				),
+
+				
+                'layout_6688695f441af' => array(
+                    'key' => 'layout_6688695f441af',
+                    'name' => 'infocard_module',
+                    'label' => 'Infocard Module',
+                    'display' => 'block',
+                    'sub_fields' => array(
+                        array(
+                            'key' => 'field_66886973441b1',
+                            'label' => 'Title',
+                            'name' => 'title',
+                            'type' => 'text',
+                            'instructions' => 'Enter the title for the infocard.',
+                            'required' => 1,
+                        ),
+                        array(
+                            'key' => 'field_66886973441b2',
+                            'label' => 'Description',
+                            'name' => 'description',
+                            'type' => 'textarea',
+                            'instructions' => 'Enter the description for the infocard (max 2 lines).',
+                            'required' => 1,
+                            'maxlength' => 200,
+                        ),
+                        array(
+                            'key' => 'field_66886973441b3',
+                            'label' => 'Image',
+                            'name' => 'image',
+                            'type' => 'image',
+                            'instructions' => 'Upload an image for the infocard.',
+                            'required' => 1,
+                            'return_format' => 'array',
+                            'preview_size' => 'medium',
+                        ),
+                    ),
+                ),
+            
 				'layout_6672f39075b35' => array(
 									'key' => 'layout_6672f39075b35',
 									'name' => 'card',
