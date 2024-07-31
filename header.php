@@ -47,7 +47,7 @@
         <ul class="hidden lg:flex items-center">
             <?php if (is_user_logged_in()) : ?>
                 <!-- Include search bar for desktop -->
-                <?php else : ?>
+            <?php else : ?>
                 <li class="inline-block mx-1">
                     <a href="<?php echo home_url('/signin/');?>" 
                        id="button-signup"
@@ -64,28 +64,50 @@
         </ul>
         </div>
 
+        <!-- User Avatar and Sign Out Button -->
+    <?php if (is_user_logged_in()) : ?>
+        <?php 
+            $current_user = wp_get_current_user(); 
+            $current_user_id = $current_user->ID;
+            $user_picture = get_field('user_picture', 'user_' . $current_user_id);
+        ?>
+        <div class="flex items-center ml-4">
+            <a href="<?php echo home_url('/user-profile/?user_id=' . $current_user_id); ?>" class="flex items-center">
+                <?php if ($user_picture): ?>
+                    <img src="<?php echo esc_url($user_picture); ?>" alt="<?php echo esc_attr($current_user->display_name); ?>" class="rounded-full h-10 w-10 object-cover mr-4">
+                <?php else: ?>
+                    <img src="<?php echo get_avatar_url($current_user_id, ['size' => '40']); ?>" alt="<?php echo esc_attr($current_user->display_name); ?>" class="rounded-full h-10 w-10 object-cover mr-4">
+                <?php endif; ?>
+            </a>
+                <a href="<?php echo wp_logout_url(home_url()); ?>" class="hidden lg:block ml-6 rounded-full border-solid border-2 border-black py-3 px-6 text-white bg-black block font-semibold">
+                    Sign Out
+                </a>
+            </div>
+        <?php endif; ?>
+
         <!-- Mobile Menu Toggle -->
         <div class="flex items-center lg:hidden ml-auto">
             <button id="mobile-menu-toggle" class="text-black">
                 <i class="fas fa-bars"></i>
-
             </button>
         </div>
 </nav>
 
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="lg:hidden hidden bg-white w-full h-full fixed top-0 left-0 z-50 overflow-y-auto uppercase">
-    <?php if(is_user_logged_in()): ?>
-        <div id="login" class="flex flex-col text-center justify-start text-xl y-4 pt-8 px-4 mt-10">
+<div id="mobile-menu" class="lg:hidden hidden bg-white w-full h-full fixed top-0 left-0 z-50 overflow-y-auto uppercase">
+    <?php if (is_user_logged_in()): ?>
+        <div id="login" class="flex flex-col text-center justify-start text-xl py-4 pt-8 px-4 mt-10">
             <div class="mt-6 border-b border-[#808080]">
                 <form action="/" method="get" class="flex justify-center my-4">
                     <input type="text" name="s" class="border border-gray-300 p-2 pl-4 rounded-l-full w-full max-w-md" placeholder="Search...">
-                    <button type="submit" class="bg-black text-white p-2 pl-4 pr-5 rounded-r-full"><svg fill="#ffffff" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-	 width="30px" height="30px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
-<path d="M8,15c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S11.9,15,8,15z M8,3C5.2,3,3,5.2,3,8s2.2,5,5,5s5-2.2,5-5S10.8,3,8,3z"/>
-<path d="M17.3,18.7l-3-3c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l3,3c0.4,0.4,0.4,1,0,1.4C18.3,19.1,17.7,19.1,17.3,18.7z"/>
-</svg></button>
+                    <button type="submit" class="bg-black text-white p-2 pl-4 pr-5 rounded-r-full">
+                        <svg fill="#ffffff" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                            width="30px" height="30px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+                            <path d="M8,15c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S11.9,15,8,15z M8,3C5.2,3,3,5.2,3,8s2.2,5,5,5s5-2.2,5-5S10.8,3,8,3z"/>
+                            <path d="M17.3,18.7l-3-3c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l3,3c0.4,0.4,0.4,1,0,1.4C18.3,19.1,17.7,19.1,17.3,18.7z"/>
+                        </svg>
+                    </button>
                 </form>
             </div>
             <?php
@@ -97,26 +119,29 @@
                 'link_after' => '</span>',
             ));
             ?>
+            <a href="<?php echo wp_logout_url(home_url()); ?>" class="block text-black font-semibold py-3 px-6">
+                Sign Out
+            </a>
         </div>
-        <?php else: ?>
-            <div id="logout" class="flex flex-col text-center justify-start text-xl y-4 pt-8 px-4 mt-10">
-        <ul class="flex flex-col items-center lg:hidden">
-            <li class="block w-full p-1 border-b border-t border-black">
-                <a href="<?php echo home_url('/signin/');?>" 
-                   id="button-signup-mobile"
-                   class="block text-black font-semibold  py-3 px-6"
-                >Sign In</a>
-            </li>
-            <li class="block w-full p-1 border-b border-black">
-                <a id="button-register-mobile"
-                   href="<?php echo home_url('/register/'); ?>" 
-                   class="block text-black font-semibold py-3 px-6"
-                >Register</a>
-            </li>
-        </ul>
+    <?php else: ?>
+        <div id="logout" class="flex flex-col text-center justify-start text-xl py-4 pt-8 px-4 mt-10">
+            <ul class="flex flex-col items-center lg:hidden">
+                <li class="block w-full p-1 border-b border-t border-black">
+                    <a href="<?php echo home_url('/signin/');?>" 
+                       id="button-signup-mobile"
+                       class="block text-black font-semibold py-3 px-6"
+                    >Sign In</a>
+                </li>
+                <li class="block w-full p-1 border-b border-black">
+                    <a id="button-register-mobile"
+                       href="<?php echo home_url('/register/'); ?>" 
+                       class="block text-black font-semibold py-3 px-6"
+                    >Register</a>
+                </li>
+            </ul>
         </div>
-        <?php endif; ?>
-    </div>
+    <?php endif; ?>
+</div>
 </div>
 </div>
 
@@ -132,3 +157,7 @@
     });
 });
 </script>
+
+<?php wp_footer(); ?>
+</body>
+</html>
