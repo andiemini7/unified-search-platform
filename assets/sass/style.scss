@@ -290,14 +290,14 @@ nav .menu-item-has-children {
 }
 
 @media (max-width: 768px) {
-    //navbar
+    
     #main-navbar.sticky {
         margin-top: 0px;
     }
     .starlabs-logo{
         margin-left: 5px;
     }
-    //infocard_module.php
+    
     .infocard {
         width: 350px;
     }
@@ -306,7 +306,7 @@ nav .menu-item-has-children {
         height: 150px;
     }
 
-    //card.php
+    
     .custom-card-title.tech-stack {
         margin-right: 0;
         position: static; 
@@ -320,5 +320,5 @@ nav .menu-item-has-children {
         display: block;
     }
     
-    //
+    
 }
