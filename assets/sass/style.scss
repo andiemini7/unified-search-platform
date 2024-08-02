@@ -289,6 +289,48 @@ nav .menu-item-has-children {
     transition: box-shadow 0.3s ease-in-out;
 }
 
+.calendar-row {
+    display: flex;
+}
+
+.calendar-day,
+.calendar-cell {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.calendar-cell {
+    border: 1px solid #ddd;
+    text-align: left;
+    height: 165px;
+}
+
+.calendar-cell.empty {
+    background-color: #f9f9f9;
+}
+
+.calendar-day{
+    height: 50px;
+    font-weight: bold;
+    align-content: center;
+}
+
+.calendar-day.today {
+    background-color: #ff4d00;
+    color: white;
+    border-radius: 10px;
+    margin: 5px;
+}
+.calendar-month-year{
+    font-size: 24px;
+}
+
+.calendar-cell.daytoday {
+    color: #ff4d00;
+    font-weight: bolder;
+}
+
 @media (max-width: 768px) {
     
     #main-navbar.sticky {
@@ -329,6 +371,66 @@ nav .menu-item-has-children {
     .teammodule-elem{
         padding: 1px;
         
+    }
+
+    .calendar-module {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .calendar-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .calendar-title {
+        font-size: 20px;
+    }
+
+    .calendar-month-year {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #add-event-button {
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 200px;
+    }
+
+    .calendar {
+        width: 100%;
+    }
+
+    .calendar-body {
+        flex-direction: column;
+    }
+
+    .calendar-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 100px;
+    }
+
+    .calendar-cell, .calendar-day {
+        width: calc(100% / 7);
+        padding: 10px 0;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .calendar-cell.empty {
+        visibility: hidden;
+    }
+
+    #event-modal {
+        width: 90%;
+        max-width: 400px;
+    }
+    .event-title{
+        height: 25px;
+        font-size: 10px;
+        display: table-cell;
     }
     
 }
