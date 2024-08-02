@@ -374,63 +374,44 @@ nav .menu-item-has-children {
     }
 
     .calendar-module {
-        width: 100%;
-        padding: 10px;
-    }
-
-    .calendar-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .calendar-title {
-        font-size: 20px;
-    }
-
-    .calendar-month-year {
-        font-size: 16px;
-        margin-top: 10px;
-    }
-
-    #add-event-button {
-        width: 100%;
-        margin-top: 10px;
-        margin-left: 200px;
-    }
-
-    .calendar {
-        width: 100%;
-    }
-
-    .calendar-body {
-        flex-direction: column;
-    }
-
-    .calendar-row {
-        flex-direction: row;
-        flex-wrap: wrap;
-        height: 100px;
-    }
-
-    .calendar-cell, .calendar-day {
-        width: calc(100% / 7);
-        padding: 10px 0;
-        box-sizing: border-box;
         text-align: center;
     }
-
-    .calendar-cell.empty {
-        visibility: hidden;
+    .calendar-title {
+        font-size: 24px;
+        margin-bottom: 20px;
     }
-
-    #event-modal {
-        width: 90%;
-        max-width: 400px;
+    .calendar {
+        width: 100%;
+        display: inline-block;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .calendar-header {
+        background-color: #f4f4f4;
+        padding: 10px;
+        font-weight: bold;
+    }
+    .calendar-body {
+        display: flex;
+        flex-direction: column;
+    }
+    .calendar-row {
+        display: flex;
+    }
+    .calendar-day, .calendar-cell {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+    }
+    .calendar-cell.empty {
+        background-color: #f9f9f9;
+    }
+    .calendar-cell{
+        height: 100px;
     }
     .event-title{
-        height: 25px;
-        font-size: 10px;
-        display: table-cell;
+        font-size: 8px;
     }
-    
 }

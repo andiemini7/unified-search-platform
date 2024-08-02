@@ -6,10 +6,9 @@ $currentYear = date('Y');
 
 $daysInMonth = cal_days_in_month(CAL_GREGORIAN, date('n'), $currentYear);
 
-$firstDayOfMonth = date('w', strtotime("$currentYear-$currentMonth-01"));
+$firstDayOfMonth = (date('N', strtotime("$currentYear-$currentMonth-01")) - 1) % 7;
 
-$currentDayOfWeek = date('w');
-
+$currentDayOfWeek = date('N') % 7;
 $currentDay = date('j');
 
 $events = get_sub_field('events');
@@ -25,20 +24,19 @@ $events = get_sub_field('events');
     <div class="calendar w-[80%] inline-block border border-[#ddd] rounded-[10px] overflow-hidden">
         <div class="calendar-body flex flex-col">
             <div class="calendar-row calendar-days flex">
-                <div class="calendar-day <?php echo $currentDayOfWeek == 0 ? 'today' : ''; ?>">Sun</div>
                 <div class="calendar-day <?php echo $currentDayOfWeek == 1 ? 'today' : ''; ?>">Mon</div>
                 <div class="calendar-day <?php echo $currentDayOfWeek == 2 ? 'today' : ''; ?>">Tue</div>
                 <div class="calendar-day <?php echo $currentDayOfWeek == 3 ? 'today' : ''; ?>">Wed</div>
                 <div class="calendar-day <?php echo $currentDayOfWeek == 4 ? 'today' : ''; ?>">Thu</div>
                 <div class="calendar-day <?php echo $currentDayOfWeek == 5 ? 'today' : ''; ?>">Fri</div>
                 <div class="calendar-day <?php echo $currentDayOfWeek == 6 ? 'today' : ''; ?>">Sat</div>
+                <div class="calendar-day <?php echo $currentDayOfWeek == 0 ? 'today' : ''; ?>">Sun</div>
             </div>
             <div class="calendar-row">
                 <?php
                 for ($i = 0; $i < $firstDayOfMonth; $i++) {
                     echo '<div class="calendar-cell empty"></div>';
                 }
-
                 for ($day = 1; $day <= $daysInMonth; $day++) {
                     $class = $day == $currentDay ? 'calendar-cell daytoday ' : 'calendar-cell ';
                     echo '<div class="' . $class . '" data-day="' . $day . '">' . $day;
