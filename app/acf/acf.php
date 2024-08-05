@@ -1214,7 +1214,7 @@ add_action( 'acf/include_fields', function() {
                 'key' => 'field_668e2bafa6133',
                 'label' => 'Team Leader',
                 'name' => 'team_leader',
-                'type' => 'post_object',
+                'type' => 'user',
                 'return_format' => 'object',
             ),
 		),
