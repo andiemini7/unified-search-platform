@@ -6,16 +6,16 @@ $teams = get_posts(array(
 ?>
 
 <div class="container mx-auto px-4 ">
-    <ul class="griditems grid grid-flow-col auto-cols-fr gap-8">
+    <ul class="griditems-teammodule flex justify-center gap-8">
         <?php foreach ($teams as $team) : ?>
-            <li class="relative overflow-hidden border rounded-lg shadow-lg team-card p-[15px] w-auto hover:scale-105 m-4 mb-[100px]" data-team-id="<?php echo $team->ID; ?>">
+            <li class="teammodule-li relative overflow-hidden border rounded-lg shadow-lg team-card p-[15px] w-[300px] hover:scale-105 m-4 mb-[100px]" data-team-id="<?php echo $team->ID; ?>">
                 <?php 
                   $team_image = get_field('team_image', $team->ID);
                   if ($team_image) : ?>
                   <div class="w-full bg-cover bg-center rounded-lg h-[75%]" style="background-image: url('<?php echo esc_url($team_image['sizes']['thumbnail']); ?>');">
                   </div>
                 <?php endif; ?>
-                <div class="absolute inset-0 flex flex-col items-start justify-end p-4 bg-black bg-opacity-50 text-white font-semibold open-popup">
+                <div class="teammodule-elem absolute inset-0 flex flex-col items-start justify-end p-4 bg-black bg-opacity-50 text-white font-semibold open-popup">
                     <span class="mb-2 text-md text-black"><?php echo get_the_title($team->ID); ?></span>
                     <div class="mt-2 flex items-center text-xl font-bold">
                         <?php

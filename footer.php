@@ -1,40 +1,3 @@
-<style>
-    body {
-        .newsletter-form {
-            margin-right: 20%;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .footer-logo {
-            display: none;
-        }
-
-        .newsletter-form {
-            margin-left: 110px;
-            margin-bottom: 40px;
-        }
-
-        .subscribe-email {
-            width: 150px;
-
-        }
-
-        .subscribe-button {
-            width: 50px;
-
-        }
-
-        .footer-container{
-            display: block;
-        }
-
-        .footer-items{
-            margin: 20px;
-        }
-    }
-</style>
-
 <?php
 $menu_name = 'product_menu';
 $locations = get_nav_menu_locations();
@@ -118,7 +81,7 @@ if (isset($locations[$menu_name])) {
                 </div>
                 
             <?php else : ?>
-                <form class="subscribe-form flex mt-[30px] mr-[30%]" method="post" action="">
+                <form class="subscribe-form flex mt-[30px]" method="post" action="">
                     <input type="email" class="subscribe-email rounded-l-lg p-[5px] h-auto" name="email" placeholder="Subscribe to us" required>
                     <button type="submit" class="subscribe-button rounded-r-lg flex px-[5px] py-[10px] h-auto w-[50px] items-center text-white fas fa-arrow-right bg-black justify-center transition ease-out duration-300 hover:bg-[#000000b3]" name="subscribe"></button>
                 </form>
