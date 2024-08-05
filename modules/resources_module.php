@@ -69,7 +69,7 @@ if ( function_exists( 'get_sub_field' ) ) {
     }
 
     if ( ! empty( $resources ) ) {
-        echo '<div class="container mx-auto resources-container py-8 px-4 flex justify-center w-auto">';
+        echo '<div class="container mx-auto resources-container pb-[10px] px-4 flex justify-center w-auto">';
         echo '<div class="resources-module">';
         echo '<h4 class="resources-title">' . esc_html( $category_title ) . '</h4>'; 
         echo '<div class="resource-wrapper">';
