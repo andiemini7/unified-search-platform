@@ -331,7 +331,37 @@ nav .menu-item-has-children {
     font-weight: bolder;
 }
 
+.newsletter-form {
+    margin-right: 20%;
+}
+
 @media (max-width: 768px) {
+    .footer-logo {
+        display: none;
+    }
+
+    .newsletter-form {
+        margin: auto;
+        margin-bottom: 40px;
+    }
+
+    .subscribe-email {
+        width: 150px;
+
+    }
+
+    .subscribe-button {
+        width: 50px;
+
+    }
+
+    .footer-container{
+        display: block;
+    }
+
+    .footer-items{
+        margin: 20px;
+    }
     
     #main-navbar.sticky {
         margin-top: 0px;
@@ -381,7 +411,7 @@ nav .menu-item-has-children {
         margin-bottom: 20px;
     }
     .calendar {
-        width: 100%;
+        width: 85%;
         display: inline-block;
         border: 1px solid #ddd;
         border-radius: 10px;
