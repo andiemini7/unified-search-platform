@@ -64,8 +64,26 @@ function register_documentations() {
             'has_archive' => true,
             'supports' => ['title', 'editor', 'thumbnail','excpert'],
             'menu_position' => 6,
+            'menu_icon'     => 'dashicons-products',
         ]);
     }
    
+
+    //Tech Support
+    function register_tech_support() {
+        register_post_type('tech-support', [
+            'labels' => [
+                'name' => __('Tech Support'),
+                'singular_name' => __('Support'),
+            ],
+            'public' => true,
+            'has_archive' => true,
+            'supports' => ['title', 'editor', 'thumbnail','excpert'],
+            'menu_position' => 6,
+            'menu_icon'     => 'dashicons-shield',
+        ]);
+    }
 }
+
+
 ?>
