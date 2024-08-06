@@ -421,7 +421,36 @@ function custom_taxonomy_resource_category() {
     register_taxonomy('resource_category', array('resources'), $args);
 }
 add_action('init', 'custom_taxonomy_resource_category', 0);
+function register_plannings() {
+    // Regjistro `custom post type`
+    register_post_type('plannings', [
+        'labels' => [
+            'name' => __('Plannings'),
+            'singular_name' => __('Planning'),
+        ],
+        'public' => true,
+        'has_archive' => true,
+        'supports' => ['title', 'editor', 'custom-fields', 'thumbnail'], // Shto 'thumbnail' nëse dëshiron të mbështesësh imazhe të veçanta
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-calendar',
+        'show_in_rest' => true, // Aktivizo për REST API
+    ]);
 
+    // Regjistro taksonomi për `plannings`
+    register_taxonomy('planning_category', 'plannings', [
+        'labels' => [
+            'name' => __('Categories'),
+            'singular_name' => __('Category'),
+        ],
+        'hierarchical' => true,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => ['slug' => 'planning-category'],
+        'show_in_rest' => true, // Aktivizo për REST API
+    ]);
+}
+add_action('init', 'register_plannings');
 
 // Allow SVG file upload
 function cc_mime_types($mimes) {

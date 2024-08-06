@@ -22,6 +22,48 @@ add_action('acf/include_fields', function () {
 					'class' => '',
 					'id' => '',
 				),
+				'layout_66a4ebd1ca8c3' => array(
+					'key' => 'layout_66a4ebd1ca8c3',
+					'name' => 'select_plannings',
+					'label' => 'Select plannings',
+					'display' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_66a4ebe6ca8c5',
+							'label' => 'Select plannings',
+							'name' => 'select_plannings',
+							'aria-label' => '',
+							'type' => 'relationship',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'post_type' => array(
+								0 => 'plannings',
+							),
+							'post_status' => '',
+							'taxonomy' => '',
+							'filters' => array(
+								0 => 'search',
+								1 => 'post_type',
+								2 => 'taxonomy',
+							),
+							'return_format' => 'object',
+							'min' => '',
+							'max' => '',
+							'elements' => '',
+							'bidirectional' => 0,
+							'bidirectional_target' => array(
+							),
+						),
+					),
+					'min' => '',
+					'max' => '',
+				),
 				'layouts' => array (
 					'layout_66680824e3abd' => array(
 						'key' => 'layout_66680824e3abd',
@@ -98,6 +140,48 @@ add_action('acf/include_fields', function () {
 						'min' => '',
 						'max' => '',
 					),
+					'layout_66a4ebd1ca8c3' => array(
+					'key' => 'layout_66a4ebd1ca8c3',
+					'name' => 'select_plannings',
+					'label' => 'Select plannings',
+					'display' => 'block',
+					'sub_fields' => array(
+						array(
+							'key' => 'field_66a4ebe6ca8c5',
+							'label' => 'Select plannings',
+							'name' => 'select_plannings',
+							'aria-label' => '',
+							'type' => 'relationship',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'post_type' => array(
+								0 => 'plannings',
+							),
+							'post_status' => '',
+							'taxonomy' => '',
+							'filters' => array(
+								0 => 'search',
+								1 => 'post_type',
+								2 => 'taxonomy',
+							),
+							'return_format' => 'object',
+							'min' => '',
+							'max' => '',
+							'elements' => '',
+							'bidirectional' => 0,
+							'bidirectional_target' => array(
+							),
+						),
+					),
+					'min' => '',
+					'max' => '',
+				),
 					'layout_6688695f441ae' => array(
 						'key' => 'layout_6688695f441ae',
 						'name' => 'teams_module',
@@ -1531,7 +1615,151 @@ add_action( 'acf/include_fields', function() {
 	'show_in_rest' => 0,
 ) );
 } );
+add_action( 'acf/include_fields', function() {
+	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+		return;
+	}
 
+	acf_add_local_field_group( array(
+		'key' => 'group_66a4e799d4d18',
+		'title' => 'Planings',
+		'fields' => array(
+			array(
+				'key' => 'field_66a4e7993e455',
+				'label' => 'Planing',
+				'name' => 'planing',
+				'type' => 'repeater',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'layout' => 'table',
+				'pagination' => 0,
+				'min' => 0,
+				'max' => 0,
+				'collapsed' => '',
+				'button_label' => 'Add Row',
+				'rows_per_page' => 20,
+				'sub_fields' => array(
+					array(
+						'key' => 'field_66a4e7b43e456',
+						'label' => 'Title',
+						'name' => 'title',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'maxlength' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'parent_repeater' => 'field_66a4e7993e455',
+					),
+					array(
+						'key' => 'field_66a4e7d13e457',
+						'label' => 'Description',
+						'name' => 'description',
+						'type' => 'wysiwyg',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'tabs' => 'all',
+						'toolbar' => 'full',
+						'media_upload' => 1,
+						'delay' => 0,
+						'parent_repeater' => 'field_66a4e7993e455',
+					),
+					array(
+						'key' => 'field_66a4e7df3e458',
+						'label' => 'Schedule title',
+						'name' => 'schedule_title',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'maxlength' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'parent_repeater' => 'field_66a4e7993e455',
+					),
+					array(
+						'key' => 'field_66a4e7fe3e459',
+						'label' => 'Schedule time',
+						'name' => 'schedule_time_',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'maxlength' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'parent_repeater' => 'field_66a4e7993e455',
+					),
+					array(
+						'key' => 'field_66a4e8a3e460',
+						'label' => 'Icon',
+						'name' => 'icon',
+						'type' => 'image',
+						'instructions' => 'Upload an icon for this planning.',
+						'required' => 0,
+						'return_format' => 'url',
+						'preview_size' => 'thumbnail',
+						'library' => 'all',
+					),
+
+				),
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'plannings',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => '',
+		'show_in_rest' => 0,
+	) );
+} );
 
 add_action( 'acf/include_fields', function() {
     if ( ! function_exists( 'acf_add_local_field_group' ) ) {
@@ -1584,4 +1812,3 @@ add_action( 'acf/include_fields', function() {
         'description' => '',
     ));
 });
-
