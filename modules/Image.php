@@ -5,7 +5,7 @@ if (get_row_layout() == 'image') {
     $image_upload = get_sub_field('image_upload');
     $image_upload_url = is_array($image_upload) ? $image_upload['url'] : '';
 
-    // Determine the image source and display accordingly
+   
     if ($image_source == 'upload' && $image_upload) {
         ?>
         <div class="w-full flex flex-col items-center py-8">

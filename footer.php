@@ -24,6 +24,14 @@
             width: 50px;
 
         }
+
+        .footer-container{
+            display: block;
+        }
+
+        .footer-items{
+            margin: 20px;
+        }
     }
 </style>
 
@@ -50,7 +58,7 @@ if (isset($locations[$menu_name])) {
 
 <footer class="bg-[#e0e0e0] py-8">
     <div class="container mx-auto px-4 mr-auto">
-        <div class="grid gap-y-8 grid-cols-[repeat(auto-fit,_minmax(0,_1fr))] justify-center text-center md:text-left">
+        <div class="footer-container grid gap-y-8 grid-cols-[repeat(auto-fit,_minmax(0,_1fr))] justify-center text-center md:text-left">
             <div class="block lg:hidden col-span-full mb-4 flex flex-col items-center">
                 <?php
                 $footer_logo = get_field('footer_logo', 'option');
@@ -68,9 +76,9 @@ if (isset($locations[$menu_name])) {
             </div>
 
             <?php foreach ($menu_items as $parent) : ?>
-                <div class="flex flex-col items-center md:items-center">
+                <div class="footer-items flex flex-col items-center md:items-center">
                     <h2 class="text-lg font-medium mb-2 leading-5 font-semibold"><?php echo esc_html($parent['item']->post_title); ?></h2>
-                    <ul class="text-sm font-normal leading-5 text-gray-700">
+                    <ul class="text-sm font-normal leading-5 text-gray-700 text-center">
                         <?php foreach ($parent['children'] as $child) : ?>
                             <li class="mb-2">
                                 <a href="<?php echo esc_url($child->url); ?>" class="hover:underline"><?php echo esc_html($child->title); ?></a>
