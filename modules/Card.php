@@ -30,7 +30,7 @@ $posts_query = new WP_Query($args);
 
 // conditional statement if the page is 'technology-stack' or not
 $container_class = 'container mx-auto px-4 flex -mx-4 mb-[30px]';
-$title_class = 'custom-card-title text-[20px] mb-4';
+$title_class = 'custom-card-title text-[20px] mb-4 font-bold';
 if (is_page('technology-stack')) {
     $container_class .= ' flex-start tech-stack';
     $title_class .= ' ml-[13%] tech-stack text-[30px] text-left';
@@ -79,7 +79,7 @@ if ($posts_query->have_posts()) :
             }
             $title = get_the_title(); // No change for title
 ?>
-            <a href="<?php echo esc_url($edit_link); ?>" class="inline-block p-4 max-w-md mx-auto rounded-xl hover:scale-105 transition-transform duration-300 m-2 bg-[#97979724] shadow-md w-full h-auto">
+            <a href="" class="inline-block p-4 max-w-md mx-auto rounded-xl hover:scale-105 transition-transform duration-300 m-2 bg-[#97979724] shadow-md w-full h-auto">
                 <div class="flex items-center space-x-4">
 
                     <div class="w-[150px] h-[130px] flex-shrink-0 bg-white rounded-lg overflow-hidden">
@@ -102,7 +102,7 @@ if ($posts_query->have_posts()) :
 
         } else {
         ?>
-            <a href="<?php echo esc_url($edit_link); ?>" class="griditems grid grid-flow-col auto-cols-fr gap-8 rounded-xl hover:scale-105 transition-transform duration-300 m-4 ">
+            <a href="" class="griditems grid grid-flow-col auto-cols-fr gap-8 rounded-xl hover:scale-105 transition-transform duration-300 m-4 ">
                 <div class="relative inline-block bg-gray-100 rounded-lg shadow-md overflow-hidden mx-4 my-4 w-[330px] h-[200px]">
                     <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url($team_image_url); ?>');">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70"></div>

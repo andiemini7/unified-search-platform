@@ -38,7 +38,7 @@ if ($selected_plannings) {
                 // echo '<h2 class="category-title text-2xl font-bold mb-6">' . esc_html($category->name) . '</h2>';
 
               
-                echo '<div class="planning-cards-icon grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 mt-10">';
+                echo '<div class="planning-cards-icon grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">';
                 while ($query->have_posts()) {
                     $query->the_post();
                     
@@ -71,7 +71,7 @@ if ($selected_plannings) {
                 echo '</div>'; 
 
                
-                echo '<div class="planning-cards-no-icon grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">';
+                echo '<div class="planning-cards-no-icon grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mb-[30px]">';
                 while ($query->have_posts()) {
                     $query->the_post();
 
