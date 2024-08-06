@@ -289,7 +289,79 @@ nav .menu-item-has-children {
     transition: box-shadow 0.3s ease-in-out;
 }
 
+.calendar-row {
+    display: flex;
+}
+
+.calendar-day,
+.calendar-cell {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.calendar-cell {
+    border: 1px solid #ddd;
+    text-align: left;
+    height: 165px;
+}
+
+.calendar-cell.empty {
+    background-color: #f9f9f9;
+}
+
+.calendar-day{
+    height: 50px;
+    font-weight: bold;
+    align-content: center;
+}
+
+.calendar-day.today {
+    background-color: #ff4d00;
+    color: white;
+    border-radius: 10px;
+    margin: 5px;
+}
+.calendar-month-year{
+    font-size: 24px;
+}
+
+.calendar-cell.daytoday {
+    color: #ff4d00;
+    font-weight: bolder;
+}
+
+.newsletter-form {
+    margin-right: 20%;
+}
+
 @media (max-width: 768px) {
+    .footer-logo {
+        display: none;
+    }
+
+    .newsletter-form {
+        margin: auto;
+        margin-bottom: 40px;
+    }
+
+    .subscribe-email {
+        width: 150px;
+
+    }
+
+    .subscribe-button {
+        width: 50px;
+
+    }
+
+    .footer-container{
+        display: block;
+    }
+
+    .footer-items{
+        margin: 20px;
+    }
     
     #main-navbar.sticky {
         margin-top: 0px;
@@ -319,5 +391,57 @@ nav .menu-item-has-children {
     .container{
         display: block;
     }
-     
+    
+    .griditems-teammodule{
+        display: grid;
+    }
+    .teammodule-li{
+        height: 400px;
+    }
+    .teammodule-elem{
+        padding: 1px;
+        
+    }
+
+    .calendar-module {
+        text-align: center;
+    }
+    .calendar-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .calendar {
+        width: 85%;
+        display: inline-block;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .calendar-header {
+        background-color: #f4f4f4;
+        padding: 10px;
+        font-weight: bold;
+    }
+    .calendar-body {
+        display: flex;
+        flex-direction: column;
+    }
+    .calendar-row {
+        display: flex;
+    }
+    .calendar-day, .calendar-cell {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+    }
+    .calendar-cell.empty {
+        background-color: #f9f9f9;
+    }
+    .calendar-cell{
+        height: 100px;
+    }
+    .event-title{
+        font-size: 8px;
+    }
 }
