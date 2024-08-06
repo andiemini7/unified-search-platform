@@ -695,9 +695,9 @@ add_action('acf/include_fields', function () {
 											'choices' => array(
 												'post' => 'Posts',
 												'teams' => 'Teams',
-												
 												'documentation' => 'Documentation',
 												'products' => 'Products',
+												'tech-support' => 'Tech Support',
 											),
 											'layout' => 'horizontal',
 											'return_format' => 'value',
@@ -801,7 +801,7 @@ add_action('acf/include_fields', function () {
 											),
 										),
 										array(
-											'key' => 'field_manual_members',
+											'key' => 'field_manual_products',
 											'label' => 'Manual Products',
 											'name' => 'manual_products',
 											'type' => 'relationship',
@@ -817,6 +817,34 @@ add_action('acf/include_fields', function () {
 														'field' => 'field_manual_post_type',
 														'operator' => '==',
 														'value' => 'products',
+													),
+												),
+											),
+											'filters' => array(
+												'search',
+											),
+											'elements' => array(
+												'featured_image',
+											),
+										),
+
+										array(
+											'key' => 'field_manual_support',
+											'label' => 'Manual Support',
+											'name' => 'manual_support',
+											'type' => 'relationship',
+											'post_type' => array('tech-support'), 
+											'conditional_logic' => array(
+												array(
+													array(
+														'field' => 'field_selection_type',
+														'operator' => '==',
+														'value' => 'manual',
+													),
+													array(
+														'field' => 'field_manual_post_type',
+														'operator' => '==',
+														'value' => 'tech-support',
 													),
 												),
 											),
@@ -993,6 +1021,7 @@ add_action('acf/include_fields', function () {
     'min' => '',
     'max' => '',
 ),
+
 
 
 					'layout_6672f432253d2' => array(
@@ -1812,3 +1841,72 @@ add_action( 'acf/include_fields', function() {
         'description' => '',
     ));
 });
+
+add_action( 'acf/include_fields', function() {
+    if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+        return;
+    }
+
+    acf_add_local_field_group(array(
+		'key' => 'group_tech_support',
+		'title' => 'Tech Support',
+		'fields' => array(
+			array(
+				'key' => 'field_icon',
+				'label' => 'Icon',
+				'name' => 'icon',
+				'type' => 'image',
+				'return_format' => 'url',
+				'preview_size' => 'thumbnail',
+				'library' => 'all',
+			),
+			array(
+				'key' => 'field_sub_title',
+				'label' => 'Sub Title',
+				'name' => 'sub_title',
+				'type' => 'text',
+			),
+			array(
+				'key' => 'field_description',
+				'label' => 'Description',
+				'name' => 'description',
+				'type' => 'textarea',
+			),
+			array(
+				'key' => 'field_bullet_points',
+				'label' => 'Bullet Points',
+				'name' => 'bullet_points',
+				'type' => 'repeater',
+				'sub_fields' => array(
+					array(
+						'key' => 'field_bullet_point',
+						'label' => 'Bullet Point',
+						'name' => 'bullet_point',
+						'type' => 'text',
+					),
+				),
+				'min' => 1,
+				'layout' => 'table',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'tech-support',
+				),
+			),
+		),
+		'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => true,
+        'description' => '',
+	));
+});
+
+	

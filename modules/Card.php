@@ -1,17 +1,17 @@
 <?php
 // Get the selected post type and selection type from ACF fields
 $post_type = get_sub_field('manual_post_type');
-$selection_type = get_sub_field('selection_type');
+$selectiontype = get_sub_field('selectiontype');
 $card_title = get_sub_field('card_title'); // Get the custom card title
 
 // Initialize the query arguments
 $args = array(
     'post_type' => $post_type,
-    'posts_per_page' => ($selection_type === 'latest') ? 10 : -1,
+    'posts_per_page' => ($selectiontype === 'latest') ? 10 : -1,
 );
 
 // If manual selection, get the selected posts
-if ($selection_type === 'manual') {
+if ($selectiontype === 'manual') {
 
     $manual_posts_field = 'manual_' . $post_type;
     $manual_posts = get_sub_field($manual_posts_field);
@@ -25,10 +25,9 @@ if ($selection_type === 'manual') {
     }
 }
 
-
 $posts_query = new WP_Query($args);
 
-// conditional statement if the page is 'technology-stack' or not
+// Conditional statement if the page is 'technology-stack' or not
 $container_class = 'container mx-auto px-4 flex -mx-4 mb-[30px]';
 $title_class = 'custom-card-title text-[20px] mb-4';
 if (is_page('technology-stack')) {
@@ -62,66 +61,85 @@ if ($posts_query->have_posts()) :
         $num_members = $team_members ? count($team_members) : 0;
         $team_image_url = get_field('team_image') ? get_field('team_image')['url'] : get_the_post_thumbnail_url();
 
-        // Check if the post type is 'products'
-        if ($post_type === 'products') {
-            // Get custom fields for the 'products' post type
+        // Check if the post type is 'tech-support'
+        if ($post_type === 'tech-support') {
+            $icon = get_field('icon');
+            $sub_title = get_field('sub_title');
+            $description = get_field('description');
+            $bullet_points = get_field('bullet_points');
+            ?>
+          <div class="block p-4 bg-gray-100 rounded-lg shadow-sm mb-4 hover:bg-gray-200 transition duration-300 m-4" style="max-width: 350px;">
+    <div class="flex flex-col h-full">
+        <!-- Icon Container -->
+        <div class="bg-gray-200 p-5 rounded-lg w-20 h-20 flex items-center justify-center mb-4">
+            <?php if ($icon): ?>
+                <img src="<?php echo esc_url($icon); ?>" alt="<?php echo esc_attr($sub_title); ?>" class="w-16 h-16 object-cover rounded-full">
+            <?php endif; ?>
+        </div>
+        <!-- Text Content -->
+        <div class="flex flex-col flex-1">
+            <?php if ($sub_title): ?>
+                <h2 class="text-lg font-bold text-gray-800 mb-2"><?php echo esc_html($sub_title); ?></h2>
+            <?php endif; ?>
+            <?php if ($description): ?>
+                <p class="text-gray-600 mb-4"><?php echo esc_html($description); ?></p>
+            <?php endif; ?>
+            <?php if ($bullet_points): ?>
+                <div class="flex flex-col space-y-4">
+                    <!-- Fixed Height Container for HR -->
+                    <div class="flex-1 flex flex-col justify-between">
+                        <hr class="border-gray-300">
+                        <ul class="list-disc pl-5 space-y-2 ml-10 mt-4">
+                            <?php foreach ($bullet_points as $point): ?>
+                                <li class="text-gray-600"><?php echo esc_html($point['bullet_point']); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+
+<?php
+        } elseif ($post_type === 'products') {
+            // Existing code for 'products' post type
             $custom_thumbnail = get_field('product_thumbnail');
             $custom_excerpt = get_field('product_excerpt');
 
             // Set the fields if they exist
-            if ($custom_thumbnail) {
-                $thumbnail_url = $custom_thumbnail; // Since the return format is 'url'
-            } else {
-                $thumbnail_url = get_the_post_thumbnail_url(); // Fallback
-            }
-            if ($custom_excerpt) {
-                $excerpt = $custom_excerpt;
-            }
-            $title = get_the_title(); // No change for title
-?>
+            $thumbnail_url = $custom_thumbnail ? $custom_thumbnail : get_the_post_thumbnail_url();
+            $excerpt = $custom_excerpt ? $custom_excerpt : $excerpt;
+            ?>
             <a href="<?php echo esc_url($edit_link); ?>" class="inline-block p-4 max-w-md mx-auto rounded-xl hover:scale-105 transition-transform duration-300 m-2 bg-[#97979724] shadow-md w-full h-auto">
                 <div class="flex items-center space-x-4">
-
                     <div class="w-[150px] h-[130px] flex-shrink-0 bg-white rounded-lg overflow-hidden">
-
                         <img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($title); ?>" class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col justify-center flex-grow p-2">
-                        <h2 class="text-xl font-bold leading-tight text-black break-words">
-                            <?php echo esc_html($title); ?>
-                        </h2>
-                        <p class="text-gray-700 text-sm mt-1 break-words">
-                            <?php echo wp_strip_all_tags($excerpt); ?>
-                        </p>
+                        <h2 class="text-xl font-bold leading-tight text-black break-words"><?php echo esc_html($title); ?></h2>
+                        <p class="text-gray-700 text-sm mt-1 break-words"><?php echo wp_strip_all_tags($excerpt); ?></p>
                     </div>
                 </div>
             </a>
-
-
-        <?php
-
+            <?php
         } else {
-        ?>
-            <a href="<?php echo esc_url($edit_link); ?>" class="griditems grid grid-flow-col auto-cols-fr gap-8 rounded-xl hover:scale-105 transition-transform duration-300 m-4 ">
+            // Existing code for other post types
+            ?>
+            <a href="<?php echo esc_url($edit_link); ?>" class="griditems grid grid-flow-col auto-cols-fr gap-8 rounded-xl hover:scale-105 transition-transform duration-300 m-4">
                 <div class="relative inline-block bg-gray-100 rounded-lg shadow-md overflow-hidden mx-4 my-4 w-[330px] h-[200px]">
                     <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url($team_image_url); ?>');">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70"></div>
                     </div>
-
                     <div class="absolute bottom-0 flex flex-col justify-end text-white" style="padding-left:5px; padding-right: 20px; padding-top:300px; padding-bottom: 20px;">
                         <div class="flex-1 p-1 bg-transparent mb- offs mb-5 ml-2">
-                            <h2 class="text-[30px] text-white font-poppins font-bold leading-tight text-black mr-2 mt-[20px] font-sans">
-                                <?php echo esc_html($title); ?>
-                            </h2>
-                            <p class="text-[#353434] text-white mt-[10px] text-[20px] font-sans">
-                                <?php echo esc_html($excerpt); ?>
-                            </p>
+                            <h2 class="text-[30px] text-white font-poppins font-bold leading-tight text-black mr-2 mt-[20px] font-sans"><?php echo esc_html($title); ?></h2>
+                            <p class="text-[#353434] text-white mt-[10px] text-[20px] font-sans"><?php echo esc_html($excerpt); ?></p>
                         </div>
                     </div>
                 </div>
             </a>
-
-<?php
+            <?php
         }
     endwhile;
     echo '</div>';
