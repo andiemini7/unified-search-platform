@@ -73,7 +73,7 @@
             $user_picture = get_field('user_picture', 'user_' . $current_user_id);
         ?>
         <div class="flex items-center ml-4">
-        <div class="notifications-wrapper relative mr-4">
+        <div class="notifications-wrapper relative mr-5">
             <a href="#" id="notifications-button" class="relative">
                 <i class="fa fa-bell text-xl"></i>
                 <span id="notifications-count" class="bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
@@ -93,7 +93,7 @@
                     <img src="<?php echo get_avatar_url($current_user_id, ['size' => '40']); ?>" alt="<?php echo esc_attr($current_user->display_name); ?>" class="rounded-full h-10 w-10 object-cover mr-4">
                 <?php endif; ?>
             </a>
-            <a href="<?php echo wp_logout_url(home_url()); ?>" class="hidden lg:block ml-6 rounded-full border-solid border-2 border-black py-3 px-6 text-white bg-black block font-semibold">
+            <a href="<?php echo wp_logout_url(home_url()); ?>" class="hidden lg:block rounded-full border-solid border-2 border-black py-[6px] px-[10px] text-white bg-black block font-semibold">
                 Sign Out
             </a>
         </div>
