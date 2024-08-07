@@ -38,7 +38,7 @@ if ($selected_plannings) {
                 // echo '<h2 class="category-title text-2xl font-bold mb-6">' . esc_html($category->name) . '</h2>';
 
               
-                echo '<div class="planning-cards-icon grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 mt-10">';
+                echo '<div class="planning-cards-icon grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">';
                 while ($query->have_posts()) {
                     $query->the_post();
                     
@@ -56,8 +56,8 @@ if ($selected_plannings) {
                             $image_url = isset($planning['image']) ? $planning['image'] : ''; 
 
                             if ($icon_url) {
-                                echo '<div class="planning-card-icon bg-purple-100 p-8 rounded-lg mt-10 shadow-lg flex flex-col">';
-                                echo '<div class="icon mb-4"><img src="' . esc_url($icon_url) . '" alt="Icon" class="icon-img " style="max-width:170%;"/></div>';
+                                echo '<div class="planning-card-icon bg-purple-100 p-[20px] rounded-lg mt-10 shadow-lg flex flex-col">';
+                                echo '<div class="icon mb-4"><img src="' . esc_url($icon_url) . '" alt="Icon" class="icon-img max-w-[170%] w-[55px] h-[55px]"/></div>';
                                 if ($image_url) {
                                     echo '<div class="image mb-4"><img src="' . esc_url($image_url) . '" alt="Image" class="w-full h-auto"/></div>';
                                 }
@@ -71,7 +71,7 @@ if ($selected_plannings) {
                 echo '</div>'; 
 
                
-                echo '<div class="planning-cards-no-icon grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">';
+                echo '<div class="planning-cards-no-icon grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mb-[30px]">';
                 while ($query->have_posts()) {
                     $query->the_post();
 

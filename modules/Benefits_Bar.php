@@ -13,7 +13,7 @@ if (have_rows('benefits')): ?>
             $icon = get_sub_field('icon');
             $text = get_sub_field('text');
         ?>
-            <div class="flex items-center space-x-2 p-2 border rounded-lg bg-gray-100 w-[200px] mb-4 shadow-md">
+            <div class="flex items-center space-x-2 p-2 border rounded-lg bg-gray-100 w-[200px] mb-4 shadow-md justify-center">
                 <?php if ($icon): ?>
                     <img src="<?php echo esc_url($icon); ?>" class="w-6 h-6" alt="Benefit Icon">
                 <?php endif; ?>
