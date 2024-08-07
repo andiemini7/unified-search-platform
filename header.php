@@ -74,7 +74,7 @@
         ?>
         <div class="flex items-center ml-4">
         <div class="notifications-wrapper relative mr-5">
-            <a href="#" id="notifications-button" class="relative">
+            <a href="#" id="notifications-button" class="relative flex">
                 <i class="fa fa-bell text-xl"></i>
                 <span id="notifications-count" class="bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
                     <?php
