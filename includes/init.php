@@ -25,6 +25,10 @@ class Init {
         add_action('init', [$this, 'register_products']);
 
 
+        //Tech Support
+        add_action('init', [$this, 'register_tech_support']);
+
+
         add_action('wp_enqueue_scripts', [new Enqueue(), 'enqueueStyles']);
         add_action('rest_api_init', [new Routes(), 'register_routes']);
         add_action('wp_ajax_nopriv_autosuggest', 'handle_autosuggest');
@@ -61,6 +65,13 @@ class Init {
     public function register_products() {
         $postTypes = new PostTypes();
         $postTypes->register_products();
+    }
+
+
+    //Tech support
+    public function register_tech_support() {
+        $postTypes = new PostTypes();
+        $postTypes->register_tech_support();
     }
 
 
