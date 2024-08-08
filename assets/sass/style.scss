@@ -334,8 +334,18 @@ nav .menu-item-has-children {
 .newsletter-form {
     margin-right: 20%;
 }
+.infocard-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
 
 @media (max-width: 768px) {
+    .infocard {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
     .footer-logo {
         display: none;
     }
