@@ -76,7 +76,7 @@
         <div class="notifications-wrapper relative mr-5">
             <a href="#" id="notifications-button" class="relative flex">
                 <i class="fa fa-bell text-xl"></i>
-                <span id="notifications-count" class="bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
+                <span id="notifications-count" class="hidden bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
                     <?php
                         $notifications = get_user_meta($current_user_id, 'user_notifications', true);
                         echo count($notifications);
@@ -154,11 +154,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateNotificationCount(count) {
         if (count > 0) {
-            notificationsCount.textContent = count; 
-            notificationsCount.classList.remove('hidden'); 
+            notificationsCount.textContent = count;
+            notificationsCount.classList.remove('hidden');
         } else {
-            notificationsCount.textContent = ''; 
-            notificationsCount.classList.add('hidden'); 
+            console.log("countELSE", count);
+            notificationsCount.textContent = '';
+            notificationsCount.classList.add('hidden');
         }
     }
 
@@ -167,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 notificationsDropdown.innerHTML = '';
-                updateNotificationCount(data.count); 
+                updateNotificationCount(data.count);
                 if (data.notifications.length > 0) {
                     data.notifications.forEach(notification => {
                         const notificationElement = document.createElement('div');
@@ -189,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
             notificationsDropdown.style.display = 'none';
         } else {
             notificationsDropdown.style.display = 'block';
-            loadNotifications(); 
+            updateNotificationCount(0);
         }
     });
 
@@ -200,9 +201,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
  
+
     loadNotifications();
 });
-
 
 </script>
 </body>

@@ -479,49 +479,70 @@ function cc_mime_types($mimes) {
     update_user_meta($user_id, 'user_notifications', $notifications);
 }
 
-function notify_users_on_new_post($post_id, $post, $update) {
-    if ($update || $post->post_status === 'auto-draft') {
+add_action('transition_post_status', 'notify_users_on_post_event', 10, 3);
+
+function notify_users_on_post_event($new_status, $old_status, $post) {
+    // Avoid triggering notifications for auto-draft or inherit statuses.
+    if ($new_status === 'auto-draft' || $new_status === 'inherit' || $old_status === 'inherit') {
         return;
     }
 
     $users = get_users();
+    $message = '';
+    $action = '';
+
+    
+    if ($new_status === 'publish' & $old_status === 'auto-draft') {
+        $message = 'A new post has been Published: ';
+        $action = 'published';
+    } elseif ($new_status === 'draft') {
+        $message = 'A post has been saved as a draft: ';
+        $action = 'drafted';
+    } elseif ($new_status === 'trash') {
+        $message = 'A post has been deleted: ';
+        $action = 'deleted';
+    } elseif ($new_status === 'publish' && $old_status === 'publish') {
+        $message = 'A post has been updated: ';
+        $action = 'updated';
+    }
 
     foreach ($users as $user) {
         $user_id = $user->ID;
 
         $notification = [
-            'message' => 'A new post has been published: ' . get_the_title($post_id),
-            'link' => get_permalink($post_id),
-            'time' => current_time('mysql')
+            'message' => $message . get_the_title($post->ID),
+            'link' => get_permalink($post->ID),
+            'time' => current_time('mysql'),
+            'action' => $action,
+            'read' => false
         ];
 
         add_user_notification($user_id, $notification);
     }
 }
-
-add_action('wp_insert_post', 'notify_users_on_new_post', 10, 3);
-
 function load_notifications() {
     $current_user_id = get_current_user_id();
     $notifications = get_user_meta($current_user_id, 'user_notifications', true) ?: [];
 
-    // Filter only unread notifications and mark them as read
-    $unread_notifications = [];
+    $unread_notifications = array_filter($notifications, function($notification) {
+        return !$notification['read'];
+    });
+
+    // Optionally mark unread notifications as read
     foreach ($notifications as &$notification) {
         if (!$notification['read']) {
-            $unread_notifications[] = $notification;
             $notification['read'] = true;
         }
     }
 
-    // Update the notifications to mark them as read
     update_user_meta($current_user_id, 'user_notifications', $notifications);
 
     $response = array(
         'notifications' => array_map(function($notification) {
             return array(
                 'link' => $notification['link'],
-                'message' => $notification['message']
+                'message' => $notification['message'],
+                'action' => $notification['action']
             );
         }, $unread_notifications),
         'count' => count($unread_notifications),
