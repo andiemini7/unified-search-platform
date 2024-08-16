@@ -71,11 +71,11 @@ npm run build:bun
 
 - Set up your local environment (e.g., using Laragon, MAMP, XAMPP, or Local by Flywheel).
 
-#Activate Plugins:
+# Activate Plugins:
 
 - Ensure all required plugins are activated from the WordPress admin dashboard.
 
-##Plugins needed:
+## Plugins needed:
 
 - [x] Nextend-social plugin (for SSO)
 - [x] ACF
